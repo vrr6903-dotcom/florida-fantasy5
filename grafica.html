@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distancia por Número</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; background:#f8fafc; margin:0; padding:20px; color:#1e293b; }
+  .pagina { max-width: 900px; margin: 0 auto; display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap; }
+  .grafica-contenedor { width: 460px; background:#fff; border-radius:12px; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+  .espacio-anuncio { flex: 1; min-width: 260px; min-height: 500px; background:#fff; border:2px dashed #cbd5e1; border-radius:12px; display:flex; align-items:center; justify-content:center; text-align:center; color:#94a3b8; font-size:0.85rem; padding:16px; }
+  .espacio-anuncio-horizontal { max-width: 900px; margin: 0 auto 20px; display:flex; align-items:center; justify-content:center; text-align:center; min-height: 60px; }
+  .grafica-titulo { font-size:1.4rem; font-weight:700; margin-bottom:20px; }
+  .sin-datos { text-align:center; padding:60px 20px; color:#64748b; }
+  .leyenda { display:flex; gap:14px; justify-content:center; margin-top:16px; font-size:0.8rem; color:#475569; flex-wrap:wrap; }
+  .leyenda span { display:inline-flex; align-items:center; gap:6px; }
+  .leyenda i { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  .barra-valor { font-weight:700; font-size:14px; fill:#1e293b; }
+  .barra-etiqueta { font-size:13px; fill:#475569; }
+  .eje-texto { font-size:11px; fill:#94a3b8; }
+  .eje-linea { stroke:#e2e8f0; stroke-width:1; }
+</style>
+</head>
+<body>
+  <!-- Anuncio de arriba (social bar) -->
+  <script src="https://ourselvesincompetentlearned.com/5b/51/60/5b516041af91ad81258a6c63c25f13c9.js"></script>
+
+  <div class="pagina">
+    <div class="grafica-contenedor">
+      <div id="contenido"></div>
+    </div>
+    <div class="espacio-anuncio">
+      <script>atOptions = {'key':'b91b82362e000d73fba71c52991f357b','format':'iframe','height':250,'width':300,'params':{}};</script>
+      <script src="https://www.highperformanceformat.com/b91b82362e000d73fba71c52991f357b/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- Anuncio de abajo (native) -->
+  <div class="espacio-anuncio-horizontal">
+      <script async="async" data-cfasync="false" src="https://ourselvesincompetentlearned.com/dbd3c149fe167ff3f1ba835e0d31fccd/invoke.js"></script>
+      <div id="container-dbd3c149fe167ff3f1ba835e0d31fccd"></div>
+  </div>
+
+<script>
+(function () {
+  const raw = localStorage.getItem('graficaDatos');
+  const contenido = document.getElementById('contenido');
+
+  if (!raw) {
+    contenido.innerHTML = '<div class="sin-datos">⚠️ No hay datos para graficar.<br>Vuelve a la página de estadísticas y haz clic en el ícono 📈 de un número, par o tercia.</div>';
+    return;
+  }
+
+  let datos;
+  try {
+    datos = JSON.parse(raw);
+  } catch (e) {
+    contenido.innerHTML = '<div class="sin-datos">⚠️ No se pudieron leer los datos de la gráfica.</div>';
+    return;
+  }
+
+  const { titulo, etiquetas, valores } = datos;
+
+  if (!etiquetas || !valores || etiquetas.length === 0) {
+    contenido.innerHTML = '<div class="sin-datos">No hay suficiente información para dibujar la gráfica.</div>';
+    return;
+  }
+
+  // Código de color por rango de atraso: bajo = verde, medio = ámbar, alto = rojo.
+  function colorPorAtraso(valor) {
+    if (valor <= 10) return { base: '#22c55e', top: '#4ade80', lado: '#16a34a' };
+    if (valor <= 20) return { base: '#f59e0b', top: '#fbbf24', lado: '#b45309' };
+    return { base: '#ef4444', top: '#f87171', lado: '#b91c1c' };
+  }
+
+  // --- Escala fija del eje: arranca en 100 y solo crece si algún valor la supera ---
+  const maxDato = Math.max(...valores, 0);
+  let ejeMax = 100;
+  let paso = 20;
+  if (maxDato > ejeMax) {
+    paso = maxDato <= 200 ? 25 : maxDato <= 500 ? 50 : 100;
+    ejeMax = Math.ceil(maxDato / paso) * paso;
+  }
+
+  const n = valores.length;
+  const altoSvg = 380;
+  const margenIzq = 46;
+  const margenDer = 24;
+  const margenInferior = 50;
+  const margenSuperior = 24;
+  const altoDisponible = altoSvg - margenInferior - margenSuperior;
+  const profundidad = 10; // desplazamiento del efecto 3D
+  const anchoBarra = 42; // más angosta que antes
+  const separacion = 55; // espacio entre el inicio de una barra y la siguiente
+  const espacio = anchoBarra + separacion;
+  // El ancho del SVG se ajusta a la cantidad de barras, así la cuadrícula no
+  // se extiende más allá de lo necesario y deja espacio libre para el anuncio.
+  const anchoSvg = margenIzq + 30 + (n - 1) * espacio + anchoBarra + profundidad + margenDer + 20;
+
+  // --- Cuadrícula y etiquetas del eje Y ---
+  let ejeSvg = '';
+  const numLineas = ejeMax / paso;
+  for (let i = 0; i <= numLineas; i++) {
+    const valorLinea = i * paso;
+    const y = margenSuperior + altoDisponible - (valorLinea / ejeMax) * altoDisponible;
+    ejeSvg += `<line x1="${margenIzq}" y1="${y}" x2="${anchoSvg - margenDer}" y2="${y}" class="eje-linea"></line>`;
+    ejeSvg += `<text x="${margenIzq - 10}" y="${y + 4}" text-anchor="end" class="eje-texto">${valorLinea}</text>`;
+  }
+  ejeSvg += `<line x1="${margenIzq}" y1="${margenSuperior}" x2="${margenIzq}" y2="${margenSuperior + altoDisponible}" class="eje-linea"></line>`;
+
+  // --- Barras con efecto 3D (cara frontal + tapa + lado), agrupadas a la izquierda ---
+  let barrasSvg = '';
+  for (let i = 0; i < n; i++) {
+    const valor = valores[i];
+    const alturaBarra = ejeMax > 0 ? (valor / ejeMax) * altoDisponible : 0;
+    const x = margenIzq + 30 + i * espacio;
+    const y = margenSuperior + (altoDisponible - alturaBarra);
+    const c = colorPorAtraso(valor);
+    const centroX = x + anchoBarra / 2 + profundidad / 2;
+
+    // Cara frontal
+    barrasSvg += `<rect x="${x}" y="${y}" width="${anchoBarra}" height="${alturaBarra}" fill="${c.base}"></rect>`;
+    // Lado derecho (paralelogramo)
+    barrasSvg += `<polygon points="${x + anchoBarra},${y} ${x + anchoBarra + profundidad},${y - profundidad} ${x + anchoBarra + profundidad},${y - profundidad + alturaBarra} ${x + anchoBarra},${y + alturaBarra}" fill="${c.lado}"></polygon>`;
+    // Tapa superior (paralelogramo)
+    barrasSvg += `<polygon points="${x},${y} ${x + profundidad},${y - profundidad} ${x + anchoBarra + profundidad},${y - profundidad} ${x + anchoBarra},${y}" fill="${c.top}"></polygon>`;
+
+    barrasSvg += `<text x="${centroX}" y="${y - profundidad - 8}" text-anchor="middle" class="barra-valor">${valor}</text>`;
+    barrasSvg += `<text x="${x + anchoBarra / 2}" y="${altoSvg - margenInferior + 22}" text-anchor="middle" class="barra-etiqueta">N° ${etiquetas[i]}</text>`;
+  }
+
+  contenido.innerHTML =
+    '<div class="grafica-titulo">📊 ' + titulo + '</div>' +
+    '<svg viewBox="0 0 ' + anchoSvg + ' ' + altoSvg + '" style="width:100%; height:auto;">' + ejeSvg + barrasSvg + '</svg>' +
+    '<div class="leyenda">' +
+      '<span><i style="background:#22c55e"></i> Atraso bajo (≤10)</span>' +
+      '<span><i style="background:#f59e0b"></i> Atraso medio (11-20)</span>' +
+      '<span><i style="background:#ef4444"></i> Atraso alto (&gt;20)</span>' +
+    '</div>';
+})();
+</script>
+</body>
+</html>
