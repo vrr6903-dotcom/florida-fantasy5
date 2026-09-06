@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generar combinaciones | FANTASY</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+.tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
+.tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
+.tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
+.tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
+.buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
+.buscar-historial-controles button { padding:9px 16px; border:none; border-radius:6px; font-weight:600; font-size:0.9rem; cursor:pointer; }
+.btn-buscar-historial { background:#2563eb; color:#fff; }
+.btn-limpiar-historial { background:#94a3b8; color:#fff; }
+.badge-numero-verde { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 4px; background:#22c55e; color:#fff; font-weight:700; border-radius:6px; font-size:0.85rem; }
+.tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
+.tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
+.tabla-historial td { padding:9px; text-align:center; border-bottom:1px solid #f1f5f9; font-size:0.9rem; }
+</style>
+</head>
+<body>
+<header class="header-bar">
+  <div class="header-brand">⚡ Resultados FANTASY</div>
+  <nav class="nav-menu"></nav>
+</header>
+<main class="main-container">
+  <aside class="aside-left">
+  </aside>
+  <section>
+<div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
+<div class="tabs-estadisticas">
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Buscar todos</a>
+  <a class="tab-btn-estadisticas" href="graficas.html">📈 Gráficas</a>
+  <a class="tab-btn-estadisticas activo" href="generador.html">🎲 Generar combinaciones</a>
+</div>
+<div class="buscar-historial-caja">
+  <p style="margin-top:0; color:#64748b; font-size:0.9rem;">Combina el número, el par y la tercia más atrasados del historial para armar una combinación de 5. Es un ejercicio estadístico sobre atrasos históricos, <strong>no una predicción de resultados</strong>.</p>
+  <div class="buscar-historial-controles">
+    <button type="button" class="btn-buscar-historial" onclick="generarCombinacionAtrasos()">🎲 Generar combinación</button>
+    <button type="button" class="btn-limpiar-historial" onclick="limpiarCombinacionAtrasos()">🗑️ Limpiar</button>
+  </div>
+  <div id="resultadoCombinacionAtrasos"></div>
+</div>
+  </section>
+  <aside class="aside-right"></aside>
+</main>
+<div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
+  ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
+  <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+</div>
+<script>
+var historialCacheJSON = null;
+async function cargarHistorialJSON() {
+  if (historialCacheJSON) return historialCacheJSON;
+  try {
+    const resp = await fetch('historial.json');
+    historialCacheJSON = await resp.json();
+  } catch (e) {
+    historialCacheJSON = [];
+    console.error('No se pudo cargar historial.json', e);
+  }
+  return historialCacheJSON;
+}
+
+var TOTAL_NUMEROS_GEN = 36;
+
+async function generarCombinacionAtrasos() {
+  const contenedor = document.getElementById('resultadoCombinacionAtrasos');
+  contenedor.innerHTML = 'Calculando...';
+  const historial = await cargarHistorialJSON();
+  if (!historial || historial.length === 0) {
+    contenedor.innerHTML = 'No se pudo cargar el historial.';
+    return;
+  }
+  const ultimoConcurso = historial[historial.length - 1].concurso;
+  const ultimoNum = {}, ultimoPar = {}, ultimoTercia = {};
+  historial.forEach(function(s){
+    const nums = s.numeros;
+    for (let i = 0; i < nums.length; i++) {
+      ultimoNum[nums[i]] = s.concurso;
+      for (let j = i + 1; j < nums.length; j++) {
+        const keyPar = [nums[i], nums[j]].sort(function(a,b){ return a-b; }).join('-');
+        ultimoPar[keyPar] = s.concurso;
+        for (let k = j + 1; k < nums.length; k++) {
+          const keyTercia = [nums[i], nums[j], nums[k]].sort(function(a,b){ return a-b; }).join('-');
+          ultimoTercia[keyTercia] = s.concurso;
+        }
+      }
+    }
+  });
+
+  const numerosOrdenados = [];
+  for (let n = 1; n <= TOTAL_NUMEROS_GEN; n++) {
+    const ult = ultimoNum[n] || 0;
+    numerosOrdenados.push({ n: n, atraso: ultimoConcurso - ult });
+  }
+  numerosOrdenados.sort(function(a,b){ return b.atraso - a.atraso; });
+
+  const paresOrdenados = Object.keys(ultimoPar).map(function(key){
+    return { key: key, atraso: ultimoConcurso - ultimoPar[key] };
+  }).sort(function(a,b){ return b.atraso - a.atraso; });
+
+  const terciasOrdenadas = Object.keys(ultimoTercia).map(function(key){
+    return { key: key, atraso: ultimoConcurso - ultimoTercia[key] };
+  }).sort(function(a,b){ return b.atraso - a.atraso; });
+
+  const combinado = new Set();
+  const origenPartes = [];
+
+  const terciaElegida = terciasOrdenadas[Math.floor(Math.random() * Math.min(5, terciasOrdenadas.length))];
+  if (terciaElegida) {
+    terciaElegida.key.split('-').forEach(function(n){ combinado.add(parseInt(n,10)); });
+    origenPartes.push('tercia ' + terciaElegida.key + ' (atraso ' + terciaElegida.atraso + ')');
+  }
+
+  for (let intento = 0; intento < Math.min(10, paresOrdenados.length); intento++) {
+    const par = paresOrdenados[Math.floor(Math.random() * Math.min(10, paresOrdenados.length))];
+    const partes = par.key.split('-').map(function(n){ return parseInt(n,10); });
+    const a = partes[0], b = partes[1];
+    const faltan = (combinado.has(a) ? 0 : 1) + (combinado.has(b) ? 0 : 1);
+    if (faltan > 0 && combinado.size + faltan <= 5) {
+      combinado.add(a); combinado.add(b);
+      origenPartes.push('par ' + par.key + ' (atraso ' + par.atraso + ')');
+      break;
+    }
+  }
+
+  let intentosNum = 0;
+  while (combinado.size < 5 && intentosNum < 200) {
+    const idx = Math.floor(Math.random() * Math.min(15, numerosOrdenados.length));
+    combinado.add(numerosOrdenados[idx].n);
+    intentosNum++;
+  }
+  for (let i = 0; i < numerosOrdenados.length && combinado.size < 5; i++) {
+    combinado.add(numerosOrdenados[i].n);
+  }
+
+  const combinacionFinal = Array.from(combinado).sort(function(a,b){ return a-b; }).slice(0,5);
+  const badges = combinacionFinal.map(function(n){
+    const txt = n < 10 ? ('0' + n) : n;
+    return '<span class="badge-numero-verde" style="font-size:1.15rem; min-width:36px; height:36px;">' + txt + '</span>';
+  }).join(' ');
+
+  contenedor.innerHTML =
+    '<div style="font-size:1.3rem; margin:14px 0;">' + badges + '</div>' +
+    '<div style="color:#64748b; font-size:0.85rem;">Basado en: ' + (origenPartes.length ? origenPartes.join(', ') + ' + ' : '') + 'números individuales más atrasados.</div>';
+}
+
+function limpiarCombinacionAtrasos() {
+  document.getElementById('resultadoCombinacionAtrasos').innerHTML = '';
+}
+</script>
+</body>
+</html>
