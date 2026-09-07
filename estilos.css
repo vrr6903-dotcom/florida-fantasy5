@@ -354,6 +354,22 @@ body {
     cursor: pointer;
     color: var(--color-azul);
     text-decoration: underline;
+    text-decoration-style: dotted;
+    padding: 2px 5px;
+    border-radius: 4px;
+    transition: background-color 0.15s, text-decoration-style 0.15s;
+}
+
+.clickable-num:hover {
+    background-color: #eff6ff;
+    text-decoration-style: solid;
+}
+
+.clickable-num:hover::after {
+    content: "🔍";
+    font-size: 0.7em;
+    margin-left: 3px;
+    opacity: 0.7;
 }
 
 .clickable-row {
@@ -362,6 +378,32 @@ body {
 
 .clickable-row:hover {
     background-color: #e0f2fe !important;
+}
+
+.badge-numero-verde {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 4px;
+    background: #22c55e;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.resaltado-verde {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 4px;
+    background: #22c55e !important;
+    color: #fff !important;
+    border-radius: 6px;
 }
 
 .distancia-bold {
