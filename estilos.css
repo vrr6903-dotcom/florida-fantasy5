@@ -587,4 +587,10 @@ body {
     .table-scroll-container {
         max-height: 250px;
     }
+    .clickable-num::after {
+        content: "🔍";
+        font-size: 0.65em;
+        margin-left: 3px;
+        opacity: 0.55;
+    }
 }
