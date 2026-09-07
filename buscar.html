@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="monetag" content="eec91ac9bdbd4da25370d19db66e89f6">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buscar todos | FANTASY</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+.tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
+.tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
+.tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
+.tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
+.buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
+.buscar-historial-controles button { padding:9px 16px; border:none; border-radius:6px; font-weight:600; font-size:0.9rem; cursor:pointer; }
+.btn-buscar-historial { background:#2563eb; color:#fff; }
+.btn-limpiar-historial { background:#94a3b8; color:#fff; }
+.badge-numero-verde { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 4px; background:#22c55e; color:#fff; font-weight:700; border-radius:6px; font-size:0.85rem; }
+.tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
+.tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
+.tabla-historial td { padding:9px; text-align:center; border-bottom:1px solid #f1f5f9; font-size:0.9rem; }
+</style>
+</head>
+<body>
+<header class="header-bar">
+  <div class="header-brand">⚡ Resultados FANTASY</div>
+  <nav class="nav-menu">
+  </nav>
+</header>
+<main class="main-container">
+  <aside class="aside-left">
+  </aside>
+  <section>
+<div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
+<div class="tabs-estadisticas">
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
+  <a class="tab-btn-estadisticas activo" href="buscar.html">🔍 Buscar todos</a>
+  <a class="tab-btn-estadisticas" href="graficas.html">📈 Gráficas</a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Generar combinaciones</a>
+</div>
+<div class="buscar-historial-caja">
+  <div class="buscar-historial-controles">
+    <label for="inputBuscarNumeros">Escribe tus números para ver dónde han salido:</label>
+    <input type="text" id="inputBuscarNumeros" placeholder="Ej: 01, 05, 07, 15, 20, 36" style="min-width:260px;">
+    <button type="button" class="btn-buscar-historial" onclick="buscarEnHistorial()">🔵 Buscar en todo el historial</button>
+    <button type="button" class="btn-limpiar-historial" onclick="limpiarBusquedaHistorial()">🗑️ Limpiar</button>
+  </div>
+  <div style="margin-bottom:14px; font-size:0.85rem;">📥 ¿Prefieres verlo en Excel? <a href="historial.csv" download>Descarga el historial completo aquí</a>.</div>
+  <div id="resumenBusquedaHistorial" style="margin-bottom:10px; font-weight:600;"></div>
+  <table class="tabla-historial">
+    <thead><tr><th>Concurso</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th><th>Fecha</th></tr></thead>
+    <tbody id="tablaBusquedaHistorialBody"></tbody>
+  </table>
+</div>
+  </section>
+  <aside class="aside-right"></aside>
+</main>
+<div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
+  ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
+  <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+</div>
+<script>
+var historialCacheJSON = null;
+async function cargarHistorialJSON() {
+  if (historialCacheJSON) return historialCacheJSON;
+  try {
+    const resp = await fetch('historial.json');
+    historialCacheJSON = await resp.json();
+  } catch (e) {
+    historialCacheJSON = [];
+    console.error('No se pudo cargar historial.json', e);
+  }
+  return historialCacheJSON;
+}
+
+async function buscarEnHistorial() {
+  const valor = document.getElementById('inputBuscarNumeros').value;
+  const numeros = valor.split(/[\s,]+/).map(function(n){ return parseInt(n,10); }).filter(function(n){ return !isNaN(n); });
+  const resumen = document.getElementById('resumenBusquedaHistorial');
+  const tbody = document.getElementById('tablaBusquedaHistorialBody');
+  tbody.innerHTML = '';
+  if (numeros.length === 0) {
+    resumen.innerHTML = 'Escribe al menos un número.';
+    return;
+  }
+  if (numeros.length > 5) {
+    resumen.innerHTML = '⚠️ Máximo 5 números: cada sorteo solo tiene 5 (R1-R5).';
+    return;
+  }
+  resumen.innerHTML = 'Buscando...';
+  const historial = await cargarHistorialJSON();
+  const encontrados = historial.filter(function(s){
+    return numeros.every(function(n){ return s.numeros.indexOf(n) !== -1; });
+  });
+  const badges = numeros.map(function(n){ return '<span class="badge-numero-verde">' + n + '</span>'; }).join(' ');
+  resumen.innerHTML = 'Se encontraron ' + encontrados.length + ' sorteos con los números: ' + badges;
+  const LIMITE = 500;
+  const paraMostrar = encontrados.slice().reverse().slice(0, LIMITE);
+  let filas = '';
+  paraMostrar.forEach(function(s){
+    let celdas = '';
+    s.numeros.forEach(function(n){
+      celdas += '<td>' + (numeros.indexOf(n) !== -1 ? '<span class="badge-numero-verde">' + n + '</span>' : n) + '</td>';
+    });
+    filas += '<tr><td>' + s.concurso + '</td>' + celdas + '<td>' + s.fecha + '</td></tr>';
+  });
+  tbody.innerHTML = filas;
+  if (encontrados.length > LIMITE) {
+    resumen.innerHTML += ' (mostrando los ' + LIMITE + ' más recientes)';
+  }
+}
+
+function limpiarBusquedaHistorial() {
+  document.getElementById('inputBuscarNumeros').value = '';
+  document.getElementById('resumenBusquedaHistorial').innerHTML = '';
+  document.getElementById('tablaBusquedaHistorialBody').innerHTML = '';
+}
+</script>
+</body>
+</html>
