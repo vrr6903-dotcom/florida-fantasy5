@@ -54,6 +54,21 @@
   (function(s){s.dataset.zone='11749394',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
 })();
 </script>
+<div id="contadorVisitas-grafica" style="text-align:center; font-size:0.8rem; color:#94a3b8; margin:10px 0;">👀 Cargando visitas...</div>
+<script>
+fetch('https://countapi.mileshilliard.com/api/v1/hit/fantasy5florida_grafica')
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    var el = document.getElementById('contadorVisitas-grafica');
+    if (el) el.textContent = '👀 ' + data.value + ' visitas a esta página';
+  })
+  .catch(function () {
+    // Si CountAPI no responde (caído, bloqueado, etc.), se oculta
+    // el contador en vez de dejar el mensaje de "Cargando..." a medias.
+    var el = document.getElementById('contadorVisitas-grafica');
+    if (el) el.style.display = 'none';
+  });
+</script>
 
 <script>
 (function () {
