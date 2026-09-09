@@ -308,22 +308,19 @@ function filaUno(d){
   return '<tr data-total="'+d.frecuencia+'" data-distancia="'+d.atraso+'">'
     + '<td><b class="clickable-num" onclick="filtrarPorNumero(\''+d.numero+'\')" title="Filtrar por el número '+d.numero+'">'+d.numero+'</b></td>'
     + '<td>'+d.frecuencia+'</td><td>'+d.ultimaFecha+'</td><td>'+d.concurso+'</td><td class="distancia-bold">'+d.atraso+'</td>'
-    + '<td><button class="btn-grafica" title="Ver gráfica del número '+d.numero+'" onclick="event.stopPropagation(); graficarSeleccion(\'Distancia por Número\', \''+d.numero+'\', \''+d.atraso+'\')">📈 Ver</button> '
-    + '<button class="btn-grafica" title="Buscar el número '+d.numero+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.numero+'\')">🔍 Buscar</button></td>'
+    + '<td><button class="btn-grafica" title="Buscar el número '+d.numero+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.numero+'\')">🔍 Buscar</button></td>'
     + '</tr>';
 }
 function filaPar(d){
   return '<tr class="clickable-row" onclick="filtrarPorPar(\''+d.n1+'\', \''+d.n2+'\')" title="Filtrar por el par '+d.n1+' y '+d.n2+'" data-total="'+d.frecuencia+'" data-distancia="'+d.atraso+'">'
     + '<td><b>'+d.n1+'</b></td><td><b>'+d.n2+'</b></td><td>'+d.posicion1+'</td><td>'+d.posicion2+'</td><td>'+d.concurso+'</td><td>'+d.ultimaFecha+'</td><td>'+d.frecuencia+'</td><td class="distancia-bold">'+d.atraso+'</td>'
-    + '<td><button class="btn-grafica" title="Ver gráfica del par '+d.n1+' y '+d.n2+'" onclick="event.stopPropagation(); graficarSeleccion(\'Distancia por Número\', \''+d.n1+','+d.n2+'\', \''+d.atrasoN1+','+d.atrasoN2+'\')">📈 Ver</button> '
-    + '<button class="btn-grafica" title="Buscar el par '+d.n1+' y '+d.n2+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.n1+','+d.n2+'\')">🔍 Buscar</button></td>'
+    + '<td><button class="btn-grafica" title="Buscar el par '+d.n1+' y '+d.n2+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.n1+','+d.n2+'\')">🔍 Buscar</button></td>'
     + '</tr>';
 }
 function filaTercia(d){
   return '<tr class="clickable-row" onclick="filtrarPorTercia(\''+d.n1+'\', \''+d.n2+'\', \''+d.n3+'\')" title="Filtrar por la tercia '+d.n1+', '+d.n2+' y '+d.n3+'" data-total="'+d.frecuencia+'" data-distancia="'+d.atraso+'">'
     + '<td><b>'+d.n1+'</b></td><td><b>'+d.n2+'</b></td><td><b>'+d.n3+'</b></td><td>'+d.posicion1+'</td><td>'+d.posicion2+'</td><td>'+d.posicion3+'</td><td>'+d.frecuencia+'</td><td>'+d.ultimaFecha+'</td><td>'+d.concurso+'</td><td class="distancia-bold">'+d.atraso+'</td>'
-    + '<td><button class="btn-grafica" title="Ver gráfica de la tercia '+d.n1+', '+d.n2+' y '+d.n3+'" onclick="event.stopPropagation(); graficarSeleccion(\'Distancia por Número\', \''+d.n1+','+d.n2+','+d.n3+'\', \''+d.atrasoN1+','+d.atrasoN2+','+d.atrasoN3+'\')">📈 Ver</button> '
-    + '<button class="btn-grafica" title="Buscar la tercia '+d.n1+', '+d.n2+' y '+d.n3+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.n1+','+d.n2+','+d.n3+'\')">🔍 Buscar</button></td>'
+    + '<td><button class="btn-grafica" title="Buscar la tercia '+d.n1+', '+d.n2+' y '+d.n3+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.n1+','+d.n2+','+d.n3+'\')">🔍 Buscar</button></td>'
     + '</tr>';
 }
 async function cargarTablasJSON(){
