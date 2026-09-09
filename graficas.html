@@ -21,39 +21,9 @@
 .tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
 .tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
 .tabla-historial td { padding:9px; text-align:center; border-bottom:1px solid #f1f5f9; font-size:0.9rem; }
-.cuadricula-reduccion { display:flex; flex-wrap:wrap; gap:8px; }
-.bolita-reduccion { width:44px; height:44px; border-radius:50%; border:2px solid #cbd5e1; background:#f8fafc; color:#334155; font-weight:700; font-size:0.85rem; cursor:pointer; transition:transform 0.1s, background 0.15s, border-color 0.15s, color 0.15s; }
-.bolita-reduccion:hover { border-color:#2563eb; }
-.bolita-reduccion.seleccionada { background:#2563eb; border-color:#2563eb; color:#fff; transform:scale(1.05); }
-.bolita-reduccion.atraso-alto { background:#ef4444; border-color:#ef4444; color:#fff; }
-.bolita-reduccion.atraso-medio { background:#f59e0b; border-color:#f59e0b; color:#fff; }
-.bolita-reduccion.atraso-bajo { background:#22c55e; border-color:#22c55e; color:#fff; }
-.bolita-reduccion:disabled { opacity:0.35; cursor:not-allowed; }
 </style>
 </head>
 <body>
-<script>
-(function () {
-  var CLAVE_FECHA = 'monetagIPPFecha';
-  var CLAVE_CONTEO = 'monetagIPPConteo';
-  var MAX_POR_DIA = 2;
-  var hoy = new Date().toISOString().slice(0, 10);
-  try {
-    var fechaGuardada = localStorage.getItem(CLAVE_FECHA);
-    var conteo = parseInt(localStorage.getItem(CLAVE_CONTEO) || '0', 10);
-    if (fechaGuardada !== hoy) {
-      conteo = 0;
-      localStorage.setItem(CLAVE_FECHA, hoy);
-    }
-    if (conteo >= MAX_POR_DIA) return; // ya alcanzó el máximo del día, no se carga el anuncio
-    localStorage.setItem(CLAVE_CONTEO, String(conteo + 1));
-  } catch (e) {
-    // Si el navegador bloquea localStorage (modo privado, etc.), se muestra
-    // el anuncio de todos modos, sin límite, en vez de fallar la página.
-  }
-  (function(s){s.dataset.zone='11749394',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-})();
-</script>
 <header class="header-bar">
   <div class="header-brand">⚡ Resultados FANTASY</div>
   <nav class="nav-menu">
@@ -87,6 +57,28 @@
   ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
   <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
 </div>
+<script>
+(function () {
+  var CLAVE_FECHA = 'monetagIPPFecha';
+  var CLAVE_CONTEO = 'monetagIPPConteo';
+  var MAX_POR_DIA = 2;
+  var hoy = new Date().toISOString().slice(0, 10);
+  try {
+    var fechaGuardada = localStorage.getItem(CLAVE_FECHA);
+    var conteo = parseInt(localStorage.getItem(CLAVE_CONTEO) || '0', 10);
+    if (fechaGuardada !== hoy) {
+      conteo = 0;
+      localStorage.setItem(CLAVE_FECHA, hoy);
+    }
+    if (conteo >= MAX_POR_DIA) return; // ya alcanzó el máximo del día, no se carga el anuncio
+    localStorage.setItem(CLAVE_CONTEO, String(conteo + 1));
+  } catch (e) {
+    // Si el navegador bloquea localStorage (modo privado, etc.), se muestra
+    // el anuncio de todos modos, sin límite, en vez de fallar la página.
+  }
+  (function(s){s.dataset.zone='11749394',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+})();
+</script>
 <script>
 var historialCacheJSON = null;
 async function cargarHistorialJSON() {
