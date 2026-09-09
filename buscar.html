@@ -161,6 +161,16 @@ function limpiarBusquedaHistorial() {
   document.getElementById('resumenBusquedaHistorial').innerHTML = '';
   document.getElementById('tablaBusquedaHistorialBody').innerHTML = '';
 }
+(function () {
+  try {
+    const pendientes = localStorage.getItem('buscarHistorialNumeros');
+    if (pendientes) {
+      localStorage.removeItem('buscarHistorialNumeros');
+      document.getElementById('inputBuscarNumeros').value = pendientes;
+      buscarEnHistorial();
+    }
+  } catch (e) { /* si localStorage falla, simplemente no se precarga */ }
+})();
 </script>
 </body>
 </html>
