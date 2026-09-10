@@ -192,6 +192,10 @@ function toggleUltimosResultados() {
           </tbody></table></div></div>
     <div class="stats-card">
       <div class="stats-title" id="tituloTercias"><span>🧩 Combinaciones de tres números: Frecuencia > 20</span></div>
+      <div id="botonMostrarTerciasWrap" style="margin:10px 0;">
+        <button class="btn-aplicar" onclick="mostrarTercias()">👁️ Mostrar Tercias</button>
+      </div>
+      <div id="contenidoTercias" style="display:none;">
       <div class="filter-bar">
         <label>Mín. Totales:</label><input type="number" id="minTotalesTercias" value="20">
         <label>Mín. Distancia:</label><input type="number" id="minDistanciaTercias" value="0">
@@ -204,7 +208,9 @@ function toggleUltimosResultados() {
           <thead><tr><th>N1</th><th>N2</th><th>N3</th><th>P1</th><th>P2</th><th>P3</th><th>Total</th><th>Fecha</th><th>Último concurso</th><th>Atraso</th><th>Gráfica</th></tr></thead>
           <tbody>
             <tr><td colspan="11" style="text-align:center;color:#94a3b8;padding:20px;">Cargando…</td></tr>
-          </tbody></table></div></div>
+          </tbody></table></div>
+      </div>
+    </div>
 </div>
   </section>
   <aside class="aside-right">
@@ -336,36 +342,100 @@ function abrirDBFantasy(){
     req.onerror = function(e){ reject(e.target.error); };
   });
 }
-function guardarEnIndexedDB(nombreTabla, datos){
+function guardarEnIndexedDB(nombreTabla, concurso, filas){
   abrirDBFantasy().then(function(db){
     var tx = db.transaction(nombreTabla, 'readwrite');
-    tx.objectStore(nombreTabla).put(datos, 'datos');
+    tx.objectStore(nombreTabla).put({concurso: concurso, filas: filas}, 'datos');
   }).catch(function(e){
     console.error('No se pudo guardar en IndexedDB (' + nombreTabla + '):', e);
   });
 }
+function leerDeIndexedDB(nombreTabla){
+  return abrirDBFantasy().then(function(db){
+    return new Promise(function(resolve){
+      var tx = db.transaction(nombreTabla, 'readonly');
+      var req = tx.objectStore(nombreTabla).get('datos');
+      req.onsuccess = function(){ resolve(req.result || null); };
+      req.onerror = function(){ resolve(null); };
+    });
+  }).catch(function(){ return null; });
+}
 async function cargarTablasJSON(){
   try {
-    const [rUnos, rPares, rTercias] = await Promise.all([fetch('unos.json'), fetch('pares.json'), fetch('tercias.json')]);
-    const [datosUnos, datosPares, datosTercias] = await Promise.all([rUnos.json(), rPares.json(), rTercias.json()]);
+    // 1) Revisa version.json (pesa unos bytes) para saber si la copia en
+    // IndexedDB sigue vigente, antes de descargar los JSON pesados.
+    // Nota: Tercias NO se carga aquí, solo Unos y Pares (ver mostrarTercias(),
+    // que descarga tercias.json solo cuando el usuario hace clic en el botón).
+    window.__versionFantasy = null;
+    try { window.__versionFantasy = await (await fetch('version.json')).json(); } catch (e) { window.__versionFantasy = null; }
+    const version = window.__versionFantasy;
+
+    if (version) {
+      const [cacheUnos, cachePares] = await Promise.all([
+        leerDeIndexedDB('unos'), leerDeIndexedDB('pares')
+      ]);
+      const cacheVigente = cacheUnos && cachePares
+        && cacheUnos.concurso === version.concurso
+        && cachePares.concurso === version.concurso;
+
+      if (cacheVigente) {
+        // 2a) Mismo concurso que la última vez: usa la copia local, sin descargar nada pesado.
+        document.querySelector('#tablaUnos tbody').innerHTML = cacheUnos.filas.map(filaUno).join('');
+        document.querySelector('#tablaPares tbody').innerHTML = cachePares.filas.map(filaPar).join('');
+        return;
+      }
+    }
+
+    // 2b) Primera visita, sin caché válido o falló version.json: descarga normal.
+    const [rUnos, rPares] = await Promise.all([fetch('unos.json'), fetch('pares.json')]);
+    const [datosUnos, datosPares] = await Promise.all([rUnos.json(), rPares.json()]);
     document.querySelector('#tablaUnos tbody').innerHTML = datosUnos.map(filaUno).join('');
     document.querySelector('#tablaPares tbody').innerHTML = datosPares.map(filaPar).join('');
-    document.querySelector('#tablaTercias tbody').innerHTML = datosTercias.map(filaTercia).join('');
-    // Guarda también una copia en IndexedDB en cada visita (sin lógica de
-    // versión: siempre se trae lo fresco del servidor y se sobreescribe la
-    // copia local). Es "fire and forget": si falla, no afecta la carga.
-    guardarEnIndexedDB('unos', datosUnos);
-    guardarEnIndexedDB('pares', datosPares);
-    guardarEnIndexedDB('tercias', datosTercias);
+
+    // Guarda la copia fresca junto con el número de concurso, para la próxima visita.
+    if (version) {
+      guardarEnIndexedDB('unos', version.concurso, datosUnos);
+      guardarEnIndexedDB('pares', version.concurso, datosPares);
+    }
   } catch (e) {
-    console.error('Error cargando unos/pares/tercias.json:', e);
-    ['tablaUnos','tablaPares','tablaTercias'].forEach(function(id){
+    console.error('Error cargando unos/pares.json:', e);
+    ['tablaUnos','tablaPares'].forEach(function(id){
       const tb = document.querySelector('#'+id+' tbody');
       if (tb) tb.innerHTML = '<tr><td colspan="12" style="text-align:center;color:#ef4444;padding:20px;">⚠️ No se pudieron cargar los datos.</td></tr>';
     });
   }
 }
 document.addEventListener('DOMContentLoaded', cargarTablasJSON);
+
+// Tercias: se descarga y se pinta SOLO cuando el usuario hace clic en
+// "Mostrar Tercias" (ver botonMostrarTerciasWrap/contenidoTercias en
+// generarTablaTercias). Así la carga inicial de la página nunca paga el
+// costo de tercias.json ni de pintar sus ~miles de filas si nadie la abre.
+let terciasCargadas = false;
+async function mostrarTercias(){
+  document.getElementById('botonMostrarTerciasWrap').style.display = 'none';
+  document.getElementById('contenidoTercias').style.display = 'block';
+  if (terciasCargadas) return;
+  terciasCargadas = true;
+  const tbody = document.querySelector('#tablaTercias tbody');
+  try {
+    let version = window.__versionFantasy;
+    if (!version) { try { version = await (await fetch('version.json')).json(); } catch (e) { version = null; } }
+    if (version) {
+      const cacheTercias = await leerDeIndexedDB('tercias');
+      if (cacheTercias && cacheTercias.concurso === version.concurso) {
+        tbody.innerHTML = cacheTercias.filas.map(filaTercia).join('');
+        return;
+      }
+    }
+    const datosTercias = await (await fetch('tercias.json')).json();
+    tbody.innerHTML = datosTercias.map(filaTercia).join('');
+    if (version) guardarEnIndexedDB('tercias', version.concurso, datosTercias);
+  } catch (e) {
+    console.error('Error cargando tercias.json:', e);
+    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;color:#ef4444;padding:20px;">⚠️ No se pudieron cargar los datos.</td></tr>';
+  }
+}
 </script>
 <div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
   ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
