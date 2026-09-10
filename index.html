@@ -323,6 +323,27 @@ function filaTercia(d){
     + '<td><button class="btn-grafica" title="Buscar la tercia '+d.n1+', '+d.n2+' y '+d.n3+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.n1+','+d.n2+','+d.n3+'\')">🔍 Buscar</button></td>'
     + '</tr>';
 }
+function abrirDBFantasy(){
+  return new Promise(function(resolve, reject){
+    var req = indexedDB.open('fantasy5DB', 1);
+    req.onupgradeneeded = function(e){
+      var db = e.target.result;
+      ['unos','pares','tercias'].forEach(function(nombre){
+        if (!db.objectStoreNames.contains(nombre)) db.createObjectStore(nombre);
+      });
+    };
+    req.onsuccess = function(e){ resolve(e.target.result); };
+    req.onerror = function(e){ reject(e.target.error); };
+  });
+}
+function guardarEnIndexedDB(nombreTabla, datos){
+  abrirDBFantasy().then(function(db){
+    var tx = db.transaction(nombreTabla, 'readwrite');
+    tx.objectStore(nombreTabla).put(datos, 'datos');
+  }).catch(function(e){
+    console.error('No se pudo guardar en IndexedDB (' + nombreTabla + '):', e);
+  });
+}
 async function cargarTablasJSON(){
   try {
     const [rUnos, rPares, rTercias] = await Promise.all([fetch('unos.json'), fetch('pares.json'), fetch('tercias.json')]);
@@ -330,6 +351,12 @@ async function cargarTablasJSON(){
     document.querySelector('#tablaUnos tbody').innerHTML = datosUnos.map(filaUno).join('');
     document.querySelector('#tablaPares tbody').innerHTML = datosPares.map(filaPar).join('');
     document.querySelector('#tablaTercias tbody').innerHTML = datosTercias.map(filaTercia).join('');
+    // Guarda también una copia en IndexedDB en cada visita (sin lógica de
+    // versión: siempre se trae lo fresco del servidor y se sobreescribe la
+    // copia local). Es "fire and forget": si falla, no afecta la carga.
+    guardarEnIndexedDB('unos', datosUnos);
+    guardarEnIndexedDB('pares', datosPares);
+    guardarEnIndexedDB('tercias', datosTercias);
   } catch (e) {
     console.error('Error cargando unos/pares/tercias.json:', e);
     ['tablaUnos','tablaPares','tablaTercias'].forEach(function(id){
