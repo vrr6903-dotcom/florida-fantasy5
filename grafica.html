@@ -32,28 +32,6 @@
       Espacio para anuncio<br>(ej. Adsterra 300x600)
     </div>
   </div>
-<script>
-(function () {
-  var CLAVE_FECHA = 'monetagIPPFecha';
-  var CLAVE_CONTEO = 'monetagIPPConteo';
-  var MAX_POR_DIA = 2;
-  var hoy = new Date().toISOString().slice(0, 10);
-  try {
-    var fechaGuardada = localStorage.getItem(CLAVE_FECHA);
-    var conteo = parseInt(localStorage.getItem(CLAVE_CONTEO) || '0', 10);
-    if (fechaGuardada !== hoy) {
-      conteo = 0;
-      localStorage.setItem(CLAVE_FECHA, hoy);
-    }
-    if (conteo >= MAX_POR_DIA) return; // ya alcanzó el máximo del día, no se carga el anuncio
-    localStorage.setItem(CLAVE_CONTEO, String(conteo + 1));
-  } catch (e) {
-    // Si el navegador bloquea localStorage (modo privado, etc.), se muestra
-    // el anuncio de todos modos, sin límite, en vez de fallar la página.
-  }
-  (function(s){s.dataset.zone='11749394',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-})();
-</script>
 
 <script>
 (function () {
