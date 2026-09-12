@@ -171,14 +171,14 @@ function toggleUltimosResultados() {
     <div class="stats-card">
       <div class="stats-title"><span>📊 Frecuencia y Atrasos: Números Individuales</span> <button class="btn-reset-filtro" onclick="limpiarFiltrosCruzados()">Ver Todos</button></div>
       <div class="filter-bar">
-        <label>Mín. Distancia:</label><input type="number" id="minDistanciaUnos" value="0">
+        <label>Mín. Atraso:</label><input type="number" id="minDistanciaUnos" value="0">
         <button class="btn-aplicar" onclick="aplicarFiltrosUnos()">Aplicar Filtros</button>
         <label>Busca tu número:</label><input type="number" id="buscarUno" min="1" max="99" placeholder="Ej: 15" style="width:70px">
         <button class="btn-aplicar" onclick="buscarNumeroUno()">Buscar</button>
       </div>
       <div class="table-scroll-container">
         <table class="table-stats" id="tablaUnos">
-          <thead><tr><th>N1</th><th>Total</th><th>Última fecha</th><th>Último concurso</th><th>Atraso</th><th>Gráfica</th></tr></thead>
+          <thead><tr><th>N1</th><th>Total</th><th>Última fecha</th><th>Núm. Secuencial</th><th>Atraso</th><th>Gráfica</th></tr></thead>
           <tbody>
             <tr><td colspan="6" style="text-align:center;color:#94a3b8;padding:20px;">Cargando…</td></tr>
           </tbody></table></div></div>
@@ -186,14 +186,14 @@ function toggleUltimosResultados() {
       <div class="stats-title" id="tituloPares">🔗 Combinaciones de dos números: Frecuencia > 35 &nbsp;<span style="display:inline-flex; align-items:center; cursor:help; position:relative; padding:2px 8px; background:#eff6ff; border-radius:12px; border:1px solid #bfdbfe; color:#1d4ed8; font-size:12px; font-weight:normal;">ℹ️  <span style="display:none; position:absolute; left:0; top:100%; margin-top:6px; width:280px; background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); z-index:100; font-size:12px; line-height:1.5; color:#374151;">    P1/P2 = Posición<br>Total = veces juntos<br>Atraso =sorteos sin aparecer juntos  </span></span></div>
       <div class="filter-bar">
         <label>Mín. Totales:</label><input type="number" id="minTotalesPares" value="35">
-        <label>Mín. Distancia:</label><input type="number" id="minDistanciaPares" value="0">
+        <label>Mín. Atraso:</label><input type="number" id="minDistanciaPares" value="0">
         <button class="btn-aplicar" onclick="aplicarFiltrosPares()">Aplicar Filtros</button>
         <label>Busca tu par:</label><input type="number" id="buscarPar1" min="1" max="99" placeholder="N1" style="width:60px"><input type="number" id="buscarPar2" min="1" max="99" placeholder="N2" style="width:60px">
         <button class="btn-aplicar" onclick="buscarParTabla()">Buscar</button>
       </div>
       <div class="table-scroll-container">
         <table class="table-stats" id="tablaPares">
-          <thead><tr><th>N1</th><th>N2</th><th>P1</th><th>P2</th><th>Último concurso</th><th>Fecha</th><th>Total</th><th>Atraso</th><th>Gráfica</th></tr></thead>
+          <thead><tr><th>N1</th><th>N2</th><th>P1</th><th>P2</th><th>Núm. Secuencial</th><th>Fecha</th><th>Total</th><th>Atraso</th><th>Gráfica</th></tr></thead>
           <tbody>
             <tr><td colspan="9" style="text-align:center;color:#94a3b8;padding:20px;">Cargando…</td></tr>
           </tbody></table></div></div>
@@ -205,14 +205,14 @@ function toggleUltimosResultados() {
       <div id="contenidoTercias" style="display:none;">
       <div class="filter-bar">
         <label>Mín. Totales:</label><input type="number" id="minTotalesTercias" value="25">
-        <label>Mín. Distancia:</label><input type="number" id="minDistanciaTercias" value="0">
+        <label>Mín. Atraso:</label><input type="number" id="minDistanciaTercias" value="0">
         <button class="btn-aplicar" onclick="aplicarFiltrosTercias()">Aplicar Filtros</button>
         <label>Busca tu trío:</label><input type="number" id="buscarTer1" min="1" max="99" placeholder="N1" style="width:55px"><input type="number" id="buscarTer2" min="1" max="99" placeholder="N2" style="width:55px"><input type="number" id="buscarTer3" min="1" max="99" placeholder="N3" style="width:55px">
         <button class="btn-aplicar" onclick="buscarTercTabla()">Buscar</button>
       </div>
       <div class="table-scroll-container">
         <table class="table-stats" id="tablaTercias">
-          <thead><tr><th>N1</th><th>N2</th><th>N3</th><th>P1</th><th>P2</th><th>P3</th><th>Total</th><th>Fecha</th><th>Último concurso</th><th>Atraso</th><th>Gráfica</th></tr></thead>
+          <thead><tr><th>N1</th><th>N2</th><th>N3</th><th>P1</th><th>P2</th><th>P3</th><th>Total</th><th>Fecha</th><th>Núm. Secuencial</th><th>Atraso</th><th>Gráfica</th></tr></thead>
           <tbody>
             <tr><td colspan="11" style="text-align:center;color:#94a3b8;padding:20px;">Cargando…</td></tr>
           </tbody></table></div>
@@ -244,7 +244,7 @@ function toggleUltimosResultados() {
     <div id="resumenModalBusqueda" style="margin-bottom:10px; font-weight:600;"></div>
     <div class="modal-busqueda-tabla-wrap">
       <table class="tabla-historial">
-        <thead><tr><th>Concurso</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th><th>Fecha</th></tr></thead>
+        <thead><tr><th>Núm. Secuencial</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th><th>Fecha</th></tr></thead>
         <tbody id="tablaModalBusquedaBody"></tbody>
       </table>
     </div>
