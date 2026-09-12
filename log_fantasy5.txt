@@ -1,0 +1,405 @@
+============================================================ 
+[07/09/2026 15:47:06,85] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-06 (E), se omite (sin duplicar).
+Insertado concurso 12391: 2026-09-07 (M) -> 10,16,18,32,36
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[07/09/2026 15:47:08,30] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 8 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (07/09/2026 15:47)
+  [main 8573319] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (07/09/2026 15:47)
+   3 files changed, 8668 insertions(+), 8663 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     bb99890..8573319  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+============================================================ 
+[07/09/2026 17:17:46,73] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-06 (E), se omite (sin duplicar).
+Ya existe un registro para 2026-09-07 (M), se omite (sin duplicar).
+Listo. Se insertaron 0 sorteo(s) nuevo(s).
+[07/09/2026 17:17:48,48] Sin novedades, no se corre el jar. 
+============================================================ 
+[07/09/2026 17:18:15,54] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-06 (E), se omite (sin duplicar).
+Insertado concurso 12391: 2026-09-07 (M) -> 10,16,18,32,36
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[07/09/2026 17:18:16,79] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 8 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (07/09/2026 17:18)
+  On branch main
+  Your branch is up to date with 'origin/main'.
+  
+  nothing to commit, working tree clean
+?? No hubo cambios nuevos para hacer commit (o commit falló). Se omite el push.
+[07/09/2026 17:18:16,79] Proceso completo. 
+============================================================ 
+[07/09/2026 22:02:39,50] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-07 (M), se omite (sin duplicar).
+Insertado concurso 12392: 2026-09-07 (E) -> 6,7,23,30,36
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[07/09/2026 22:02:40,64] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 8 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (07/09/2026 22:02)
+  [main 94c76f1] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (07/09/2026 22:02)
+   3 files changed, 8670 insertions(+), 8665 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     b6231f6..94c76f1  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+[07/09/2026 22:02:40,64] Proceso completo. 
+============================================================ 
+[08/09/2026 11:25:47,34] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-07 (E), se omite (sin duplicar).
+Insertado concurso 12393: 2026-09-08 (M) -> 15,17,18,23,26
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[08/09/2026 11:25:49,08] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 8 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (08/09/2026 11:25)
+  [main 58d3245] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (08/09/2026 11:25)
+   7 files changed, 8743 insertions(+), 8666 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     dd063a9..58d3245  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+============================================================ 
+[08/09/2026 11:40:15,70] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-07 (E), se omite (sin duplicar).
+Ya existe un registro para 2026-09-08 (M), se omite (sin duplicar).
+Listo. Se insertaron 0 sorteo(s) nuevo(s).
+[08/09/2026 11:40:17,02] Sin novedades, no se corre el jar. 
+============================================================ 
+[08/09/2026 11:47:50,57] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-07 (E), se omite (sin duplicar).
+Insertado concurso 12393: 2026-09-08 (M) -> 15,17,18,23,26
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[08/09/2026 11:47:51,88] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 8 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (08/09/2026 11:47)
+  On branch main
+  Your branch is up to date with 'origin/main'.
+  
+  nothing to commit, working tree clean
+?? No hubo cambios nuevos para hacer commit (o commit falló). Se omite el push.
+============================================================ 
+[08/09/2026 21:44:15,23] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-08 (M), se omite (sin duplicar).
+Insertado concurso 12394: 2026-09-08 (E) -> 6,17,21,26,29
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[08/09/2026 21:44:17,60] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 8 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (08/09/2026 21:44)
+  [main a01afbb] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (08/09/2026 21:44)
+   6 files changed, 8758 insertions(+), 9087 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     e4a0bc3..a01afbb  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+============================================================ 
+[08/09/2026 21:45:34,74] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-08 (M), se omite (sin duplicar).
+Ya existe un registro para 2026-09-08 (E), se omite (sin duplicar).
+Listo. Se insertaron 0 sorteo(s) nuevo(s).
+[08/09/2026 21:45:35,68] Sin novedades, no se corre el jar. 
+============================================================ 
+[08/09/2026 23:04:30,60] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-08 (M), se omite (sin duplicar).
+Insertado concurso 12394: 2026-09-08 (E) -> 6,17,21,26,29
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[08/09/2026 23:04:31,77] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 8 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (08/09/2026 23:04)
+  [main e0eb85a] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (08/09/2026 23:04)
+   4 files changed, 4749 insertions(+), 4418 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     a01afbb..e0eb85a  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+[08/09/2026 23:04:31,77] Proceso completo. 
+============================================================ 
+[08/09/2026 23:17:52,37] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-08 (M), se omite (sin duplicar).
+Ya existe un registro para 2026-09-08 (E), se omite (sin duplicar).
+Listo. Se insertaron 0 sorteo(s) nuevo(s).
+[08/09/2026 23:17:53,44] Sin novedades, no se corre el jar. 
+============================================================ 
+[09/09/2026 13:16:45,58] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-08 (E), se omite (sin duplicar).
+Insertado concurso 12395: 2026-09-09 (M) -> 6,8,13,14,33
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[09/09/2026 13:16:48,74] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (09/09/2026 13:16)
+  [main 2dfd794] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (09/09/2026 13:16)
+   6 files changed, 4341 insertions(+), 4337 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     e1ad055..2dfd794  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+============================================================ 
+[09/09/2026 22:30:58,86] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-09 (M), se omite (sin duplicar).
+Insertado concurso 12396: 2026-09-09 (E) -> 4,6,15,18,28
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[09/09/2026 22:31:00,92] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (09/09/2026 22:31)
+  [main e7adca8] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (09/09/2026 22:31)
+   6 files changed, 4342 insertions(+), 4340 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     2dfd794..e7adca8  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+[09/09/2026 22:31:00,92] Proceso completo. 
+============================================================ 
+[10/09/2026 11:22:59,07] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-09 (E), se omite (sin duplicar).
+Insertado concurso 12397: 2026-09-10 (M) -> 3,14,18,19,21
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[10/09/2026 11:23:01,78] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (10/09/2026 11:23)
+  [main 0e60d3b] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (10/09/2026 11:23)
+   7 files changed, 4347 insertions(+), 4487 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     52e4c81..0e60d3b  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+============================================================ 
+[10/09/2026 21:46:27,71] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-10 (M), se omite (sin duplicar).
+Insertado concurso 12398: 2026-09-10 (E) -> 12,15,21,31,33
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[10/09/2026 21:46:29,16] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (10/09/2026 21:46)
+  [main 1cba894] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (10/09/2026 21:46)
+   6 files changed, 2818 insertions(+), 2815 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     74c425c..1cba894  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+[10/09/2026 21:46:29,16] Proceso completo. 
+============================================================ 
+[11/09/2026 11:52:35,00] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-10 (E), se omite (sin duplicar).
+Insertado concurso 12399: 2026-09-11 (M) -> 6,7,8,14,29
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[11/09/2026 11:52:37,70] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (11/09/2026 11:52)
+  [main 8efc03f] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (11/09/2026 11:52)
+   6 files changed, 2816 insertions(+), 2814 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     1cba894..8efc03f  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+[11/09/2026 11:52:37,70] Proceso completo. 
+============================================================ 
+[11/09/2026 21:39:00,95] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-11 (M), se omite (sin duplicar).
+Insertado concurso 12400: 2026-09-11 (E) -> 5,7,14,17,24
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[11/09/2026 21:39:02,81] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (11/09/2026 21:39)
+  [main e3249e8] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (11/09/2026 21:39)
+   6 files changed, 2819 insertions(+), 2817 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     8efc03f..e3249e8  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+============================================================ 
+[12/09/2026 11:20:11,10] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-11 (E), se omite (sin duplicar).
+Insertado concurso 12401: 2026-09-12 (M) -> 4,5,6,28,35
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[12/09/2026 11:20:13,19] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (12/09/2026 11:20)
+  [main 9f943dc] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (12/09/2026 11:20)
+   10 files changed, 2833 insertions(+), 2847 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     3ce6cc3..9f943dc  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.

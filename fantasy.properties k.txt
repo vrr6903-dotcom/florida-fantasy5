@@ -1,0 +1,88 @@
+# ==============================================================================
+# CONFIGURACIÓN GENERAL DE LA LOTERÍA
+# ==============================================================================
+loteria.nombre=FANTASY
+loteria.totalNumeros=36
+loteria.numerosPorSorteo=5
+estado.nombre=Florida
+monetag.inpagepush.enabled=true
+monetag.inpagepush.zone=11749394
+monetag.inpagepush.maxPorDia=2
+monetag.vignette.enabled=true
+monetag.vignette.zone=11755442
+monetag.vignette.maxPorDia=1
+contador.enabled=true
+contador.prefijo=fantasy5florida
+
+clarity.enabled=true
+clarity.projectId=yajnxsoage
+
+
+enlaceHermano.enabled=true
+enlaceHermano.texto=Fantasy 5 California
+enlaceHermano.url=https://fantasy5california.com
+
+# Base de Datos
+loteria.tablaResultados=FANTASY
+
+# Archivo de Salida
+loteria.htmlSalida=C:/grafica01/index.html
+grafica.htmlSalida=C:/grafica01/grafica.html
+historial.jsonSalida=C:/grafica01/historial.json
+historial.csvSalida=C:/grafica01/historial.csv
+tablas.unosJsonSalida=C:/grafica01/unos.json
+tablas.paresJsonSalida=C:/grafica01/pares.json
+tablas.terciasJsonSalida=C:/grafica01/tercias.json
+tablas.versionJsonSalida=C:/grafica01/version.json
+
+# ==============================================================================
+# TARJETA DE ÚLTIMOS RESULTADOS
+# ==============================================================================
+# Sorteo 1 (EVENING)
+loteria.sorteo1.codigoH=E
+loteria.sorteo1.nombre=EVENING
+
+# Sorteo 2 (MIDDAY)
+loteria.sorteo2.codigoH=M
+loteria.sorteo2.nombre=MIDDAY
+
+# ==============================================================================
+# UMBRALES DE FILTROS ESTADÍSTICOS
+# ==============================================================================
+filtro.distUnos=0
+filtro.totalPares=35
+filtro.distPares=0
+filtro.totalTercias=20
+filtro.distTercias=0
+
+# ==============================================================================
+# ANUNCIOS ADSTERRA
+# ==============================================================================
+# Cada anuncio tiene su propio interruptor "enabled" (true/false). Si está en
+# false, ese anuncio no se imprime aunque su URL/key sí esté configurada —
+# útil para apagarlo temporalmente sin borrar el código.
+
+# 1) Social bar (se muestra junto al bloque de "Últimos Resultados")
+ads.socialbar.enabled=false
+ads.socialbar.url=https://ourselvesincompetentlearned.com/5b/51/60/5b516041af91ad81258a6c63c25f13c9.js
+
+# 2) Native banner junto a "Últimos Resultados"
+ads.native.resultados.enabled=false
+ads.native.resultados.url=https://pl30565403.effectivecpmnetwork.com/86/23/77/862377af375c0eacb10fb3393d2bca3e.js
+
+# 3) Banner (iframe) en el aside izquierdo
+ads.banner.enabled=false
+ads.banner.key=b91b82362e000d73fba71c52991f357b
+ads.banner.width=300
+ads.banner.height=250
+
+# 4) Native banner en el aside izquierdo (debajo del banner anterior)
+ads.native.aside.enabled=false
+ads.native.aside.url=https://ourselvesincompetentlearned.com/dbd3c149fe167ff3f1ba835e0d31fccd/invoke.js
+
+# 5) 
+git.enabled=true
+git.repoLocalPath=C:/repos/florida-fantasy5
+git.carpetaOrigen=C:/grafica01
+git.rama=main
+git.mensajeCommit=Actualización automática de estadísticas

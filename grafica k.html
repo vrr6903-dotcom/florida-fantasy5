@@ -29,8 +29,8 @@
       <div id="contenido"></div>
     </div>
     <div class="espacio-anuncio">
-      <script>atOptions = {'key':'f0852139e81f3cc762ef2a8b5e97ea58','format':'iframe','height':50,'width':320,'params':{}};</script>
-      <script src="https://www.highperformanceformat.com/f0852139e81f3cc762ef2a8b5e97ea58/invoke.js"></script>
+      <script>atOptions = {'key':'b91b82362e000d73fba71c52991f357b','format':'iframe','height':250,'width':300,'params':{}};</script>
+      <script src="https://www.highperformanceformat.com/b91b82362e000d73fba71c52991f357b/invoke.js"></script>
     </div>
   </div>
 
@@ -39,6 +39,28 @@
       <script async="async" data-cfasync="false" src="https://ourselvesincompetentlearned.com/dbd3c149fe167ff3f1ba835e0d31fccd/invoke.js"></script>
       <div id="container-dbd3c149fe167ff3f1ba835e0d31fccd"></div>
   </div>
+<script>
+(function () {
+  var CLAVE_FECHA = 'monetagIPPFecha';
+  var CLAVE_CONTEO = 'monetagIPPConteo';
+  var MAX_POR_DIA = 2;
+  var hoy = new Date().toISOString().slice(0, 10);
+  try {
+    var fechaGuardada = localStorage.getItem(CLAVE_FECHA);
+    var conteo = parseInt(localStorage.getItem(CLAVE_CONTEO) || '0', 10);
+    if (fechaGuardada !== hoy) {
+      conteo = 0;
+      localStorage.setItem(CLAVE_FECHA, hoy);
+    }
+    if (conteo >= MAX_POR_DIA) return; // ya alcanzó el máximo del día, no se carga el anuncio
+    localStorage.setItem(CLAVE_CONTEO, String(conteo + 1));
+  } catch (e) {
+    // Si el navegador bloquea localStorage (modo privado, etc.), se muestra
+    // el anuncio de todos modos, sin límite, en vez de fallar la página.
+  }
+  (function(s){s.dataset.zone='11749394',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+})();
+</script>
 
 <script>
 (function () {

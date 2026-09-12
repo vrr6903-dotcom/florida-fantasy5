@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="monetag" content="eec91ac9bdbd4da25370d19db66e89f6">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Buscar todos | FANTASY</title>
 <link rel="stylesheet" href="estilos.css">
@@ -21,65 +20,12 @@
 .tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
 .tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
 .tabla-historial td { padding:9px; text-align:center; border-bottom:1px solid #f1f5f9; font-size:0.9rem; }
-.cuadricula-reduccion { display:flex; flex-wrap:wrap; gap:8px; }
-.bolita-reduccion { width:44px; height:44px; border-radius:50%; border:2px solid #cbd5e1; background:#f8fafc; color:#334155; font-weight:700; font-size:0.85rem; cursor:pointer; transition:transform 0.1s, background 0.15s, border-color 0.15s, color 0.15s; }
-.bolita-reduccion:hover { border-color:#2563eb; }
-.bolita-reduccion.seleccionada { background:#2563eb; border-color:#2563eb; color:#fff; transform:scale(1.05); }
-.bolita-reduccion.atraso-alto { background:#ef4444; border-color:#ef4444; color:#fff; }
-.bolita-reduccion.atraso-medio { background:#f59e0b; border-color:#f59e0b; color:#fff; }
-.bolita-reduccion.atraso-bajo { background:#22c55e; border-color:#22c55e; color:#fff; }
-.bolita-reduccion:disabled { opacity:0.35; cursor:not-allowed; }
 </style>
 </head>
 <body>
-<script>
-(function () {
-  var CLAVE_FECHA = 'monetagIPPFecha';
-  var CLAVE_CONTEO = 'monetagIPPConteo';
-  var MAX_POR_DIA = 2;
-  var hoy = new Date().toISOString().slice(0, 10);
-  try {
-    var fechaGuardada = localStorage.getItem(CLAVE_FECHA);
-    var conteo = parseInt(localStorage.getItem(CLAVE_CONTEO) || '0', 10);
-    if (fechaGuardada !== hoy) {
-      conteo = 0;
-      localStorage.setItem(CLAVE_FECHA, hoy);
-    }
-    if (conteo >= MAX_POR_DIA) return; // ya alcanzó el máximo del día, no se carga el anuncio
-    localStorage.setItem(CLAVE_CONTEO, String(conteo + 1));
-  } catch (e) {
-    // Si el navegador bloquea localStorage (modo privado, etc.), se muestra
-    // el anuncio de todos modos, sin límite, en vez de fallar la página.
-  }
-  (function(s){s.dataset.zone='11749394',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-})();
-</script>
-<script>
-(function () {
-  var CLAVE_FECHA = 'monetagVigFecha';
-  var CLAVE_CONTEO = 'monetagVigConteo';
-  var MAX_POR_DIA = 1;
-  var hoy = new Date().toISOString().slice(0, 10);
-  try {
-    var fechaGuardada = localStorage.getItem(CLAVE_FECHA);
-    var conteo = parseInt(localStorage.getItem(CLAVE_CONTEO) || '0', 10);
-    if (fechaGuardada !== hoy) {
-      conteo = 0;
-      localStorage.setItem(CLAVE_FECHA, hoy);
-    }
-    if (conteo >= MAX_POR_DIA) return; // ya alcanzó el máximo del día, no se carga el anuncio
-    localStorage.setItem(CLAVE_CONTEO, String(conteo + 1));
-  } catch (e) {
-    // Si el navegador bloquea localStorage (modo privado, etc.), se muestra
-    // el anuncio de todos modos, sin límite, en vez de fallar la página.
-  }
-  (function(s){s.dataset.zone='11755442',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-})();
-</script>
 <header class="header-bar">
   <div class="header-brand">⚡ Resultados FANTASY</div>
-  <nav class="nav-menu">
-  </nav>
+  <nav class="nav-menu"></nav>
 </header>
 <main class="main-container">
   <aside class="aside-left">
@@ -109,7 +55,6 @@
   </div>
   <div style="margin-bottom:14px; font-size:0.85rem;">📥 ¿Prefieres verlo en Excel? <a href="historial.csv" download>Descarga el historial completo aquí</a>.</div>
   <div id="resumenBusquedaHistorial" style="margin-bottom:10px; font-weight:600;"></div>
-  <div id="graficaAparicionesBuscar" style="margin-bottom:16px;"></div>
   <table class="tabla-historial">
     <thead><tr><th>Concurso</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th><th>Fecha</th></tr></thead>
     <tbody id="tablaBusquedaHistorialBody"></tbody>
@@ -142,7 +87,6 @@ async function buscarEnHistorial() {
   const resumen = document.getElementById('resumenBusquedaHistorial');
   const tbody = document.getElementById('tablaBusquedaHistorialBody');
   tbody.innerHTML = '';
-  document.getElementById('graficaAparicionesBuscar').innerHTML = '';
   if (numeros.length === 0) {
     resumen.innerHTML = 'Escribe al menos un número.';
     return;
@@ -172,67 +116,13 @@ async function buscarEnHistorial() {
   if (encontrados.length > LIMITE) {
     resumen.innerHTML += ' (mostrando los ' + LIMITE + ' más recientes)';
   }
-  dibujarAparicionesPorAnio(encontrados, 'graficaAparicionesBuscar');
-}
-
-function dibujarAparicionesPorAnio(sorteos, idContenedor) {
-  const contenedor = document.getElementById(idContenedor);
-  if (!sorteos || sorteos.length === 0) { contenedor.innerHTML = ''; return; }
-  const conteoPorAnio = {};
-  sorteos.forEach(function(s){
-    const partes = (s.fecha || '').split('/');
-    const anio = partes.length === 3 ? partes[2] : 'N/D';
-    conteoPorAnio[anio] = (conteoPorAnio[anio] || 0) + 1;
-  });
-  const anios = Object.keys(conteoPorAnio).sort();
-  const valores = anios.map(function(a){ return conteoPorAnio[a]; });
-  const maxDato = Math.max.apply(null, valores.concat([1]));
-  const n = anios.length;
-  const altoSvg = 220, margenIzq = 36, margenDer = 16, margenInferior = 34, margenSuperior = 20;
-  const altoDisponible = altoSvg - margenInferior - margenSuperior;
-  const anchoBarra = 34, separacion = 22, espacio = anchoBarra + separacion;
-  const anchoSvg = margenIzq + 20 + (n > 0 ? (n - 1) * espacio : 0) + anchoBarra + margenDer + 20;
-  let ejeSvg = '<line x1="' + margenIzq + '" y1="' + margenSuperior + '" x2="' + margenIzq + '" y2="' + (margenSuperior + altoDisponible) + '" stroke="#e2e8f0"></line>';
-  let barrasSvg = '';
-  for (let i = 0; i < n; i++) {
-    const valor = valores[i];
-    const alturaBarra = maxDato > 0 ? (valor / maxDato) * altoDisponible : 0;
-    const x = margenIzq + 10 + i * espacio;
-    const y = margenSuperior + (altoDisponible - alturaBarra);
-    barrasSvg += '<rect x="' + x + '" y="' + y + '" width="' + anchoBarra + '" height="' + alturaBarra + '" rx="4" fill="#3b82f6"></rect>';
-    barrasSvg += '<text x="' + (x + anchoBarra/2) + '" y="' + (y - 6) + '" text-anchor="middle" style="font-size:12px;font-weight:700;fill:#1e293b;">' + valor + '</text>';
-    barrasSvg += '<text x="' + (x + anchoBarra/2) + '" y="' + (altoSvg - margenInferior + 18) + '" text-anchor="middle" style="font-size:12px;fill:#475569;">' + anios[i] + '</text>';
-  }
-  contenedor.innerHTML =
-    '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">' +
-      '<div style="font-size:1rem; font-weight:700; color:#1e293b;">📊 Apariciones por año</div>' +
-      '<button type="button" class="btn-limpiar-historial" onclick="cerrarGraficaAparicionesBuscar()">✖ Cerrar</button>' +
-    '</div>' +
-    '<div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px; overflow-x:auto;">' +
-      '<svg viewBox="0 0 ' + anchoSvg + ' ' + altoSvg + '" style="width:100%; max-width:' + anchoSvg + 'px; height:auto; display:block;">' + ejeSvg + barrasSvg + '</svg>' +
-    '</div>';
-}
-
-function cerrarGraficaAparicionesBuscar() {
-  document.getElementById('graficaAparicionesBuscar').innerHTML = '';
 }
 
 function limpiarBusquedaHistorial() {
   document.getElementById('inputBuscarNumeros').value = '';
   document.getElementById('resumenBusquedaHistorial').innerHTML = '';
   document.getElementById('tablaBusquedaHistorialBody').innerHTML = '';
-  document.getElementById('graficaAparicionesBuscar').innerHTML = '';
 }
-(function () {
-  try {
-    const pendientes = localStorage.getItem('buscarHistorialNumeros');
-    if (pendientes) {
-      localStorage.removeItem('buscarHistorialNumeros');
-      document.getElementById('inputBuscarNumeros').value = pendientes;
-      buscarEnHistorial();
-    }
-  } catch (e) { /* si localStorage falla, simplemente no se precarga */ }
-})();
 </script>
 </body>
 </html>

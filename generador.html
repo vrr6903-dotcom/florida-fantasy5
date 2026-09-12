@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="monetag" content="eec91ac9bdbd4da25370d19db66e89f6">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Generar combinaciones | FANTASY</title>
 <link rel="stylesheet" href="estilos.css">
@@ -21,65 +20,12 @@
 .tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
 .tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
 .tabla-historial td { padding:9px; text-align:center; border-bottom:1px solid #f1f5f9; font-size:0.9rem; }
-.cuadricula-reduccion { display:flex; flex-wrap:wrap; gap:8px; }
-.bolita-reduccion { width:44px; height:44px; border-radius:50%; border:2px solid #cbd5e1; background:#f8fafc; color:#334155; font-weight:700; font-size:0.85rem; cursor:pointer; transition:transform 0.1s, background 0.15s, border-color 0.15s, color 0.15s; }
-.bolita-reduccion:hover { border-color:#2563eb; }
-.bolita-reduccion.seleccionada { background:#2563eb; border-color:#2563eb; color:#fff; transform:scale(1.05); }
-.bolita-reduccion.atraso-alto { background:#ef4444; border-color:#ef4444; color:#fff; }
-.bolita-reduccion.atraso-medio { background:#f59e0b; border-color:#f59e0b; color:#fff; }
-.bolita-reduccion.atraso-bajo { background:#22c55e; border-color:#22c55e; color:#fff; }
-.bolita-reduccion:disabled { opacity:0.35; cursor:not-allowed; }
 </style>
 </head>
 <body>
-<script>
-(function () {
-  var CLAVE_FECHA = 'monetagIPPFecha';
-  var CLAVE_CONTEO = 'monetagIPPConteo';
-  var MAX_POR_DIA = 2;
-  var hoy = new Date().toISOString().slice(0, 10);
-  try {
-    var fechaGuardada = localStorage.getItem(CLAVE_FECHA);
-    var conteo = parseInt(localStorage.getItem(CLAVE_CONTEO) || '0', 10);
-    if (fechaGuardada !== hoy) {
-      conteo = 0;
-      localStorage.setItem(CLAVE_FECHA, hoy);
-    }
-    if (conteo >= MAX_POR_DIA) return; // ya alcanzó el máximo del día, no se carga el anuncio
-    localStorage.setItem(CLAVE_CONTEO, String(conteo + 1));
-  } catch (e) {
-    // Si el navegador bloquea localStorage (modo privado, etc.), se muestra
-    // el anuncio de todos modos, sin límite, en vez de fallar la página.
-  }
-  (function(s){s.dataset.zone='11749394',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-})();
-</script>
-<script>
-(function () {
-  var CLAVE_FECHA = 'monetagVigFecha';
-  var CLAVE_CONTEO = 'monetagVigConteo';
-  var MAX_POR_DIA = 1;
-  var hoy = new Date().toISOString().slice(0, 10);
-  try {
-    var fechaGuardada = localStorage.getItem(CLAVE_FECHA);
-    var conteo = parseInt(localStorage.getItem(CLAVE_CONTEO) || '0', 10);
-    if (fechaGuardada !== hoy) {
-      conteo = 0;
-      localStorage.setItem(CLAVE_FECHA, hoy);
-    }
-    if (conteo >= MAX_POR_DIA) return; // ya alcanzó el máximo del día, no se carga el anuncio
-    localStorage.setItem(CLAVE_CONTEO, String(conteo + 1));
-  } catch (e) {
-    // Si el navegador bloquea localStorage (modo privado, etc.), se muestra
-    // el anuncio de todos modos, sin límite, en vez de fallar la página.
-  }
-  (function(s){s.dataset.zone='11755442',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-})();
-</script>
 <header class="header-bar">
   <div class="header-brand">⚡ Resultados FANTASY</div>
-  <nav class="nav-menu">
-  </nav>
+  <nav class="nav-menu"></nav>
 </header>
 <main class="main-container">
   <aside class="aside-left">
@@ -107,53 +53,6 @@
     <button type="button" class="btn-limpiar-historial" onclick="limpiarCombinacionAtrasos()">🗑️ Limpiar</button>
   </div>
   <div id="resultadoCombinacionAtrasos"></div>
-</div>
-<div class="buscar-historial-caja">
-  <p style="margin-top:0; color:#64748b; font-size:0.9rem;">🎯 Elige hasta 12 números que te gusten. Al hacer clic en "Ver recomendados", cada número se pinta según su atraso (🔴 alto, 🟡 medio, 🟢 bajo), y abajo verás los mejores pares y tercias formados solo con tus números elegidos.</p>
-  <div id="contadorSeleccionReduccion" style="font-weight:600; margin-bottom:10px;">0 de 12 números seleccionados</div>
-  <div id="cuadriculaReduccion" class="cuadricula-reduccion">
-    <button type="button" class="bolita-reduccion" id="bolitaRed1" onclick="toggleNumeroReduccion(1)">01</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed2" onclick="toggleNumeroReduccion(2)">02</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed3" onclick="toggleNumeroReduccion(3)">03</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed4" onclick="toggleNumeroReduccion(4)">04</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed5" onclick="toggleNumeroReduccion(5)">05</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed6" onclick="toggleNumeroReduccion(6)">06</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed7" onclick="toggleNumeroReduccion(7)">07</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed8" onclick="toggleNumeroReduccion(8)">08</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed9" onclick="toggleNumeroReduccion(9)">09</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed10" onclick="toggleNumeroReduccion(10)">10</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed11" onclick="toggleNumeroReduccion(11)">11</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed12" onclick="toggleNumeroReduccion(12)">12</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed13" onclick="toggleNumeroReduccion(13)">13</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed14" onclick="toggleNumeroReduccion(14)">14</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed15" onclick="toggleNumeroReduccion(15)">15</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed16" onclick="toggleNumeroReduccion(16)">16</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed17" onclick="toggleNumeroReduccion(17)">17</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed18" onclick="toggleNumeroReduccion(18)">18</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed19" onclick="toggleNumeroReduccion(19)">19</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed20" onclick="toggleNumeroReduccion(20)">20</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed21" onclick="toggleNumeroReduccion(21)">21</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed22" onclick="toggleNumeroReduccion(22)">22</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed23" onclick="toggleNumeroReduccion(23)">23</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed24" onclick="toggleNumeroReduccion(24)">24</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed25" onclick="toggleNumeroReduccion(25)">25</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed26" onclick="toggleNumeroReduccion(26)">26</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed27" onclick="toggleNumeroReduccion(27)">27</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed28" onclick="toggleNumeroReduccion(28)">28</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed29" onclick="toggleNumeroReduccion(29)">29</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed30" onclick="toggleNumeroReduccion(30)">30</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed31" onclick="toggleNumeroReduccion(31)">31</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed32" onclick="toggleNumeroReduccion(32)">32</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed33" onclick="toggleNumeroReduccion(33)">33</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed34" onclick="toggleNumeroReduccion(34)">34</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed35" onclick="toggleNumeroReduccion(35)">35</button>
-    <button type="button" class="bolita-reduccion" id="bolitaRed36" onclick="toggleNumeroReduccion(36)">36</button>
-  </div>
-  <div class="buscar-historial-controles" style="margin-top:14px;">
-    <button type="button" class="btn-buscar-historial" onclick="verRecomendadosReduccion()">🎯 Ver recomendados</button>
-    <button type="button" class="btn-limpiar-historial" onclick="limpiarReduccion()">🗑️ Limpiar selección</button>
-  </div>
-  <div id="resultadoReduccion" style="margin-top:16px;"></div>
 </div>
   </section>
   <aside class="aside-right"></aside>
@@ -262,105 +161,6 @@ async function generarCombinacionAtrasos() {
 
 function limpiarCombinacionAtrasos() {
   document.getElementById('resultadoCombinacionAtrasos').innerHTML = '';
-}
-
-var MAX_SELECCION_REDUCCION = 12;
-var seleccionReduccion = [];
-
-function toggleNumeroReduccion(n) {
-  const btn = document.getElementById('bolitaRed' + n);
-  const i = seleccionReduccion.indexOf(n);
-  if (i !== -1) {
-    seleccionReduccion.splice(i, 1);
-  } else {
-    if (seleccionReduccion.length >= MAX_SELECCION_REDUCCION) return;
-    seleccionReduccion.push(n);
-  }
-  btn.classList.remove('atraso-alto', 'atraso-medio', 'atraso-bajo');
-  btn.classList.toggle('seleccionada', seleccionReduccion.indexOf(n) !== -1);
-  document.getElementById('resultadoReduccion').innerHTML = '';
-  actualizarContadorReduccion();
-}
-
-function actualizarContadorReduccion() {
-  document.getElementById('contadorSeleccionReduccion').textContent = seleccionReduccion.length + ' de ' + MAX_SELECCION_REDUCCION + ' números seleccionados';
-  const lleno = seleccionReduccion.length >= MAX_SELECCION_REDUCCION;
-  for (let n = 1; n <= TOTAL_NUMEROS_GEN; n++) {
-    const btn = document.getElementById('bolitaRed' + n);
-    if (!btn.classList.contains('seleccionada')) btn.disabled = lleno;
-  }
-}
-
-function limpiarReduccion() {
-  seleccionReduccion = [];
-  for (let n = 1; n <= TOTAL_NUMEROS_GEN; n++) {
-    const btn = document.getElementById('bolitaRed' + n);
-    btn.classList.remove('seleccionada', 'atraso-alto', 'atraso-medio', 'atraso-bajo');
-    btn.disabled = false;
-  }
-  document.getElementById('resultadoReduccion').innerHTML = '';
-  actualizarContadorReduccion();
-}
-
-function claseAtraso(valor) {
-  if (valor <= 10) return 'atraso-bajo';
-  if (valor <= 20) return 'atraso-medio';
-  return 'atraso-alto';
-}
-
-async function verRecomendadosReduccion() {
-  const resultado = document.getElementById('resultadoReduccion');
-  if (seleccionReduccion.length === 0) {
-    resultado.innerHTML = 'Selecciona al menos un número.';
-    return;
-  }
-  resultado.innerHTML = 'Calculando...';
-  const historial = await cargarHistorialJSON();
-  if (!historial || historial.length === 0) {
-    resultado.innerHTML = 'No se pudo cargar el historial.';
-    return;
-  }
-  const ultimoConcurso = historial[historial.length - 1].concurso;
-  const set = new Set(seleccionReduccion);
-  const ultimoNum = {}, ultimoPar = {}, ultimoTercia = {};
-  historial.forEach(function(s){
-    const nums = s.numeros.filter(function(n){ return set.has(n); });
-    for (let i = 0; i < nums.length; i++) {
-      ultimoNum[nums[i]] = s.concurso;
-      for (let j = i + 1; j < nums.length; j++) {
-        const keyPar = [nums[i], nums[j]].sort(function(a,b){ return a-b; }).join('-');
-        ultimoPar[keyPar] = s.concurso;
-        for (let k = j + 1; k < nums.length; k++) {
-          const keyTercia = [nums[i], nums[j], nums[k]].sort(function(a,b){ return a-b; }).join('-');
-          ultimoTercia[keyTercia] = s.concurso;
-        }
-      }
-    }
-  });
-
-  // Pintar cada bolita seleccionada según su atraso individual.
-  seleccionReduccion.forEach(function(n){
-    const atraso = ultimoConcurso - (ultimoNum[n] || 0);
-    const btn = document.getElementById('bolitaRed' + n);
-    btn.classList.remove('atraso-alto', 'atraso-medio', 'atraso-bajo');
-    btn.classList.add(claseAtraso(atraso));
-  });
-
-  const paresOrdenados = Object.keys(ultimoPar).map(function(key){
-    return { key: key, atraso: ultimoConcurso - ultimoPar[key] };
-  }).sort(function(a,b){ return b.atraso - a.atraso; }).slice(0, 5);
-  const terciasOrdenadas = Object.keys(ultimoTercia).map(function(key){
-    return { key: key, atraso: ultimoConcurso - ultimoTercia[key] };
-  }).sort(function(a,b){ return b.atraso - a.atraso; }).slice(0, 5);
-
-  let html = '<div style="margin-top:6px; font-size:0.85rem; color:#64748b;">🔴 Atraso alto &nbsp; 🟡 Atraso medio &nbsp; 🟢 Atraso bajo</div>';
-  html += '<div style="margin-top:14px;"><strong>Mejores pares dentro de tu selección:</strong><br>';
-  html += paresOrdenados.length ? paresOrdenados.map(function(p){ return p.key + ' (atraso ' + p.atraso + ')'; }).join(' &nbsp;•&nbsp; ') : 'Selecciona al menos 2 números para ver pares.';
-  html += '</div>';
-  html += '<div style="margin-top:10px;"><strong>Mejores tercias dentro de tu selección:</strong><br>';
-  html += terciasOrdenadas.length ? terciasOrdenadas.map(function(t){ return t.key + ' (atraso ' + t.atraso + ')'; }).join(' &nbsp;•&nbsp; ') : 'Selecciona al menos 3 números para ver tercias.';
-  html += '</div>';
-  resultado.innerHTML = html;
 }
 </script>
 </body>
