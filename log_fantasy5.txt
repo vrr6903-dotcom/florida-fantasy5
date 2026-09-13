@@ -403,3 +403,41 @@ $ git push origin main
   To https://github.com/vrr6903-dotcom/florida-fantasy5.git
      3ce6cc3..9f943dc  main -> main
 ? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+============================================================ 
+[12/09/2026 20:33:20,65] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-11 (E), se omite (sin duplicar).
+Ya existe un registro para 2026-09-12 (M), se omite (sin duplicar).
+Listo. Se insertaron 0 sorteo(s) nuevo(s).
+[12/09/2026 20:33:22,02] Sin novedades, no se corre el jar. 
+============================================================ 
+[12/09/2026 22:19:51,69] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-12 (M), se omite (sin duplicar).
+Insertado concurso 12402: 2026-09-12 (E) -> 14,21,24,28,30
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[12/09/2026 22:19:52,82] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (12/09/2026 22:19)
+  [main 4c6416b] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (12/09/2026 22:19)
+   6 files changed, 6955 insertions(+), 6951 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+     e64416c..d21ffe6  main       -> origin/main
+  Rebasing (1/1)
+  Successfully rebased and updated refs/heads/main.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     d21ffe6..c2eae07  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
+[12/09/2026 22:19:52,82] Proceso completo. 
