@@ -441,3 +441,32 @@ $ git push origin main
      d21ffe6..c2eae07  main -> main
 ? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
 [12/09/2026 22:19:52,82] Proceso completo. 
+============================================================ 
+[13/09/2026 11:31:34,85] Corriendo scraper de Fantasy 5... 
+Ya existe un registro para 2026-09-12 (E), se omite (sin duplicar).
+Insertado concurso 12403: 2026-09-13 (M) -> 5,6,17,19,30
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[13/09/2026 11:31:36,73] Sorteo nuevo detectado. Corriendo el jar de Java... 
+? Copiados 11 archivo(s) a C:\repos\florida-fantasy5: [buscar.html, estilos.css, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, pares.json, tercias.json, unos.json]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualización automática de estadísticas (13/09/2026 11:31)
+  [main 6897416] ActualizaciÃ³n automÃ¡tica de estadÃ­sticas (13/09/2026 11:31)
+   6 files changed, 6946 insertions(+), 6944 deletions(-)
+$ git pull --rebase origin main
+  From https://github.com/vrr6903-dotcom/florida-fantasy5
+   * branch            main       -> FETCH_HEAD
+  Current branch main is up to date.
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/florida-fantasy5.git
+     4eeeb92..6897416  main -> main
+? Push exitoso a la rama main. GitHub Pages debería actualizarse en 1-2 minutos.
