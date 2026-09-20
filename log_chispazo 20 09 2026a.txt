@@ -1,0 +1,95 @@
+============================================================ 
+[20/09/2026 10:01:01,44] Corriendo scraper de Chispazo... 
+RUTA_SCRIPT=C:\grafica01\scraper_chispazo.py 
+�ltimo concurso en BD (SYSTEM.CHISPA28): 12261
+Insertado concurso 12262: 2026-09-19 (H=N) -> 10,12,14,20,23
+Listo. Se insertaron 1 sorteo(s) nuevo(s).
+[20/09/2026 10:01:02,72] Sorteo nuevo detectado. Generando recomendados.json... 
+=== Top 40 pares más atrasados vs. distancia individual (Chispazo) ===
+N1   N2   T.par  D.par  D.N1   D.N2  
+5    28   274    212    6      2     
+21   22   286    195    11     5     
+4    28   283    192    5      2     
+1    14   288    166    4      0     
+24   25   296    158    3      15    
+19   25   288    155    8      15    
+7    17   286    152    4      1     
+8    28   274    147    3      2     
+21   24   297    145    11     3     
+25   28   273    140    15     2     
+12   19   318    139    0      8     
+14   26   284    136    0      3     
+10   13   290    134    0      1     
+21   26   278    132    11     3     
+12   18   312    131    0      10    
+1    10   304    124    4      0     
+8    9    273    124    3      2     
+8    17   278    121    3      1     
+16   18   283    117    6      10    
+16   27   311    117    6      2     
+1    24   272    113    4      3     
+2    9    283    110    3      2     
+18   28   290    108    10     2     
+9    21   277    107    2      11    
+15   27   289    107    1      2     
+11   26   279    106    23     3     
+9    10   308    104    2      0     
+10   11   308    104    0      23    
+19   26   265    102    8      3     
+6    24   302    97     2      3     
+5    11   264    96     6      23    
+18   22   269    96     10     5     
+11   17   316    93     23     1     
+22   25   308    93     5      15    
+18   27   295    91     10     2     
+7    19   264    90     4      8     
+7    20   288    90     4      0     
+18   21   271    88     10     11    
+11   16   288    85     23     6     
+19   28   283    83     8      2     
+
+=== Números recomendados (umbral individual >= 6) ===
+Par confirmado: (19, 25) | D.par=155 | D.N1=8 | D.N2=15
+Par confirmado: (16, 18) | D.par=117 | D.N1=6 | D.N2=10
+  (relleno bajo el umbral) N°4 con atraso 5
+  (relleno bajo el umbral) N°22 con atraso 5
+  (relleno bajo el umbral) N°1 con atraso 4
+  (relleno bajo el umbral) N°7 con atraso 4
+  (relleno bajo el umbral) N°2 con atraso 3
+Números recomendados (12): [19, 25, 16, 18, 11, 21, 5, 4, 22, 1, 7, 2]
+
+=== Combinaciones generadas (10) ===
+1. [11, 16, 18, 19, 25]
+2. [4, 5, 19, 21, 22]
+3. [1, 2, 7, 21, 25]
+4. [1, 4, 5, 16, 18]
+5. [2, 7, 16, 18, 22]
+6. [2, 4, 5, 7, 11]
+7. [1, 11, 19, 22, 25]
+8. [4, 5, 7, 19, 25]
+9. [11, 16, 18, 19, 21]
+10. [2, 16, 18, 19, 25]
+
+JSON exportado en: C:\Loterias\chispazo\español\recomendados.json
+[20/09/2026 10:01:02,72] Corriendo el jar principal... 
+? Copiados 22 archivo(s) a C:\repos\chispazohoy: [buscar.html, cadenas.txt, ejecutar_chispazo.bat, estilos.css, fantasy.properties, genera.html, generador.html, grafica.html, graficas.html, historial.csv, historial.json, index.html -> index.html, notas.txt, pares.json, recomendados.json, scraper_chispazo.py, strings.properties, tercias.json, Textos.java, unos.json, version.json, Whatsap.html]
+$ git add -A
+  warning: in the working copy of 'buscar.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'ejecutar_chispazo.bat', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'generador.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'grafica.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'graficas.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.csv', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'historial.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'pares.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'recomendados.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'tercias.json', LF will be replaced by CRLF the next time Git touches it
+  warning: in the working copy of 'unos.json', LF will be replaced by CRLF the next time Git touches it
+$ git commit -m Actualizaci�n autom�tica de estad�sticas Chispazo (20/09/2026 10:01)
+  [main d034b8e] Actualización automática de estadísticas Chispazo (20/09/2026 10:01)
+   2 files changed, 2 insertions(+), 3 deletions(-)
+$ git push origin main
+  To https://github.com/vrr6903-dotcom/Chispazohoy.git
+     d26b6f9..d034b8e  main -> main
+? Push exitoso a la rama main. GitHub Pages deber�a actualizarse en 1-2 minutos.

@@ -1,0 +1,6 @@
+============================================================ 
+[20/09/2026 10:12:57,08] Corriendo scraper de Chispazo... 
+RUTA_SCRIPT=C:\Loterias\chispazo\espanol\scraper_chispazo.py 
+Último concurso en BD (SYSTEM.CHISPA28): 12262
+Listo. Se insertaron 0 sorteo(s) nuevo(s).
+[20/09/2026 10:12:58,77] Sin novedades, no se corre el jar. 
