@@ -1,3 +1,0 @@
-enlaceHermano.enabled=true
-enlaceHermano.texto=Fantasy 5 California
-enlaceHermano.url=https://tu-sitio-california.github.io/...
