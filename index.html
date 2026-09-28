@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="monetag" content="eec91ac9bdbd4da25370d19db66e89f6">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resultados FANTASY HOY | Concurso #12432 - Números y Estadísticas</title>
+<meta name="google-site-verification" content="TZTrh5zrupJ4kjF8qSpYQDW1JS8f9c_p7C4UO2Pzcwk">
+<title>Resultados Fantasy 5 HOY | Concurso #12.432 - Números y Estadísticas</title>
 <link rel="canonical" href="#">
 <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 <header class="header-bar">
-  <div class="header-brand">⚡ Resultados FANTASY</div>
+  <div class="header-brand">⚡ Resultados Fantasy 5</div>
   <nav class="nav-menu">
   </nav>
 </header>
@@ -26,7 +27,7 @@
   </div>
   <div id="contenidoUltimosResultados">
     <div class="section-header">
-      <h1 class="section-title">Últimos Resultados FANTASY</h1>
+      <h1 class="section-title">Últimos Resultados Fantasy 5</h1>
       <span class="fecha-badge">📅 27/09/2026</span>
     </div>
     <div class="sorteo-card-compact">
@@ -86,10 +87,10 @@ function toggleUltimosResultados() {
   <div class="ayuda-icono" style="display:inline-flex; align-items:center; cursor:help; position:relative; padding:8px 14px; background:#eff6ff; border-radius:20px; border:1px solid #bfdbfe; color:#1d4ed8; font-weight:500; font-size:14px;">
     ❓ Ayuda rápida
     <div class="ayuda-texto" style="display:none; position:absolute; left:0; top:100%; margin-top:8px; width:320px; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:14px; box-shadow:0 4px 12px rgba(0,0,0,0.1); z-index:100; font-size:13px; line-height:1.6; color:#374151;">
-      <div style="margin-bottom:6px;"><strong>📏 Total:</strong> es la suma de cuantas veces a aparecido el num., par o tercia</div>
-      <div style="margin-bottom:6px;"><strong>⏳ Atraso:</strong> cuántos concursos desde su última aparición</div>
-      <div style="margin-bottom:6px;"><strong>👆 Haz clic en un número</strong> para ver sus combinaciones</div>
-      <div><strong>🔄 Ver Todos:</strong> restablece los filtros</div>
+      <div style="margin-bottom:6px;">📏 Total: es la suma de cuantas veces ha aparecido el num., par o tercia</div>
+      <div style="margin-bottom:6px;">⏳ Atraso: cuántos concursos desde su última aparición</div>
+      <div style="margin-bottom:6px;">👆 Haz clic en un número para ver sus combinaciones</div>
+      <div>🔄 Ver Todos: restablece los filtros</div>
     </div>
   </div>
 </div>
@@ -119,59 +120,53 @@ function toggleUltimosResultados() {
 </style>
 <div class="tabs-estadisticas">
   <a class="tab-btn-estadisticas activo" href="index.html">📊 Números</a>
-  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Buscar todos</a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus numeros</a>
   <a class="tab-btn-estadisticas" href="graficas.html">📈 Gráficas</a>
-  <a class="tab-btn-estadisticas" href="generador.html">🎲 Generar combinaciones</a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones</a>
 </div>
 <div id="tab-numeros">
     <div class="stats-card">
       <div class="stats-title"><span>📊 Frecuencia y Atrasos: Números Individuales</span> <button class="btn-reset-filtro" onclick="limpiarFiltrosCruzados()">Ver Todos</button></div>
       <div class="filter-bar">
-        <label>Mín. Distancia:</label><input type="number" id="minDistanciaUnos" value="0">
+        <label>Mín. Atraso:</label><input type="number" id="minDistanciaUnos" value="0">
         <button class="btn-aplicar" onclick="aplicarFiltrosUnos()">Aplicar Filtros</button>
         <label>Busca tu número:</label><input type="number" id="buscarUno" min="1" max="99" placeholder="Ej: 15" style="width:70px">
         <button class="btn-aplicar" onclick="buscarNumeroUno()">Buscar</button>
       </div>
       <div class="table-scroll-container">
         <table class="table-stats" id="tablaUnos">
-          <thead><tr><th>N1</th><th>Total</th><th>Última fecha</th><th>Último concurso</th><th>Atraso</th><th>Gráfica</th></tr></thead>
-          <tbody>
-            <tr><td colspan="6" style="text-align:center;color:#94a3b8;padding:20px;">Cargando…</td></tr>
-          </tbody></table></div></div>
+          <thead><tr><th>N1</th><th>Total</th><th>Última fecha</th><th>Num. Secuencial</th><th>Atraso</th><th>Gráfica</th></tr></thead>
+          <tbody id="tbodyUnos"></tbody>
+        </table></div></div>
     <div class="stats-card">
       <div class="stats-title" id="tituloPares">🔗 Combinaciones de dos números: Frecuencia > 35 &nbsp;<span style="display:inline-flex; align-items:center; cursor:help; position:relative; padding:2px 8px; background:#eff6ff; border-radius:12px; border:1px solid #bfdbfe; color:#1d4ed8; font-size:12px; font-weight:normal;">ℹ️  <span style="display:none; position:absolute; left:0; top:100%; margin-top:6px; width:280px; background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); z-index:100; font-size:12px; line-height:1.5; color:#374151;">    P1/P2 = Posición<br>Total = veces juntos<br>Atraso =sorteos sin aparecer juntos  </span></span></div>
       <div class="filter-bar">
         <label>Mín. Totales:</label><input type="number" id="minTotalesPares" value="35">
-        <label>Mín. Distancia:</label><input type="number" id="minDistanciaPares" value="0">
+        <label>Mín. Atraso:</label><input type="number" id="minDistanciaPares" value="0">
         <button class="btn-aplicar" onclick="aplicarFiltrosPares()">Aplicar Filtros</button>
         <label>Busca tu par:</label><input type="number" id="buscarPar1" min="1" max="99" placeholder="N1" style="width:60px"><input type="number" id="buscarPar2" min="1" max="99" placeholder="N2" style="width:60px">
         <button class="btn-aplicar" onclick="buscarParTabla()">Buscar</button>
       </div>
       <div class="table-scroll-container">
         <table class="table-stats" id="tablaPares">
-          <thead><tr><th>N1</th><th>N2</th><th>P1</th><th>P2</th><th>Último concurso</th><th>Fecha</th><th>Total</th><th>Atraso</th><th>Gráfica</th></tr></thead>
-          <tbody>
-            <tr><td colspan="9" style="text-align:center;color:#94a3b8;padding:20px;">Cargando…</td></tr>
-          </tbody></table></div></div>
+          <thead><tr><th>N1</th><th>N2</th><th>P1</th><th>P2</th><th>Num. Secuencial</th><th>Fecha</th><th>Total</th><th>Atraso</th><th>Gráfica</th></tr></thead>
+          <tbody id="tbodyPares"></tbody>
+        </table></div></div>
     <div class="stats-card">
       <div class="stats-title" id="tituloTercias"><span>🧩 Combinaciones de tres números: Frecuencia > 15</span></div>
-      <div id="botonMostrarTerciasWrap" style="margin:10px 0;">
-        <button class="btn-aplicar" onclick="mostrarTercias()">👁️ Mostrar Tercias</button>
-      </div>
-      <div id="contenidoTercias" style="display:none;">
       <div class="filter-bar">
         <label>Mín. Totales:</label><input type="number" id="minTotalesTercias" value="15">
-        <label>Mín. Distancia:</label><input type="number" id="minDistanciaTercias" value="0">
+        <label>Mín. Atraso:</label><input type="number" id="minDistanciaTercias" value="0">
         <button class="btn-aplicar" onclick="aplicarFiltrosTercias()">Aplicar Filtros</button>
         <label>Busca tu trío:</label><input type="number" id="buscarTer1" min="1" max="99" placeholder="N1" style="width:55px"><input type="number" id="buscarTer2" min="1" max="99" placeholder="N2" style="width:55px"><input type="number" id="buscarTer3" min="1" max="99" placeholder="N3" style="width:55px">
         <button class="btn-aplicar" onclick="buscarTercTabla()">Buscar</button>
       </div>
-      <div class="table-scroll-container">
+      <button id="btnMostrarTercias" class="btn-aplicar" onclick="mostrarTablaTercias()">👁️ Mostrar Tercias</button>
+      <div id="contTablaTercias" class="table-scroll-container" style="display:none;">
         <table class="table-stats" id="tablaTercias">
-          <thead><tr><th>N1</th><th>N2</th><th>N3</th><th>P1</th><th>P2</th><th>P3</th><th>Total</th><th>Fecha</th><th>Último concurso</th><th>Atraso</th><th>Gráfica</th></tr></thead>
-          <tbody>
-            <tr><td colspan="11" style="text-align:center;color:#94a3b8;padding:20px;">Cargando…</td></tr>
-          </tbody></table></div>
+          <thead><tr><th>N1</th><th>N2</th><th>N3</th><th>P1</th><th>P2</th><th>P3</th><th>Total</th><th>Fecha</th><th>Num. Secuencial</th><th>Atraso</th><th>Gráfica</th></tr></thead>
+          <tbody id="tbodyTercias"></tbody>
+        </table>
       </div>
     </div>
 </div>
@@ -183,81 +178,13 @@ function toggleUltimosResultados() {
 .btn-grafica{display:inline-flex;align-items:center;gap:4px;background:#eff6ff;border:1px solid #bfdbfe;color:#2563eb;cursor:pointer;font-size:13px;font-weight:600;padding:5px 10px;border-radius:20px;white-space:nowrap;animation:pulso-grafica 2.2s ease-in-out infinite;}
 .btn-grafica:hover{background:#2563eb;color:#fff;border-color:#2563eb;animation:none;}
 @keyframes pulso-grafica{0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,0.25);}50%{box-shadow:0 0 0 5px rgba(37,99,235,0);}}
-.modal-busqueda-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.55);z-index:9999;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;}
-.modal-busqueda-caja{background:#fff;border-radius:14px;max-width:820px;width:100%;padding:20px 22px;box-shadow:0 10px 40px rgba(0,0,0,0.25);}
-.modal-busqueda-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-.modal-busqueda-header h3{margin:0;font-size:1.1rem;}
-.btn-cerrar-modal{background:#f1f5f9;border:none;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:0.9rem;font-weight:600;}
-.btn-cerrar-modal:hover{background:#e2e8f0;}
-.modal-busqueda-tabla-wrap{max-height:60vh;overflow-y:auto;}
 </style>
-<div class="modal-busqueda-overlay" id="modalBusquedaHistorial" onclick="if(event.target===this) cerrarModalBusquedaHistorial()">
-  <div class="modal-busqueda-caja">
-    <div class="modal-busqueda-header">
-      <h3>🔍 Resultado en el historial</h3>
-      <button type="button" class="btn-cerrar-modal" onclick="cerrarModalBusquedaHistorial()">✖ Cerrar</button>
-    </div>
-    <div id="resumenModalBusqueda" style="margin-bottom:10px; font-weight:600;"></div>
-    <div class="modal-busqueda-tabla-wrap">
-      <table class="tabla-historial">
-        <thead><tr><th>Concurso</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th><th>Fecha</th></tr></thead>
-        <tbody id="tablaModalBusquedaBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
 <script>
-function graficarSeleccion(titulo, etiquetasCsv, valoresCsv){
-  const etiquetas = etiquetasCsv.split(',');
-  const valores = valoresCsv.split(',').map(Number);
-  const datos = { titulo: titulo, etiquetas: etiquetas, valores: valores, generado: Date.now() };
+function buscarSeleccionHistorial(numerosCsv){
   try {
-    localStorage.setItem('graficaDatos', JSON.stringify(datos));
-    window.open('grafica.html', '_blank');
-  } catch (e) {
-    alert('No se pudo abrir la gráfica: ' + e.message);
-  }
-}
-let cacheHistorialModal = null;
-async function cargarHistorialModal(){
-  if (cacheHistorialModal) return cacheHistorialModal;
-  const resp = await fetch('historial.json');
-  cacheHistorialModal = await resp.json();
-  return cacheHistorialModal;
-}
-async function buscarSeleccionHistorial(numerosCsv){
-  const modal = document.getElementById('modalBusquedaHistorial');
-  const resumen = document.getElementById('resumenModalBusqueda');
-  const tbody = document.getElementById('tablaModalBusquedaBody');
-  modal.style.display = 'flex';
-  tbody.innerHTML = '';
-  resumen.innerHTML = 'Buscando...';
-  const numeros = numerosCsv.split(',').map(function(n){ return parseInt(n,10); }).filter(function(n){ return !isNaN(n); });
-  try {
-    const historial = await cargarHistorialModal();
-    const encontrados = historial.filter(function(s){
-      return numeros.every(function(n){ return s.numeros.indexOf(n) !== -1; });
-    });
-    const badges = numeros.map(function(n){ return '<span class="badge-numero-verde">' + n + '</span>'; }).join(' ');
-    resumen.innerHTML = 'Se encontraron ' + encontrados.length + ' sorteos con: ' + badges;
-    const LIMITE = 500;
-    const paraMostrar = encontrados.slice().reverse().slice(0, LIMITE);
-    let filas = '';
-    paraMostrar.forEach(function(s){
-      let celdas = '';
-      s.numeros.forEach(function(n){
-        celdas += '<td>' + (numeros.indexOf(n) !== -1 ? '<span class="badge-numero-verde">' + n + '</span>' : n) + '</td>';
-      });
-      filas += '<tr><td>' + s.concurso + '</td>' + celdas + '<td>' + s.fecha + '</td></tr>';
-    });
-    tbody.innerHTML = filas;
-    if (encontrados.length > LIMITE) resumen.innerHTML += ' (mostrando los ' + LIMITE + ' más recientes)';
-  } catch (e) {
-    resumen.innerHTML = '⚠️ No se pudo cargar el historial: ' + e.message;
-  }
-}
-function cerrarModalBusquedaHistorial(){
-  document.getElementById('modalBusquedaHistorial').style.display = 'none';
+    localStorage.setItem('buscarHistorialNumeros', numerosCsv.split(',').join(' '));
+  } catch (e) { /* si falla localStorage, igual se redirige */ }
+  window.location.href = 'buscar.html';
 }
 function aplicarFiltrosUnos(){const minDist=parseInt(document.getElementById('minDistanciaUnos').value)||0;document.querySelectorAll('#tablaUnos tbody tr').forEach(row=>{const dist=parseInt(row.getAttribute('data-distancia'))||0;row.style.display=dist>=minDist?'':'none';});}
 function aplicarFiltrosPares(){const minTot=parseInt(document.getElementById('minTotalesPares').value)||0;const minDist=parseInt(document.getElementById('minDistanciaPares').value)||0;document.querySelectorAll('#tablaPares tbody tr').forEach(row=>{const tot=parseInt(row.getAttribute('data-total'))||0;const dist=parseInt(row.getAttribute('data-distancia'))||0;row.style.display=(tot>=minTot&&dist>=minDist)?'':'none';});}
@@ -268,147 +195,194 @@ function buscarParTabla(){const a=document.getElementById('buscarPar1').value.tr
 function buscarTercTabla(){const a=document.getElementById('buscarTer1').value.trim();const b=document.getElementById('buscarTer2').value.trim();const c=document.getElementById('buscarTer3').value.trim();if(!a||!b||!c)return;const nums=[a,b,c].map(x=>x.padStart(2,'0')).sort().join(',');document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{const c0=row.cells[0],c1=row.cells[1],c2=row.cells[2];const vals=[c0.textContent.trim(),c1.textContent.trim(),c2.textContent.trim()].sort().join(',');const coincide=(vals===nums);row.style.display=coincide?'':'none';marcarVerde(c0,coincide);marcarVerde(c1,coincide);marcarVerde(c2,coincide);});}
 function filtrarPorTercia(t1,t2,t3){document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{const c=row.querySelectorAll('td');if(c.length>=3){const coincide=(c[0].textContent.trim()===t1&&c[1].textContent.trim()===t2&&c[2].textContent.trim()===t3);row.style.display=coincide?'':'none';}})}
 function resaltarCelda(celda,f1,f2){if(!celda)return;const txt=celda.textContent.trim();const coincide=(f1&&txt===f1)||(f2&&txt===f2);marcarVerde(celda,coincide);}
-function filtrarPorNumero(num){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con el número '+num+': Frecuencia > 35</span>';document.getElementById('tituloTercias').innerHTML='<span>🧩 Combinaciones con el número '+num+': Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tbody tr').forEach(row=>{if(row.cells.length<2)return;const p1=row.cells[0].textContent.trim(),p2=row.cells[1].textContent.trim();const coincide=(p1===num||p2===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);}});document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const n1=row.cells[0].textContent.trim(),n2=row.cells[1].textContent.trim(),n3=row.cells[2].textContent.trim();const coincide=(n1===num||n2===num||n3===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);resaltarCelda(row.cells[2],num,null);}});}
-function filtrarPorPar(n1Par,n2Par){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con los números '+n1Par+' y '+n2Par+': Frecuencia > 35</span>';document.getElementById('tituloTercias').innerHTML='<span>🧩 Combinaciones que contienen a '+n1Par+' y '+n2Par+': Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tbody tr').forEach(row=>{if(row.cells.length<2)return;const p1=row.cells[0].textContent.trim(),p2=row.cells[1].textContent.trim();const coincide=(p1===n1Par||p2===n1Par)&&(p1===n2Par||p2===n2Par);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],n1Par,n2Par);resaltarCelda(row.cells[1],n1Par,n2Par);}});document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const t1=row.cells[0].textContent.trim(),t2=row.cells[1].textContent.trim(),t3=row.cells[2].textContent.trim();const coincide=(t1===n1Par||t2===n1Par||t3===n1Par)&&(t1===n2Par||t2===n2Par||t3===n2Par);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],n1Par,n2Par);resaltarCelda(row.cells[1],n1Par,n2Par);resaltarCelda(row.cells[2],n1Par,n2Par);}});}
+function filtrarPorNumero(num){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con el número ' + num + ': Frecuencia > 35</span>';document.getElementById('tituloTercias').innerHTML='<span>🧩 Combinaciones con el número ' + num + ': Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tbody tr').forEach(row=>{if(row.cells.length<2)return;const p1=row.cells[0].textContent.trim(),p2=row.cells[1].textContent.trim();const coincide=(p1===num||p2===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);}});document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const n1=row.cells[0].textContent.trim(),n2=row.cells[1].textContent.trim(),n3=row.cells[2].textContent.trim();const coincide=(n1===num||n2===num||n3===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);resaltarCelda(row.cells[2],num,null);}});}
+function filtrarPorPar(n1Par,n2Par){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con los números ' + n1Par + ' y ' + n2Par + ': Frecuencia > 35</span>';document.getElementById('tituloTercias').innerHTML='<span>🧩 Combinaciones que contienen a ' + n1Par + ' y ' + n2Par + ': Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tbody tr').forEach(row=>{if(row.cells.length<2)return;const p1=row.cells[0].textContent.trim(),p2=row.cells[1].textContent.trim();const coincide=(p1===n1Par||p2===n1Par)&&(p1===n2Par||p2===n2Par);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],n1Par,n2Par);resaltarCelda(row.cells[1],n1Par,n2Par);}});document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const t1=row.cells[0].textContent.trim(),t2=row.cells[1].textContent.trim(),t3=row.cells[2].textContent.trim();const coincide=(t1===n1Par||t2===n1Par||t3===n1Par)&&(t1===n2Par||t2===n2Par||t3===n2Par);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],n1Par,n2Par);resaltarCelda(row.cells[1],n1Par,n2Par);resaltarCelda(row.cells[2],n1Par,n2Par);}});}
 function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones de dos números: Frecuencia > 35</span>';document.getElementById('tituloTercias').innerHTML='<span>🧩 Combinaciones de tres números: Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tr,#tablaTercias tr,#tablaUnos tr').forEach(r=>{r.style.display='';});document.querySelectorAll('.resaltado-verde').forEach(el=>el.classList.remove('resaltado-verde'));}
 </script>
 <script>
-function filaUno(d){
-  return '<tr data-total="'+d.frecuencia+'" data-distancia="'+d.atraso+'">'
-    + '<td><b class="clickable-num" onclick="filtrarPorNumero(\''+d.numero+'\')" title="Filtrar por el número '+d.numero+'">'+d.numero+'</b></td>'
-    + '<td>'+d.frecuencia+'</td><td>'+d.ultimaFecha+'</td><td>'+d.concurso+'</td><td class="distancia-bold">'+d.atraso+'</td>'
-    + '<td><button class="btn-grafica" title="Buscar el número '+d.numero+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.numero+'\')">🔍 Buscar</button></td>'
-    + '</tr>';
-}
-function filaPar(d){
-  return '<tr class="clickable-row" onclick="filtrarPorPar(\''+d.n1+'\', \''+d.n2+'\')" title="Filtrar por el par '+d.n1+' y '+d.n2+'" data-total="'+d.frecuencia+'" data-distancia="'+d.atraso+'">'
-    + '<td><b>'+d.n1+'</b></td><td><b>'+d.n2+'</b></td><td>'+d.posicion1+'</td><td>'+d.posicion2+'</td><td>'+d.concurso+'</td><td>'+d.ultimaFecha+'</td><td>'+d.frecuencia+'</td><td class="distancia-bold">'+d.atraso+'</td>'
-    + '<td><button class="btn-grafica" title="Buscar el par '+d.n1+' y '+d.n2+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.n1+','+d.n2+'\')">🔍 Buscar</button></td>'
-    + '</tr>';
-}
-function filaTercia(d){
-  return '<tr class="clickable-row" onclick="filtrarPorTercia(\''+d.n1+'\', \''+d.n2+'\', \''+d.n3+'\')" title="Filtrar por la tercia '+d.n1+', '+d.n2+' y '+d.n3+'" data-total="'+d.frecuencia+'" data-distancia="'+d.atraso+'">'
-    + '<td><b>'+d.n1+'</b></td><td><b>'+d.n2+'</b></td><td><b>'+d.n3+'</b></td><td>'+d.posicion1+'</td><td>'+d.posicion2+'</td><td>'+d.posicion3+'</td><td>'+d.frecuencia+'</td><td>'+d.ultimaFecha+'</td><td>'+d.concurso+'</td><td class="distancia-bold">'+d.atraso+'</td>'
-    + '<td><button class="btn-grafica" title="Buscar la tercia '+d.n1+', '+d.n2+' y '+d.n3+' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+d.n1+','+d.n2+','+d.n3+'\')">🔍 Buscar</button></td>'
-    + '</tr>';
-}
-function abrirDBFantasy(){
-  return new Promise(function(resolve, reject){
-    var req = indexedDB.open('fantasy5DB', 1);
-    req.onupgradeneeded = function(e){
-      var db = e.target.result;
-      ['unos','pares','tercias'].forEach(function(nombre){
-        if (!db.objectStoreNames.contains(nombre)) db.createObjectStore(nombre);
+(function(){
+  const TEXTO_CARGANDO = 'Actualizando…';
+  const TEXTO_ERROR = 'No se pudo cargar la información. Intenta recargar la página.';
+  const DB_NOMBRE = 'estadisticasCache';
+  const DB_VERSION = 1;
+  const ALMACEN = 'kv';
+
+  function abrirDB(){
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NOMBRE, DB_VERSION);
+      req.onupgradeneeded = () => { req.result.createObjectStore(ALMACEN, { keyPath: 'k' }); };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+
+  async function leerDB(clave){
+    try {
+      const db = await abrirDB();
+      return await new Promise((resolve, reject) => {
+        const tx = db.transaction(ALMACEN, 'readonly');
+        const req = tx.objectStore(ALMACEN).get(clave);
+        req.onsuccess = () => resolve(req.result ? req.result.v : null);
+        req.onerror = () => reject(req.error);
       });
-    };
-    req.onsuccess = function(e){ resolve(e.target.result); };
-    req.onerror = function(e){ reject(e.target.error); };
-  });
-}
-function guardarEnIndexedDB(nombreTabla, concurso, filas){
-  abrirDBFantasy().then(function(db){
-    var tx = db.transaction(nombreTabla, 'readwrite');
-    tx.objectStore(nombreTabla).put({concurso: concurso, filas: filas}, 'datos');
-  }).catch(function(e){
-    console.error('No se pudo guardar en IndexedDB (' + nombreTabla + '):', e);
-  });
-}
-function leerDeIndexedDB(nombreTabla){
-  return abrirDBFantasy().then(function(db){
-    return new Promise(function(resolve){
-      var tx = db.transaction(nombreTabla, 'readonly');
-      var req = tx.objectStore(nombreTabla).get('datos');
-      req.onsuccess = function(){ resolve(req.result || null); };
-      req.onerror = function(){ resolve(null); };
-    });
-  }).catch(function(){ return null; });
-}
-async function cargarTablasJSON(){
-  try {
-    // 1) Revisa version.json (pesa unos bytes) para saber si la copia en
-    // IndexedDB sigue vigente, antes de descargar los JSON pesados.
-    // Nota: Tercias NO se carga aquí, solo Unos y Pares (ver mostrarTercias(),
-    // que descarga tercias.json solo cuando el usuario hace clic en el botón).
-    window.__versionFantasy = null;
-    try { window.__versionFantasy = await (await fetch('version.json')).json(); } catch (e) { window.__versionFantasy = null; }
-    const version = window.__versionFantasy;
+    } catch (e) { return null; }
+  }
 
-    if (version) {
-      const [cacheUnos, cachePares] = await Promise.all([
-        leerDeIndexedDB('unos'), leerDeIndexedDB('pares')
+  async function guardarDB(clave, valor){
+    try {
+      const db = await abrirDB();
+      await new Promise((resolve, reject) => {
+        const tx = db.transaction(ALMACEN, 'readwrite');
+        tx.objectStore(ALMACEN).put({ k: clave, v: valor });
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    } catch (e) { /* si falla el guardado en caché, no es grave */ }
+  }
+
+  function construirAtrasoMap(datosUnos){
+    const mapa = {};
+    (datosUnos || []).forEach(u => { mapa[String(u.numero).padStart(2,'0')] = u.distancia; });
+    return mapa;
+  }
+
+  function pintarUnos(datos){
+    const tbody = document.getElementById('tbodyUnos');
+    if (!tbody) return;
+    let html = '';
+    datos.forEach(u => {
+      const numStr = String(u.numero).padStart(2, '0');
+      html += '<tr data-total="'+u.totales+'" data-distancia="'+u.distancia+'">'
+        + '<td><b class="clickable-num" onclick="filtrarPorNumero(\''+numStr+'\')" title="Filtrar por el número \' + numStr + \'">'+numStr+'</b></td>'
+        + '<td>'+u.totales+'</td><td>'+u.fecha+'</td><td>'+u.concurso+'</td>'
+        + '<td class="distancia-bold">'+u.distancia+'</td>'
+        + '<td><button class="btn-grafica" title="Buscar el número \' + numStr + \' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+numStr+'\')">🔍 Buscar</button></td>'
+        + '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  function pintarPares(datos, atrasoMap){
+    const tbody = document.getElementById('tbodyPares');
+    if (!tbody) return;
+    let html = '';
+    datos.forEach(p => {
+      const p1 = String(p.par01).padStart(2,'0');
+      const p2 = String(p.par02).padStart(2,'0');
+      html += '<tr class="clickable-row" onclick="filtrarPorPar(\''+p1+'\', \''+p2+'\')" title="Filtrar por el par \' + p1 + \' y \' + p2 + \'" data-total="'+p.total+'" data-distancia="'+p.distancia+'">'
+        + '<td><b>'+p1+'</b></td><td><b>'+p2+'</b></td>'
+        + '<td>'+p.posicion1+'</td><td>'+p.posicion2+'</td><td>'+p.concurso+'</td><td>'+p.fecha+'</td><td>'+p.total+'</td>'
+        + '<td class="distancia-bold">'+p.distancia+'</td>'
+        + '<td><button class="btn-grafica" title="Buscar el par \' + p1 + \' y \' + p2 + \' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+p1+','+p2+'\')">🔍 Buscar</button></td>'
+        + '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  function pintarTercias(datos, atrasoMap){
+    const tbody = document.getElementById('tbodyTercias');
+    if (!tbody) return;
+    let html = '';
+    datos.forEach(t => {
+      const n1 = String(t.n1).padStart(2,'0');
+      const n2 = String(t.n2).padStart(2,'0');
+      const n3 = String(t.n3).padStart(2,'0');
+      html += '<tr class="clickable-row" onclick="filtrarPorTercia(\''+n1+'\', \''+n2+'\', \''+n3+'\')" title="Filtrar por la tercia \' + n1 + \', \' + n2 + \' y \' + n3 + \'" data-total="'+t.total+'" data-distancia="'+t.distancia+'">'
+        + '<td><b>'+n1+'</b></td><td><b>'+n2+'</b></td><td><b>'+n3+'</b></td>'
+        + '<td>'+t.posicion1+'</td><td>'+t.posicion2+'</td><td>'+t.posicion3+'</td><td>'+t.total+'</td><td>'+t.fecha+'</td><td>'+t.concurso+'</td>'
+        + '<td class="distancia-bold">'+t.distancia+'</td>'
+        + '<td><button class="btn-grafica" title="Buscar la tercia \' + n1 + \', \' + n2 + \' y \' + n3 + \' en todo el historial" onclick="event.stopPropagation(); buscarSeleccionHistorial(\''+n1+','+n2+','+n3+'\')">🔍 Buscar</button></td>'
+        + '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  let atrasoMapGlobal = {};
+  let terciasCargadas = false;
+
+  async function cargarInicial(){
+    const tbodyUnos = document.getElementById('tbodyUnos');
+    if (tbodyUnos) tbodyUnos.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#94a3b8;">'+TEXTO_CARGANDO+'</td></tr>';
+
+    let versionActual = null;
+    try {
+      const respVersion = await fetch('version.json', { cache: 'no-store' });
+      versionActual = (await respVersion.json()).concurso;
+    } catch (e) {
+      console.error('No se pudo cargar version.json', e);
+    }
+
+    const versionGuardada = await leerDB('version');
+
+    if (versionActual !== null && versionGuardada === versionActual) {
+      const unosCache = await leerDB('unos');
+      const paresCache = await leerDB('pares');
+      if (unosCache && paresCache) {
+        atrasoMapGlobal = construirAtrasoMap(unosCache);
+        pintarUnos(unosCache);
+        pintarPares(paresCache, atrasoMapGlobal);
+        return;
+      }
+    }
+
+    try {
+      const [datosUnos, datosPares] = await Promise.all([
+        fetch('unos.json').then(r => r.json()),
+        fetch('pares.json').then(r => r.json())
       ]);
-      const cacheVigente = cacheUnos && cachePares
-        && cacheUnos.concurso === version.concurso
-        && cachePares.concurso === version.concurso;
+      atrasoMapGlobal = construirAtrasoMap(datosUnos);
+      pintarUnos(datosUnos);
+      pintarPares(datosPares, atrasoMapGlobal);
 
-      if (cacheVigente) {
-        // 2a) Mismo concurso que la última vez: usa la copia local, sin descargar nada pesado.
-        document.querySelector('#tablaUnos tbody').innerHTML = cacheUnos.filas.map(filaUno).join('');
-        document.querySelector('#tablaPares tbody').innerHTML = cachePares.filas.map(filaPar).join('');
-        return;
+      if (versionActual !== null) {
+        guardarDB('version', versionActual);
+        guardarDB('unos', datosUnos);
+        guardarDB('pares', datosPares);
+        guardarDB('tercias', null);
       }
+    } catch (e) {
+      console.error('No se pudieron cargar las tablas', e);
+      if (tbodyUnos) tbodyUnos.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#ef4444;">'+TEXTO_ERROR+'</td></tr>';
     }
-
-    // 2b) Primera visita, sin caché válido o falló version.json: descarga normal.
-    const [rUnos, rPares] = await Promise.all([fetch('unos.json'), fetch('pares.json')]);
-    const [datosUnos, datosPares] = await Promise.all([rUnos.json(), rPares.json()]);
-    document.querySelector('#tablaUnos tbody').innerHTML = datosUnos.map(filaUno).join('');
-    document.querySelector('#tablaPares tbody').innerHTML = datosPares.map(filaPar).join('');
-
-    // Guarda la copia fresca junto con el número de concurso, para la próxima visita.
-    if (version) {
-      guardarEnIndexedDB('unos', version.concurso, datosUnos);
-      guardarEnIndexedDB('pares', version.concurso, datosPares);
-    }
-  } catch (e) {
-    console.error('Error cargando unos/pares.json:', e);
-    ['tablaUnos','tablaPares'].forEach(function(id){
-      const tb = document.querySelector('#'+id+' tbody');
-      if (tb) tb.innerHTML = '<tr><td colspan="12" style="text-align:center;color:#ef4444;padding:20px;">⚠️ No se pudieron cargar los datos.</td></tr>';
-    });
   }
-}
-document.addEventListener('DOMContentLoaded', cargarTablasJSON);
 
-// Tercias: se descarga y se pinta SOLO cuando el usuario hace clic en
-// "Mostrar Tercias" (ver botonMostrarTerciasWrap/contenidoTercias en
-// generarTablaTercias). Así la carga inicial de la página nunca paga el
-// costo de tercias.json ni de pintar sus ~miles de filas si nadie la abre.
-let terciasCargadas = false;
-async function mostrarTercias(){
-  document.getElementById('botonMostrarTerciasWrap').style.display = 'none';
-  document.getElementById('contenidoTercias').style.display = 'block';
-  if (terciasCargadas) return;
-  terciasCargadas = true;
-  const tbody = document.querySelector('#tablaTercias tbody');
-  try {
-    let version = window.__versionFantasy;
-    if (!version) { try { version = await (await fetch('version.json')).json(); } catch (e) { version = null; } }
-    if (version) {
-      const cacheTercias = await leerDeIndexedDB('tercias');
-      if (cacheTercias && cacheTercias.concurso === version.concurso) {
-        tbody.innerHTML = cacheTercias.filas.map(filaTercia).join('');
-        return;
-      }
+  window.mostrarTablaTercias = async function(){
+    const boton = document.getElementById('btnMostrarTercias');
+    const cont = document.getElementById('contTablaTercias');
+    if (boton) boton.style.display = 'none';
+    if (cont) cont.style.display = '';
+    if (terciasCargadas) return;
+
+    const tbodyTercias = document.getElementById('tbodyTercias');
+    if (tbodyTercias) tbodyTercias.innerHTML = '<tr><td colspan="11" style="text-align:center;color:#94a3b8;">'+TEXTO_CARGANDO+'</td></tr>';
+
+    const versionGuardada = await leerDB('version');
+    const terciasCache = await leerDB('tercias');
+    if (terciasCache && versionGuardada !== null) {
+      pintarTercias(terciasCache, atrasoMapGlobal);
+      terciasCargadas = true;
+      return;
     }
-    const datosTercias = await (await fetch('tercias.json')).json();
-    tbody.innerHTML = datosTercias.map(filaTercia).join('');
-    if (version) guardarEnIndexedDB('tercias', version.concurso, datosTercias);
-  } catch (e) {
-    console.error('Error cargando tercias.json:', e);
-    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;color:#ef4444;padding:20px;">⚠️ No se pudieron cargar los datos.</td></tr>';
-  }
-}
+
+    try {
+      const datosTercias = await fetch('tercias.json').then(r => r.json());
+      pintarTercias(datosTercias, atrasoMapGlobal);
+      guardarDB('tercias', datosTercias);
+      terciasCargadas = true;
+    } catch (e) {
+      console.error('No se pudieron cargar las tercias', e);
+      if (tbodyTercias) tbodyTercias.innerHTML = '<tr><td colspan="11" style="text-align:center;color:#ef4444;">'+TEXTO_ERROR+'</td></tr>';
+    }
+  };
+
+  cargarInicial();
+})();
 </script>
 <div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
   ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
   <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
 </div>
   <aside class="aside-left">
-    <div class="widget-publicidad">
-      <script async="async" data-cfasync="false" src="https://ourselvesincompetentlearned.com/dbd3c149fe167ff3f1ba835e0d31fccd/invoke.js"></script>
-      <div id="container-dbd3c149fe167ff3f1ba835e0d31fccd"></div>
-    </div>
   </aside>
 </body>
 </html>
