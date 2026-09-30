@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi seguimiento | Fantasy 5</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+.tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
+.tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
+.tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
+.tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
+.tab-help { position:relative; display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; margin-left:6px; border-radius:50%; background:rgba(100,116,139,0.18); color:inherit; font-size:0.7rem; font-weight:700; vertical-align:middle; }
+.tab-help-tip { visibility:hidden; opacity:0; position:absolute; bottom:calc(100% + 9px); left:50%; transform:translateX(-50%); background:#1e293b; color:#fff; font-size:0.75rem; font-weight:400; line-height:1.35; padding:8px 10px; border-radius:6px; width:190px; text-align:center; white-space:normal; transition:opacity 0.15s ease; pointer-events:none; z-index:30; }
+.tab-help-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#1e293b; }
+@media (hover: hover) { .tab-help:hover .tab-help-tip { visibility:visible; opacity:1; } }
+.buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
+.buscar-historial-controles button { padding:9px 16px; border:none; border-radius:6px; font-weight:600; font-size:0.9rem; cursor:pointer; }
+.btn-buscar-historial { background:#2563eb; color:#fff; }
+.btn-limpiar-historial { background:#94a3b8; color:#fff; }
+.badge-numero-verde { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 4px; background:#22c55e; color:#fff; font-weight:700; border-radius:6px; font-size:0.85rem; }
+.tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
+.tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
+.gpa-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #cbd5e1;color:#334155;cursor:pointer;font-size:0.9rem;font-weight:600;padding:8px 12px;border-radius:20px;}
+.gpa-chip:hover{border-color:#2563eb;color:#2563eb;}
+.gpa-chip.activo{background:#eff6ff;border-color:#2563eb;color:#1d4ed8;}
+.gpa-atraso{background:#f1f5f9;border-radius:10px;padding:1px 7px;font-size:0.78rem;color:#64748b;}
+.gpa-chip.activo .gpa-atraso{background:#dbeafe;color:#1d4ed8;}
+#gpaBtnUsar:disabled{opacity:0.5;cursor:not-allowed;}
+
+</style>
+</head>
+<body>
+<header class="header-bar">
+  <div class="header-brand">⚡ Resultados Fantasy 5</div>
+  <nav class="nav-menu">
+  </nav>
+</header>
+<main class="main-container">
+  <aside class="aside-left">
+  </aside>
+  <section>
+<div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
+<div class="tabs-estadisticas">
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números<span class="tab-help">?<span class="tab-help-tip">Qué números y pares llevan más sorteos sin salir.</span></span></a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus numeros<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
+  <a class="tab-btn-estadisticas" href="graficas.html">📈 Gráficas<span class="tab-help">?<span class="tab-help-tip">Compara visualmente el atraso de cada número.</span></span></a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones<span class="tab-help">?<span class="tab-help-tip">Arma combinaciones de 5 a partir de los números recomendados.</span></span></a>
+  <a class="tab-btn-estadisticas activo" href="seguimiento.html">⭐ Seguimiento<span class="tab-help">?<span class="tab-help-tip">Guarda pares y tercias y mira cuántos sorteos llevan sin salir.</span></span></a>
+</div>
+<style>
+.seg-card { display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 16px; margin-bottom:10px; }
+.seg-nums { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+.seg-tipo { font-size:0.75rem; font-weight:700; color:#b45309; background:#fffbeb; border:1px solid #fcd34d; border-radius:10px; padding:2px 8px; margin-right:4px; }
+.seg-info { flex:1; min-width:220px; font-size:0.9rem; color:#334155; line-height:1.5; }
+.seg-ok { color:#15803d; font-weight:600; }
+.seg-no { color:#64748b; }
+.seg-vacio { text-align:center; padding:30px 10px; color:#64748b; }
+.seg-aviso { font-size:0.8rem; color:#64748b; margin:0 0 14px; }
+</style>
+<div class="buscar-historial-caja">
+  <h2 id="segTitulo" style="margin-top:0;"></h2>
+  <p id="segAviso" class="seg-aviso"></p>
+  <div id="segResumen" style="margin-bottom:10px; font-weight:600;"></div>
+  <div id="listaSeguimiento"></div>
+  <div id="segAcciones" style="margin-top:10px;"></div>
+</div>
+<script>
+(function () {
+  var CLAVE = 'seguimientoCombinaciones';
+  var MAX = 15;
+  var EN = document.documentElement.lang === 'en';
+  var T = EN ? {
+    titulo: '⭐ My tracking',
+    aviso: 'Personal record of gaps. Every draw is independent: a pair or triplet that has gone many draws without hitting is not more likely to hit soon.',
+    vacio: 'You are not tracking anything yet. Go to the Numbers tab and press Save on a pair or triplet.',
+    guardadas: 'Saved: ', par: 'Pair', tercia: 'Triplet',
+    desde: 'Tracked since draw ', transcurridos: 'draw since then', transcurridosPl: 'draws since then',
+    salio: 'Hit {n} time(s) since you started tracking: ', noSalio: 'Has not hit since you started tracking.',
+    atraso: 'Current gap: ', sorteos: 'draws', borrar: 'Delete', borrarTodo: 'Delete all', confirmar: 'Delete all your tracked combinations?'
+  } : {
+    titulo: '⭐ Mi seguimiento',
+    aviso: 'Registro personal de atraso. Cada sorteo es independiente: que un par o una tercia lleve muchos sorteos sin salir no significa que vaya a salir pronto.',
+    vacio: 'Aún no sigues ninguna combinación. Ve a la pestaña Números y pulsa Guardar en un par o una tercia.',
+    guardadas: 'Guardadas: ', par: 'Par', tercia: 'Tercia',
+    desde: 'Lo sigues desde el concurso ', transcurridos: 'sorteo transcurrido', transcurridosPl: 'sorteos transcurridos',
+    salio: 'Salió {n} vez/veces desde que lo sigues: ', noSalio: 'No ha salido desde que lo sigues.',
+    atraso: 'Atraso actual: ', sorteos: 'sorteos', borrar: 'Borrar', borrarTodo: 'Borrar todo', confirmar: '¿Borrar todas tus combinaciones guardadas?'
+  };
+
+  function leer() {
+    try { var r = localStorage.getItem(CLAVE); var a = r ? JSON.parse(r) : []; return Array.isArray(a) ? a.filter(function (x) { return x && Array.isArray(x.nums); }) : []; }
+    catch (e) { return []; }
+  }
+  function guardar(a) { try { localStorage.setItem(CLAVE, JSON.stringify(a)); } catch (e) {} }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  async function cargar(url) {
+    try { var r = await fetch(url, { cache: 'no-store' }); return await r.json(); } catch (e) { return null; }
+  }
+
+  async function pintar() {
+    document.getElementById('segTitulo').textContent = T.titulo;
+    document.getElementById('segAviso').textContent = T.aviso;
+    var cont = document.getElementById('listaSeguimiento');
+    var lista = leer();
+    document.getElementById('segResumen').textContent = T.guardadas + lista.length + '/' + MAX;
+    document.getElementById('segAcciones').innerHTML = lista.length
+      ? '<button type="button" class="btn-limpiar-historial" onclick="borrarTodoSeguimiento()">' + T.borrarTodo + '</button>' : '';
+    if (!lista.length) { cont.innerHTML = '<div class="seg-vacio">' + T.vacio + '</div>'; return; }
+
+    var hist = await cargar('historial.json');
+    if (!Array.isArray(hist)) hist = [];
+    hist.sort(function (a, b) { return a.concurso - b.concurso; });
+
+    var html = '';
+    lista.forEach(function (item, idx) {
+      var nums = item.nums;
+      var ultimoIdx = -1, transcurridos = 0, salidas = [];
+      hist.forEach(function (s, i) {
+        var contiene = nums.every(function (n) { return s.numeros.indexOf(n) >= 0; });
+        if (contiene) ultimoIdx = i;
+        if (s.concurso > item.desde) {
+          transcurridos++;
+          if (contiene) salidas.push(s);
+        }
+      });
+      var atraso = ultimoIdx < 0 ? hist.length : hist.length - 1 - ultimoIdx;
+      var badges = nums.map(function (n) { return '<span class="badge-numero-verde">' + pad(n) + '</span>'; }).join('');
+      var estado;
+      if (salidas.length) {
+        var ult = salidas.slice(-3).map(function (s) { return '#' + s.concurso + ' (' + s.fecha + ')'; }).join(', ');
+        estado = '<div class="seg-ok">' + T.salio.replace('{n}', salidas.length) + ult + '</div>';
+      } else {
+        estado = '<div class="seg-no">' + T.noSalio + '</div>';
+      }
+      html += '<div class="seg-card">'
+        + '<div class="seg-nums"><span class="seg-tipo">' + (item.tipo === 'tercia' ? T.tercia : T.par) + '</span>' + badges + '</div>'
+        + '<div class="seg-info">'
+        +   '<div>' + T.desde + item.desde + ' · ' + transcurridos + ' ' + (transcurridos === 1 ? T.transcurridos : T.transcurridosPl) + '</div>'
+        +   estado
+        +   '<div>' + T.atraso + '<b>' + atraso + '</b> ' + T.sorteos + '</div>'
+        + '</div>'
+        + '<button type="button" class="btn-limpiar-historial" onclick="borrarSeguimiento(' + idx + ')">' + T.borrar + '</button>'
+        + '</div>';
+    });
+    cont.innerHTML = html;
+  }
+
+  window.borrarSeguimiento = function (idx) {
+    var lista = leer(); lista.splice(idx, 1); guardar(lista); pintar();
+  };
+  window.borrarTodoSeguimiento = function () {
+    if (confirm(T.confirmar)) { guardar([]); pintar(); }
+  };
+  pintar();
+})();
+</script>
+  </section>
+  <aside class="aside-right"></aside>
+</main>
+<div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
+  ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
+  <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+</div>
+</body>
+</html>

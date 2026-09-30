@@ -2,15 +2,18 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="monetag" content="eec91ac9bdbd4da25370d19db66e89f6">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gráficas | FANTASY</title>
+<title>Gráficas | Fantasy 5</title>
 <link rel="stylesheet" href="estilos.css">
 <style>
 .tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
 .tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
 .tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
 .tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
+.tab-help { position:relative; display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; margin-left:6px; border-radius:50%; background:rgba(100,116,139,0.18); color:inherit; font-size:0.7rem; font-weight:700; vertical-align:middle; }
+.tab-help-tip { visibility:hidden; opacity:0; position:absolute; bottom:calc(100% + 9px); left:50%; transform:translateX(-50%); background:#1e293b; color:#fff; font-size:0.75rem; font-weight:400; line-height:1.35; padding:8px 10px; border-radius:6px; width:190px; text-align:center; white-space:normal; transition:opacity 0.15s ease; pointer-events:none; z-index:30; }
+.tab-help-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#1e293b; }
+@media (hover: hover) { .tab-help:hover .tab-help-tip { visibility:visible; opacity:1; } }
 .buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
 .buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
@@ -20,37 +23,32 @@
 .badge-numero-verde { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 4px; background:#22c55e; color:#fff; font-weight:700; border-radius:6px; font-size:0.85rem; }
 .tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
 .tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
-.tabla-historial td { padding:9px; text-align:center; border-bottom:1px solid #f1f5f9; font-size:0.9rem; }
-.cuadricula-reduccion { display:flex; flex-wrap:wrap; gap:8px; }
-.bolita-reduccion { width:44px; height:44px; border-radius:50%; border:2px solid #cbd5e1; background:#f8fafc; color:#334155; font-weight:700; font-size:0.85rem; cursor:pointer; transition:transform 0.1s, background 0.15s, border-color 0.15s, color 0.15s; }
-.bolita-reduccion:hover { border-color:#2563eb; }
-.bolita-reduccion.seleccionada { background:#2563eb; border-color:#2563eb; color:#fff; transform:scale(1.05); }
-.bolita-reduccion.atraso-alto { background:#ef4444; border-color:#ef4444; color:#fff; }
-.bolita-reduccion.atraso-medio { background:#f59e0b; border-color:#f59e0b; color:#fff; }
-.bolita-reduccion.atraso-bajo { background:#22c55e; border-color:#22c55e; color:#fff; }
-.bolita-reduccion:disabled { opacity:0.35; cursor:not-allowed; }
+.gpa-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #cbd5e1;color:#334155;cursor:pointer;font-size:0.9rem;font-weight:600;padding:8px 12px;border-radius:20px;}
+.gpa-chip:hover{border-color:#2563eb;color:#2563eb;}
+.gpa-chip.activo{background:#eff6ff;border-color:#2563eb;color:#1d4ed8;}
+.gpa-atraso{background:#f1f5f9;border-radius:10px;padding:1px 7px;font-size:0.78rem;color:#64748b;}
+.gpa-chip.activo .gpa-atraso{background:#dbeafe;color:#1d4ed8;}
+#gpaBtnUsar:disabled{opacity:0.5;cursor:not-allowed;}
+
 </style>
 </head>
 <body>
 <header class="header-bar">
-  <div class="header-brand">⚡ Resultados FANTASY</div>
+  <div class="header-brand">⚡ Resultados Fantasy 5</div>
   <nav class="nav-menu">
   </nav>
 </header>
 <main class="main-container">
   <aside class="aside-left">
-    <div class="widget-publicidad">
-      <script async="async" data-cfasync="false" src="https://ourselvesincompetentlearned.com/dbd3c149fe167ff3f1ba835e0d31fccd/invoke.js"></script>
-      <div id="container-dbd3c149fe167ff3f1ba835e0d31fccd"></div>
-    </div>
   </aside>
   <section>
 <div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
 <div class="tabs-estadisticas">
-  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
-  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Buscar todos</a>
-  <a class="tab-btn-estadisticas activo" href="graficas.html">📈 Gráficas</a>
-  <a class="tab-btn-estadisticas" href="generador.html">🎲 Generar combinaciones</a>
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números<span class="tab-help">?<span class="tab-help-tip">Qué números y pares llevan más sorteos sin salir.</span></span></a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus numeros<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
+  <a class="tab-btn-estadisticas activo" href="graficas.html">📈 Gráficas<span class="tab-help">?<span class="tab-help-tip">Compara visualmente el atraso de cada número.</span></span></a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones<span class="tab-help">?<span class="tab-help-tip">Arma combinaciones de 5 a partir de los números recomendados.</span></span></a>
+  <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento<span class="tab-help">?<span class="tab-help-tip">Guarda pares y tercias y mira cuántos sorteos llevan sin salir.</span></span></a>
 </div>
 <div class="buscar-historial-caja">
   <div class="buscar-historial-controles">
@@ -60,6 +58,16 @@
     <button type="button" class="btn-limpiar-historial" onclick="limpiarGraficaAtraso()">🗑️ Limpiar</button>
   </div>
   <div id="resumenGraficaAtraso" style="margin-bottom:10px; font-weight:600;"></div>
+<div class="buscar-historial-caja" id="cajaParesAtrasados" style="margin-top:16px;">
+  <div class="stats-title"><span>⭐ Pares más atrasados</span></div>
+  <p style="margin:0 0 12px; color:#64748b; font-size:0.85rem;" id="gpaIntro"></p>
+  <div id="listaParesAtrasadosGraf" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;"></div>
+  <div style="font-weight:600; margin-bottom:12px;"><span id="gpaEtqSel"></span> (<b id="gpaCount">0</b>/<span id="gpaMax">14</span>): <span id="gpaLista">—</span></div>
+  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+    <button type="button" class="btn-buscar-historial" id="gpaBtnUsar" disabled></button>
+    <button type="button" class="btn-limpiar-historial" id="gpaBtnLimpiar"></button>
+  </div>
+</div>
   <div id="contenidoGraficaAtraso"></div>
 </div>
   </section>
@@ -164,12 +172,82 @@ async function buscarGraficaAtraso() {
     }
     return ultimoDelNumero > 0 ? (ultimoConcurso - ultimoDelNumero) : ultimoConcurso;
   });
-  const etiquetas = numeros.map(function(n){ return 'N° ' + n; });
+  const etiquetas = numeros.map(function(n){ return 'N° ' + n + ''; });
   const tipo = numeros.length === 1 ? 'Número' : numeros.length === 2 ? 'Par' : 'Tercia';
-  resumen.innerHTML = tipo + ' ' + numeros.join('-') + ': atraso actual por número';
+  resumen.innerHTML = '' + tipo + ' ' + numeros.join('-') + ': atraso actual por número';
   dibujarGraficaAtraso('Distancia por Número', etiquetas, valores, 'contenidoGraficaAtraso');
 }
 
+(function () {
+  var cont = document.getElementById('listaParesAtrasadosGraf');
+  if (!cont) return;
+  var MAX_SEL_GPA = 14;
+  var TOP_N_GPA = 10;
+  var EN = document.documentElement.lang === 'en';
+  var T = EN ? {
+    intro: 'Tap the pairs you want and take them to Generate combinations.',
+    seleccionados: 'Selected', usar: '\u27a1\ufe0f Use in Generate combinations', limpiar: 'Clear selection',
+    limite: 'You can take up to ' + MAX_SEL_GPA + ' numbers to Generate combinations.'
+  } : {
+    intro: 'Toca los pares que te interesen y llevalos a Generar combinaciones.',
+    seleccionados: 'Seleccionados', usar: '\u27a1\ufe0f Usar en Generar combinaciones', limpiar: 'Limpiar seleccion',
+    limite: 'Puedes llevar hasta ' + MAX_SEL_GPA + ' numeros a Generar combinaciones.'
+  };
+  document.getElementById('gpaIntro').textContent = T.intro;
+  document.getElementById('gpaEtqSel').textContent = T.seleccionados;
+  document.getElementById('gpaBtnUsar').textContent = T.usar;
+  document.getElementById('gpaBtnLimpiar').textContent = T.limpiar;
+  document.getElementById('gpaMax').textContent = MAX_SEL_GPA;
+
+  var seleccionGPA = new Set();
+
+  function pad(n) { return n < 10 ? ('0' + n) : String(n); }
+
+  function renderGPA() {
+    var ordenados = Array.from(seleccionGPA).sort(function (a, b) { return a - b; });
+    document.getElementById('gpaCount').textContent = ordenados.length;
+    document.getElementById('gpaLista').textContent = ordenados.length ? ordenados.map(pad).join(', ') : '\u2014';
+    document.getElementById('gpaBtnUsar').disabled = ordenados.length === 0;
+  }
+
+  window.toggleParGPA = function (btn) {
+    var p1 = Number(btn.dataset.p1), p2 = Number(btn.dataset.p2);
+    var activo = btn.classList.contains('activo');
+    if (!activo) {
+      var nuevos = [p1, p2].filter(function (n) { return !seleccionGPA.has(n); }).length;
+      if (seleccionGPA.size + nuevos > MAX_SEL_GPA) { alert(T.limite); return; }
+      seleccionGPA.add(p1); seleccionGPA.add(p2);
+      btn.classList.add('activo');
+    } else {
+      seleccionGPA.delete(p1); seleccionGPA.delete(p2);
+      btn.classList.remove('activo');
+    }
+    renderGPA();
+  };
+
+  document.getElementById('gpaBtnLimpiar').addEventListener('click', function () {
+    seleccionGPA = new Set();
+    cont.querySelectorAll('.gpa-chip.activo').forEach(function (b) { b.classList.remove('activo'); });
+    renderGPA();
+  });
+
+  document.getElementById('gpaBtnUsar').addEventListener('click', function () {
+    var ordenados = Array.from(seleccionGPA).sort(function (a, b) { return a - b; });
+    if (!ordenados.length) return;
+    try { localStorage.setItem('generadorPrecarga', JSON.stringify(ordenados)); } catch (e) {}
+    window.location.href = 'generador.html';
+  });
+
+  fetch('pares.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (data) {
+    if (!Array.isArray(data)) return;
+    var top = data.slice().sort(function (a, b) { return b.distancia - a.distancia; }).slice(0, TOP_N_GPA);
+    cont.innerHTML = top.map(function (p) {
+      var p1 = pad(p.par01), p2 = pad(p.par02);
+      return '<button type="button" class="gpa-chip" data-p1="' + p1 + '" data-p2="' + p2 + '" onclick="toggleParGPA(this)">'
+        + p1 + ' - ' + p2 + ' <span class="gpa-atraso">' + p.distancia + '</span></button>';
+    }).join('');
+  }).catch(function (e) { console.error('No se pudo cargar pares.json', e); });
+})();
 function limpiarGraficaAtraso() {
   document.getElementById('inputGraficaNumeros').value = '';
   document.getElementById('resumenGraficaAtraso').innerHTML = '';
