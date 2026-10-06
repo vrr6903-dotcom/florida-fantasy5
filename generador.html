@@ -106,6 +106,7 @@
     <button type="button" id="gcBtnClear">Limpiar selección</button>
     <button type="button" class="gc-btn-whatsapp" id="gcBtnWhatsApp">📱 Compartir por WhatsApp</button>
   </div>
+  <div class="gc-status-error" id="gcComboMinMsg" style="display:none;"></div>
   <div class="gc-combos-section" id="gcCombosSection" style="display:none;">
     <h3 class="gc-combos-titulo">🎲 Combinaciones sugeridas</h3>
     <p class="gc-combos-subtitulo">Combinaciones de 5 números armadas a partir de tu selección, buscando cubrir la mayor cantidad de pares posible. Tampoco es una predicción, es solo otra forma de organizar tus números.</p>
@@ -142,6 +143,11 @@
   var limiteTag = document.getElementById('gcLimiteTag');
   var statusError = document.getElementById('gcStatusError');
   var comboSection = document.getElementById('gcCombosSection');
+  var comboMinMsg = document.getElementById('gcComboMinMsg');
+  var MIN_PARA_COMBOS_GEN = 5;
+  var TXT_MIN_COMBOS_GEN = (document.documentElement.lang === 'en')
+    ? 'Select at least ' + MIN_PARA_COMBOS_GEN + ' numbers to see suggested combinations (recommended: ' + MIN_GEN + ').'
+    : 'Selecciona al menos ' + MIN_PARA_COMBOS_GEN + ' números para ver combinaciones sugeridas (recomendado: ' + MIN_GEN + ').';
   var comboList = document.getElementById('gcCombos');
   document.getElementById('gcLimite').textContent = MIN_GEN === MAX_GEN ? String(MAX_GEN) : (MIN_GEN + '–' + MAX_GEN);
 
@@ -262,8 +268,15 @@
   function renderCombinaciones() {
     if (!COMBINACIONES_GEN.length) {
       comboSection.style.display = 'none';
+      if (seleccionadosGen.size > 0 && seleccionadosGen.size < MIN_PARA_COMBOS_GEN) {
+        comboMinMsg.textContent = TXT_MIN_COMBOS_GEN;
+        comboMinMsg.style.display = 'block';
+      } else {
+        comboMinMsg.style.display = 'none';
+      }
       return;
     }
+    comboMinMsg.style.display = 'none';
     comboSection.style.display = 'block';
     comboList.innerHTML = '';
     COMBINACIONES_GEN.forEach(function(combo, i){
