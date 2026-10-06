@@ -91,7 +91,7 @@
     guardadas: 'Saved: ', par: 'Pair', tercia: 'Triplet',
     desde: 'Tracked since draw ', transcurridos: 'draw since then', transcurridosPl: 'draws since then',
     salio: 'Hit {n} time(s) since you started tracking: ', noSalio: 'Has not hit since you started tracking.',
-    atraso: 'Current gap: ', sorteos: 'draws', borrar: 'Delete', borrarTodo: 'Delete all', confirmar: 'Delete all your tracked combinations?',
+    atraso: 'Current gap: ', sorteos: 'draws', borrar: 'Delete', borrarTodo: 'Delete all', confirmar: 'Delete all your tracked combinations?', usar: '➡️ Use',
     formEtq: 'Add your own pair or triplet:', formBoton: '+ Save',
     errIncompleto: 'Enter at least 2 numbers (N1 and N2).', errRango: 'Numbers must be between 1 and ' + MAX_NUM + '.',
     errRepetido: 'The numbers cannot repeat within the pair/triplet.', errYaExiste: 'You are already tracking that pair/triplet.',
@@ -103,7 +103,7 @@
     guardadas: 'Guardadas: ', par: 'Par', tercia: 'Tercia',
     desde: 'Lo sigues desde el concurso ', transcurridos: 'sorteo transcurrido', transcurridosPl: 'sorteos transcurridos',
     salio: 'Salió {n} vez/veces desde que lo sigues: ', noSalio: 'No ha salido desde que lo sigues.',
-    atraso: 'Atraso actual: ', sorteos: 'sorteos', borrar: 'Borrar', borrarTodo: 'Borrar todo', confirmar: '¿Borrar todas tus combinaciones guardadas?',
+    atraso: 'Atraso actual: ', sorteos: 'sorteos', borrar: 'Borrar', borrarTodo: 'Borrar todo', confirmar: '¿Borrar todas tus combinaciones guardadas?', usar: '➡️ Usar',
     formEtq: 'Agrega tu propio par o tercia:', formBoton: '+ Guardar',
     errIncompleto: 'Escribe al menos 2 números (N1 y N2).', errRango: 'Los números deben estar entre 1 y ' + MAX_NUM + '.',
     errRepetido: 'Los números no pueden repetirse dentro del par/tercia.', errYaExiste: 'Ya estás siguiendo ese par/tercia.',
@@ -190,12 +190,22 @@
         +   estado
         +   '<div>' + T.atraso + '<b>' + atraso + '</b> ' + T.sorteos + '</div>'
         + '</div>'
-        + '<button type="button" class="btn-limpiar-historial" onclick="borrarSeguimiento(' + idx + ')">' + T.borrar + '</button>'
+        + '<div style="display:flex; gap:6px;">'
+        +   '<button type="button" class="btn-aplicar" onclick="usarEnGeneradorSeg(' + idx + ')">' + T.usar + '</button>'
+        +   '<button type="button" class="btn-limpiar-historial" onclick="borrarSeguimiento(' + idx + ')">' + T.borrar + '</button>'
+        + '</div>'
         + '</div>';
     });
     cont.innerHTML = html;
   }
 
+  window.usarEnGeneradorSeg = function (idx) {
+    var lista = leer();
+    var item = lista[idx];
+    if (!item) return;
+    try { localStorage.setItem('generadorPrecarga', JSON.stringify(item.nums)); } catch (e) {}
+    window.location.href = 'generador.html';
+  };
   window.borrarSeguimiento = function (idx) {
     var lista = leer(); lista.splice(idx, 1); guardar(lista); pintar();
   };
