@@ -59,21 +59,10 @@
 .seg-no { color:#64748b; }
 .seg-vacio { text-align:center; padding:30px 10px; color:#64748b; }
 .seg-aviso { font-size:0.8rem; color:#64748b; margin:0 0 14px; }
-.seg-form { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:6px; }
-.seg-form input { width:64px; padding:8px 10px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; text-align:center; }
-.seg-form-error { font-size:0.8rem; color:#b91c1c; min-height:1.1em; margin-bottom:14px; }
 </style>
 <div class="buscar-historial-caja">
   <h2 id="segTitulo" style="margin-top:0;"></h2>
   <p id="segAviso" class="seg-aviso"></p>
-  <div class="seg-form">
-    <span id="segFormEtq" style="font-weight:600; font-size:0.9rem;"></span>
-    <input type="number" id="segN1" min="1" max="36" placeholder="N1">
-    <input type="number" id="segN2" min="1" max="36" placeholder="N2">
-    <input type="number" id="segN3" min="1" max="36" placeholder="N3">
-    <button type="button" class="btn-aplicar" id="segBtnAgregar"></button>
-  </div>
-  <div class="seg-form-error" id="segFormError"></div>
   <div id="segResumen" style="margin-bottom:10px; font-weight:600;"></div>
   <div id="listaSeguimiento"></div>
   <div id="segAcciones" style="margin-top:10px;"></div>
@@ -82,7 +71,6 @@
 (function () {
   var CLAVE = 'seguimientoCombinaciones';
   var MAX = 15;
-  var MAX_NUM = 36;
   var EN = document.documentElement.lang === 'en';
   var T = EN ? {
     titulo: '⭐ My tracking',
@@ -91,11 +79,7 @@
     guardadas: 'Saved: ', par: 'Pair', tercia: 'Triplet',
     desde: 'Tracked since draw ', transcurridos: 'draw since then', transcurridosPl: 'draws since then',
     salio: 'Hit {n} time(s) since you started tracking: ', noSalio: 'Has not hit since you started tracking.',
-    atraso: 'Current gap: ', sorteos: 'draws', borrar: 'Delete', borrarTodo: 'Delete all', confirmar: 'Delete all your tracked combinations?', usar: '➡️ Use',
-    formEtq: 'Add your own pair or triplet:', formBoton: '+ Save',
-    errIncompleto: 'Enter at least 2 numbers (N1 and N2).', errRango: 'Numbers must be between 1 and ' + MAX_NUM + '.',
-    errRepetido: 'The numbers cannot repeat within the pair/triplet.', errYaExiste: 'You are already tracking that pair/triplet.',
-    errLimite: 'You can track up to ' + MAX + '. Delete one first.', errGeneral: 'Could not save. Please try again.'
+    atraso: 'Current gap: ', sorteos: 'draws', borrar: 'Delete', borrarTodo: 'Delete all', confirmar: 'Delete all your tracked combinations?'
   } : {
     titulo: '⭐ Mi seguimiento',
     aviso: 'Registro personal de atraso. Cada sorteo es independiente: que un par o una tercia lleve muchos sorteos sin salir no significa que vaya a salir pronto.',
@@ -103,11 +87,7 @@
     guardadas: 'Guardadas: ', par: 'Par', tercia: 'Tercia',
     desde: 'Lo sigues desde el concurso ', transcurridos: 'sorteo transcurrido', transcurridosPl: 'sorteos transcurridos',
     salio: 'Salió {n} vez/veces desde que lo sigues: ', noSalio: 'No ha salido desde que lo sigues.',
-    atraso: 'Atraso actual: ', sorteos: 'sorteos', borrar: 'Borrar', borrarTodo: 'Borrar todo', confirmar: '¿Borrar todas tus combinaciones guardadas?', usar: '➡️ Usar',
-    formEtq: 'Agrega tu propio par o tercia:', formBoton: '+ Guardar',
-    errIncompleto: 'Escribe al menos 2 números (N1 y N2).', errRango: 'Los números deben estar entre 1 y ' + MAX_NUM + '.',
-    errRepetido: 'Los números no pueden repetirse dentro del par/tercia.', errYaExiste: 'Ya estás siguiendo ese par/tercia.',
-    errLimite: 'Puedes seguir hasta ' + MAX + '. Borra uno primero.', errGeneral: 'No se pudo guardar. Intenta de nuevo.'
+    atraso: 'Atraso actual: ', sorteos: 'sorteos', borrar: 'Borrar', borrarTodo: 'Borrar todo', confirmar: '¿Borrar todas tus combinaciones guardadas?'
   };
 
   function leer() {
@@ -120,37 +100,9 @@
     try { var r = await fetch(url, { cache: 'no-store' }); return await r.json(); } catch (e) { return null; }
   }
 
-  function clavePar(nums) { return nums.slice().sort(function (a, b) { return a - b; }).join('-'); }
-
-  window.agregarSeguimientoManual = async function () {
-    var elErr = document.getElementById('segFormError');
-    elErr.textContent = '';
-    var raw = [document.getElementById('segN1').value, document.getElementById('segN2').value, document.getElementById('segN3').value]
-      .map(function (v) { return v.trim(); }).filter(function (v) { return v !== ''; });
-    if (raw.length < 2) { elErr.textContent = T.errIncompleto; return; }
-    var nums = raw.map(Number);
-    if (nums.some(function (n) { return !Number.isInteger(n) || n < 1 || n > MAX_NUM; })) { elErr.textContent = T.errRango; return; }
-    if (new Set(nums).size !== nums.length) { elErr.textContent = T.errRepetido; return; }
-    var lista = leer();
-    var clave = clavePar(nums);
-    if (lista.some(function (x) { return clavePar(x.nums) === clave; })) { elErr.textContent = T.errYaExiste; return; }
-    if (lista.length >= MAX) { elErr.textContent = T.errLimite; return; }
-    var desde = 0;
-    try { var v = await cargar('version.json'); desde = (v && parseInt(v.concurso)) || 0; } catch (e) {}
-    if (!desde) { elErr.textContent = T.errGeneral; return; }
-    lista.push({ tipo: nums.length === 3 ? 'tercia' : 'par', nums: nums, desde: desde });
-    guardar(lista);
-    document.getElementById('segN1').value = '';
-    document.getElementById('segN2').value = '';
-    document.getElementById('segN3').value = '';
-    pintar();
-  };
-
   async function pintar() {
     document.getElementById('segTitulo').textContent = T.titulo;
     document.getElementById('segAviso').textContent = T.aviso;
-    document.getElementById('segFormEtq').textContent = T.formEtq;
-    document.getElementById('segBtnAgregar').textContent = T.formBoton;
     var cont = document.getElementById('listaSeguimiento');
     var lista = leer();
     document.getElementById('segResumen').textContent = T.guardadas + lista.length + '/' + MAX;
@@ -190,29 +142,18 @@
         +   estado
         +   '<div>' + T.atraso + '<b>' + atraso + '</b> ' + T.sorteos + '</div>'
         + '</div>'
-        + '<div style="display:flex; gap:6px;">'
-        +   '<button type="button" class="btn-aplicar" onclick="usarEnGeneradorSeg(' + idx + ')">' + T.usar + '</button>'
-        +   '<button type="button" class="btn-limpiar-historial" onclick="borrarSeguimiento(' + idx + ')">' + T.borrar + '</button>'
-        + '</div>'
+        + '<button type="button" class="btn-limpiar-historial" onclick="borrarSeguimiento(' + idx + ')">' + T.borrar + '</button>'
         + '</div>';
     });
     cont.innerHTML = html;
   }
 
-  window.usarEnGeneradorSeg = function (idx) {
-    var lista = leer();
-    var item = lista[idx];
-    if (!item) return;
-    try { localStorage.setItem('generadorPrecarga', JSON.stringify(item.nums)); } catch (e) {}
-    window.location.href = 'generador.html';
-  };
   window.borrarSeguimiento = function (idx) {
     var lista = leer(); lista.splice(idx, 1); guardar(lista); pintar();
   };
   window.borrarTodoSeguimiento = function () {
     if (confirm(T.confirmar)) { guardar([]); pintar(); }
   };
-  document.getElementById('segBtnAgregar').addEventListener('click', agregarSeguimientoManual);
   pintar();
 })();
 </script>
