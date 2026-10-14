@@ -12460,5 +12460,6 @@
   {"concurso":12460,"fecha":"11/10/2026","sorteo":"EVENING","numeros":[4,8,13,21,35]},
   {"concurso":12461,"fecha":"12/10/2026","sorteo":"MIDDAY","numeros":[1,5,7,10,26]},
   {"concurso":12462,"fecha":"12/10/2026","sorteo":"EVENING","numeros":[6,9,11,18,36]},
-  {"concurso":12463,"fecha":"13/10/2026","sorteo":"MIDDAY","numeros":[9,16,19,34,36]}
+  {"concurso":12463,"fecha":"13/10/2026","sorteo":"MIDDAY","numeros":[9,16,19,34,36]},
+  {"concurso":12464,"fecha":"13/10/2026","sorteo":"EVENING","numeros":[17,18,20,29,30]}
 ]
