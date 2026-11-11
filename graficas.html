@@ -36,7 +36,6 @@
 <header class="header-bar">
   <div class="header-brand">⚡ Resultados Fantasy 5</div>
   <nav class="nav-menu">
-    <a class="btn-glow" href="http://www.fantasy5florida.online" target="_blank" rel="noopener">🎰 Florida Fantasy 5 en español</a>
   </nav>
 </header>
 <main class="main-container">
@@ -46,7 +45,7 @@
 <div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
 <div class="tabs-estadisticas">
   <a class="tab-btn-estadisticas" href="index.html">📊 Números<span class="tab-help">?<span class="tab-help-tip">Qué números y pares llevan más sorteos sin salir.</span></span></a>
-  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus numeros<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
   <a class="tab-btn-estadisticas activo" href="graficas.html">📈 Gráficas<span class="tab-help">?<span class="tab-help-tip">Compara visualmente el atraso de cada número.</span></span></a>
   <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones<span class="tab-help">?<span class="tab-help-tip">Arma combinaciones de 5 a partir de los números recomendados.</span></span></a>
   <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento<span class="tab-help">?<span class="tab-help-tip">Guarda pares y tercias y mira cuántos sorteos llevan sin salir.</span></span></a>
@@ -176,7 +175,7 @@ async function buscarGraficaAtraso() {
   const etiquetas = numeros.map(function(n){ return 'N° ' + n + ''; });
   const tipo = numeros.length === 1 ? 'Número' : numeros.length === 2 ? 'Par' : 'Tercia';
   resumen.innerHTML = '' + tipo + ' ' + numeros.join('-') + ': atraso actual por número';
-  dibujarGraficaAtraso('Distancia por Número', etiquetas, valores, 'contenidoGraficaAtraso');
+  dibujarGraficaAtraso('Atraso por Número', etiquetas, valores, 'contenidoGraficaAtraso');
 }
 
 (function () {

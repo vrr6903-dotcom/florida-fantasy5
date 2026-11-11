@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generar combinaciones | Fantasy 5</title>
+<title>Generador de combinaciones | Fantasy 5</title>
 <link rel="stylesheet" href="estilos.css">
 <style>
 .tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
@@ -36,7 +36,6 @@
 <header class="header-bar">
   <div class="header-brand">⚡ Resultados Fantasy 5</div>
   <nav class="nav-menu">
-    <a class="btn-glow" href="http://www.fantasy5florida.online" target="_blank" rel="noopener">🎰 Florida Fantasy 5 en español</a>
   </nav>
 </header>
 <main class="main-container">
@@ -46,13 +45,13 @@
 <div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
 <div class="tabs-estadisticas">
   <a class="tab-btn-estadisticas" href="index.html">📊 Números<span class="tab-help">?<span class="tab-help-tip">Qué números y pares llevan más sorteos sin salir.</span></span></a>
-  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus numeros<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
   <a class="tab-btn-estadisticas" href="graficas.html">📈 Gráficas<span class="tab-help">?<span class="tab-help-tip">Compara visualmente el atraso de cada número.</span></span></a>
   <a class="tab-btn-estadisticas activo" href="generador.html">🎲 Genera tus combinaciones<span class="tab-help">?<span class="tab-help-tip">Arma combinaciones de 5 a partir de los números recomendados.</span></span></a>
   <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento<span class="tab-help">?<span class="tab-help-tip">Guarda pares y tercias y mira cuántos sorteos llevan sin salir.</span></span></a>
 </div>
 <div class="buscar-historial-caja">
-  <p style="margin-top:0; color:#64748b; font-size:0.9rem;">Combina el número, el par y la tercia más atrasados del historial para armar una combinación de 5. Es un ejercicio estadístico sobre atrasos históricos, <strong>no una predicción de resultados</strong>.</p>
+  <p style="margin-top:0; color:#64748b; font-size:0.9rem;">Parte de los números recomendados o elige los tuyos, y genera hasta 100 combinaciones de 5 a partir de tu selección. Es un ejercicio estadístico sobre atrasos históricos, <strong>no una predicción de resultados</strong>.</p>
 </div>
 <style>
 .gc-card { background:#151b26; border:1px solid #232a38; border-radius:16px; padding:24px; margin-top:16px; color:#e6e9ef; }
@@ -132,7 +131,7 @@
   var JSON_URL_GEN = 'recomendados.json';
   var ETIQUETA_WHATSAPP = 'Mi selección de números en Fantasy 5';
   var ETIQUETA_WHATSAPP_COMBOS = 'Mis combinaciones sugeridas en Fantasy 5';
-  var URL_SITIO_GEN = 'https://https://fantasy5florida.online';
+  var URL_SITIO_GEN = 'https://www.fantasy5florida.online';
   var RECOMENDADOS_GEN = new Set();
   var seleccionadosGen = new Set();
   var COMBINACIONES_GEN = [];
