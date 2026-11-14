@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.fantasy5florida.online/sitemap.xml
-Sitemap: https://www.fantasy5florida.online/sitemap-reciente.xml
+Sitemap: https://fantasy5florida.online/sitemap.xml
+Sitemap: https://fantasy5florida.online/sitemap-reciente.xml
