@@ -3,17 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi seguimiento | Fantasy 5</title>
+<title>Mi seguimiento | Fantasy 5 Florida</title>
+<meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="estilos.css">
 <style>
 .tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
 .tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
 .tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
 .tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
-.tab-help { position:relative; display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; margin-left:6px; border-radius:50%; background:rgba(100,116,139,0.18); color:inherit; font-size:0.7rem; font-weight:700; vertical-align:middle; }
-.tab-help-tip { visibility:hidden; opacity:0; position:absolute; bottom:calc(100% + 9px); left:50%; transform:translateX(-50%); background:#1e293b; color:#fff; font-size:0.75rem; font-weight:400; line-height:1.35; padding:8px 10px; border-radius:6px; width:190px; text-align:center; white-space:normal; transition:opacity 0.15s ease; pointer-events:none; z-index:30; }
-.tab-help-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#1e293b; }
-@media (hover: hover) { .tab-help:hover .tab-help-tip { visibility:visible; opacity:1; } }
 .buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
 .buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
@@ -34,8 +31,9 @@
 </head>
 <body>
 <header class="header-bar">
-  <div class="header-brand">⚡ Resultados Fantasy 5</div>
-  <nav class="nav-menu">
+  <div class="header-brand">⚡ Resultados Fantasy 5 Florida</div>
+  <nav class="nav-menu" style="flex-wrap:wrap;gap:8px;justify-content:flex-end">
+    <a class="btn-glow" href="https://www.resultadoschispazohoy.com" target="_blank" rel="noopener">🎰 Chispazo México</a>
   </nav>
 </header>
 <main class="main-container">
@@ -44,12 +42,36 @@
   <section>
 <div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
 <div class="tabs-estadisticas">
-  <a class="tab-btn-estadisticas" href="index.html">📊 Números<span class="tab-help">?<span class="tab-help-tip">Qué números y pares llevan más sorteos sin salir.</span></span></a>
-  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
-  <a class="tab-btn-estadisticas" href="graficas.html">📈 Gráficas<span class="tab-help">?<span class="tab-help-tip">Compara visualmente el atraso de cada número.</span></span></a>
-  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones<span class="tab-help">?<span class="tab-help-tip">Arma combinaciones de 5 a partir de los números recomendados.</span></span></a>
-  <a class="tab-btn-estadisticas activo" href="seguimiento.html">⭐ Seguimiento<span class="tab-help">?<span class="tab-help-tip">Guarda pares y tercias y mira cuántos sorteos llevan sin salir.</span></span></a>
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
+  <a class="tab-btn-estadisticas" href="trios.html">🧩 Tríos</a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números</a>
+  <a class="tab-btn-estadisticas" href="analiza-tu-numero.html">🔢 Analiza tu número</a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones</a>
+  <a class="tab-btn-estadisticas activo" href="seguimiento.html">⭐ Seguimiento</a>
 </div>
+<style>
+.ayuda-pestana { margin:0 0 16px; }
+.ayuda-pestana > summary { display:inline-flex; align-items:center; gap:6px; cursor:pointer; list-style:none; padding:8px 14px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:20px; color:#1d4ed8; font-weight:600; font-size:0.9rem; user-select:none; }
+.ayuda-pestana > summary::-webkit-details-marker { display:none; }
+.ayuda-pestana > summary::after { content:'\25BE'; font-size:0.8rem; transition:transform 0.15s; }
+.ayuda-pestana[open] > summary::after { transform:rotate(180deg); }
+.ayuda-contenido { margin-top:10px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 18px; font-size:0.9rem; line-height:1.55; color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.ayuda-contenido ul { margin:0; padding-left:20px; }
+.ayuda-contenido li { margin:6px 0; }
+.ayuda-aviso { margin:10px 0 0; padding-top:10px; border-top:1px solid #e2e8f0; font-size:0.8rem; color:#64748b; }
+</style>
+<details class="ayuda-pestana" id="ayudaPestana" data-pestana="4">
+  <summary>💡 ¿Cómo usar esta pestaña?</summary>
+  <div class="ayuda-contenido">
+    <ul>
+      <li>Guarda pares y tercias desde las pestañas <b>Números</b> y <b>Tríos</b> con el botón <b>⭐ Guardar</b>, o escribe los tuyos arriba (2 o 3 números).</li>
+      <li>Cada tarjeta muestra desde qué concurso lo sigues, cuántos sorteos han pasado, si ha salido y su atraso actual.</li>
+      <li>Con <b>➡️ Usar</b> llevas esos números a la pestaña Genera tus combinaciones; con <b>Borrar</b> lo quitas de tu lista.</li>
+      <li>Puedes guardar hasta 15. Se guardan solo en este navegador y en este dispositivo: si borras los datos del navegador, se pierden.</li>
+    </ul>
+  </div>
+</details>
+<script>(function(){var d=document.getElementById('ayudaPestana');if(!d)return;try{var k='ayudaVista_'+d.getAttribute('data-pestana');if(false&&!localStorage.getItem(k)){d.open=true;localStorage.setItem(k,'1');}}catch(e){}})();</script>
 <style>
 .seg-card { display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 16px; margin-bottom:10px; }
 .seg-nums { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
@@ -59,6 +81,7 @@
 .seg-no { color:#64748b; }
 .seg-vacio { text-align:center; padding:30px 10px; color:#64748b; }
 .seg-aviso { font-size:0.8rem; color:#64748b; margin:0 0 14px; }
+.seg-aviso-local { font-size:0.8rem; color:#92400e; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:6px 10px; margin:0 0 14px; }
 .seg-form { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:6px; }
 .seg-form input { width:64px; padding:8px 10px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; text-align:center; }
 .seg-form-error { font-size:0.8rem; color:#b91c1c; min-height:1.1em; margin-bottom:14px; }
@@ -66,6 +89,7 @@
 <div class="buscar-historial-caja">
   <h2 id="segTitulo" style="margin-top:0;"></h2>
   <p id="segAviso" class="seg-aviso"></p>
+  <p id="segAvisoLocal" class="seg-aviso-local"></p>
   <div class="seg-form">
     <span id="segFormEtq" style="font-weight:600; font-size:0.9rem;"></span>
     <input type="number" id="segN1" min="1" max="36" placeholder="N1">
@@ -87,7 +111,8 @@
   var T = EN ? {
     titulo: '⭐ My tracking',
     aviso: 'Personal record of gaps. Every draw is independent: a pair or triplet that has gone many draws without hitting is not more likely to hit soon.',
-    vacio: 'You are not tracking anything yet. Go to the Numbers tab and press Save on a pair or triplet.',
+    avisoLocal: '💾 Your tracking is saved only in this browser on this device. If you switch browsers or devices, use private browsing, or clear your browsing data, you will lose it.',
+    vacio: 'You are not tracking anything yet. Go to the Numbers or Trios tab and press Save on a pair or triplet.',
     guardadas: 'Saved: ', par: 'Pair', tercia: 'Triplet',
     desde: 'Tracked since draw ', transcurridos: 'draw since then', transcurridosPl: 'draws since then',
     salio: 'Hit {n} time(s) since you started tracking: ', noSalio: 'Has not hit since you started tracking.',
@@ -99,7 +124,8 @@
   } : {
     titulo: '⭐ Mi seguimiento',
     aviso: 'Registro personal de atraso. Cada sorteo es independiente: que un par o una tercia lleve muchos sorteos sin salir no significa que vaya a salir pronto.',
-    vacio: 'Aún no sigues ninguna combinación. Ve a la pestaña Números y pulsa Guardar en un par o una tercia.',
+    avisoLocal: '💾 Tu seguimiento se guarda solo en este navegador y en este dispositivo. Si cambias de navegador o de celular, usas el modo incógnito o borras los datos de navegación, lo perderás.',
+    vacio: 'Aún no sigues ninguna combinación. Ve a la pestaña Números o Tríos y pulsa Guardar en un par o una tercia.',
     guardadas: 'Guardadas: ', par: 'Par', tercia: 'Tercia',
     desde: 'Lo sigues desde el concurso ', transcurridos: 'sorteo transcurrido', transcurridosPl: 'sorteos transcurridos',
     salio: 'Salió {n} vez/veces desde que lo sigues: ', noSalio: 'No ha salido desde que lo sigues.',
@@ -149,6 +175,7 @@
   async function pintar() {
     document.getElementById('segTitulo').textContent = T.titulo;
     document.getElementById('segAviso').textContent = T.aviso;
+    document.getElementById('segAvisoLocal').textContent = T.avisoLocal;
     document.getElementById('segFormEtq').textContent = T.formEtq;
     document.getElementById('segBtnAgregar').textContent = T.formBoton;
     var cont = document.getElementById('listaSeguimiento');
@@ -217,11 +244,13 @@
 })();
 </script>
   </section>
-  <aside class="aside-right"></aside>
+  <aside class="aside-right">
+  </aside>
 </main>
 <div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
   ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
   <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+<span style="display:block; margin-top:8px; font-size:0.85rem; font-weight:normal;"><a href="acerca.html" style="color:#2563eb;">Acerca de</a> · <a href="privacidad.html" style="color:#2563eb;">Privacidad</a> · <a href="contacto.html" style="color:#2563eb;">Contacto</a></span>
 </div>
 </body>
 </html>

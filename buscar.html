@@ -3,17 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Busca tus números | Fantasy 5</title>
+<title>Busca tus números | Fantasy 5 Florida</title>
+<meta name="description" content="Busca en todo el historial de sorteos de Fantasy 5 Florida dónde han salido tus números, pares o tercias.">
+<link rel="canonical" href="https://www.fantasy5florida.online/buscar.html">
 <link rel="stylesheet" href="estilos.css">
 <style>
 .tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
 .tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
 .tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
 .tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
-.tab-help { position:relative; display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; margin-left:6px; border-radius:50%; background:rgba(100,116,139,0.18); color:inherit; font-size:0.7rem; font-weight:700; vertical-align:middle; }
-.tab-help-tip { visibility:hidden; opacity:0; position:absolute; bottom:calc(100% + 9px); left:50%; transform:translateX(-50%); background:#1e293b; color:#fff; font-size:0.75rem; font-weight:400; line-height:1.35; padding:8px 10px; border-radius:6px; width:190px; text-align:center; white-space:normal; transition:opacity 0.15s ease; pointer-events:none; z-index:30; }
-.tab-help-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#1e293b; }
-@media (hover: hover) { .tab-help:hover .tab-help-tip { visibility:visible; opacity:1; } }
 .buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
 .buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
@@ -34,8 +32,9 @@
 </head>
 <body>
 <header class="header-bar">
-  <div class="header-brand">⚡ Resultados Fantasy 5</div>
-  <nav class="nav-menu">
+  <div class="header-brand">⚡ Resultados Fantasy 5 Florida</div>
+  <nav class="nav-menu" style="flex-wrap:wrap;gap:8px;justify-content:flex-end">
+    <a class="btn-glow" href="https://www.resultadoschispazohoy.com" target="_blank" rel="noopener">🎰 Chispazo México</a>
   </nav>
 </header>
 <main class="main-container">
@@ -44,17 +43,42 @@
   <section>
 <div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
 <div class="tabs-estadisticas">
-  <a class="tab-btn-estadisticas" href="index.html">📊 Números<span class="tab-help">?<span class="tab-help-tip">Qué números y pares llevan más sorteos sin salir.</span></span></a>
-  <a class="tab-btn-estadisticas activo" href="buscar.html">🔍 Busca tus números<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
-  <a class="tab-btn-estadisticas" href="graficas.html">📈 Gráficas<span class="tab-help">?<span class="tab-help-tip">Compara visualmente el atraso de cada número.</span></span></a>
-  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones<span class="tab-help">?<span class="tab-help-tip">Arma combinaciones de 5 a partir de los números recomendados.</span></span></a>
-  <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento<span class="tab-help">?<span class="tab-help-tip">Guarda pares y tercias y mira cuántos sorteos llevan sin salir.</span></span></a>
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
+  <a class="tab-btn-estadisticas" href="trios.html">🧩 Tríos</a>
+  <a class="tab-btn-estadisticas activo" href="buscar.html">🔍 Busca tus números</a>
+  <a class="tab-btn-estadisticas" href="analiza-tu-numero.html">🔢 Analiza tu número</a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones</a>
+  <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento</a>
 </div>
+<style>
+.ayuda-pestana { margin:0 0 16px; }
+.ayuda-pestana > summary { display:inline-flex; align-items:center; gap:6px; cursor:pointer; list-style:none; padding:8px 14px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:20px; color:#1d4ed8; font-weight:600; font-size:0.9rem; user-select:none; }
+.ayuda-pestana > summary::-webkit-details-marker { display:none; }
+.ayuda-pestana > summary::after { content:'\25BE'; font-size:0.8rem; transition:transform 0.15s; }
+.ayuda-pestana[open] > summary::after { transform:rotate(180deg); }
+.ayuda-contenido { margin-top:10px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 18px; font-size:0.9rem; line-height:1.55; color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.ayuda-contenido ul { margin:0; padding-left:20px; }
+.ayuda-contenido li { margin:6px 0; }
+.ayuda-aviso { margin:10px 0 0; padding-top:10px; border-top:1px solid #e2e8f0; font-size:0.8rem; color:#64748b; }
+</style>
+<details class="ayuda-pestana" id="ayudaPestana" data-pestana="1">
+  <summary>💡 ¿Cómo usar esta pestaña?</summary>
+  <div class="ayuda-contenido">
+    <ul>
+      <li>Escribe de 1 a 5 números del 1 al 36, separados por un espacio o una coma, y toca <b>Buscar</b>.</li>
+      <li>Verás los concursos en los que salieron juntos, del más reciente al más antiguo (hasta 500), con tus números marcados en verde.</li>
+      <li>También aparece una gráfica con cuántas veces salieron juntos en cada año.</li>
+      <li>Los botones <b>Buscar</b> de las otras pestañas te traen aquí con los números ya escritos.</li>
+      <li>Debajo del buscador puedes descargar el historial completo.</li>
+    </ul>
+  </div>
+</details>
+<script>(function(){var d=document.getElementById('ayudaPestana');if(!d)return;try{var k='ayudaVista_'+d.getAttribute('data-pestana');if(false&&!localStorage.getItem(k)){d.open=true;localStorage.setItem(k,'1');}}catch(e){}})();</script>
 <div class="buscar-historial-caja">
   <div class="buscar-historial-controles">
     <label for="inputBuscarNumeros">Escribe tus números para ver dónde han salido:</label>
-    <input type="text" id="inputBuscarNumeros" placeholder="Ej: 01, 05, 07, 15, 20, 36" style="min-width:260px;">
-    <button type="button" class="btn-buscar-historial" onclick="buscarEnHistorial()">🔵 Buscar en todo el historial</button>
+    <input type="text" id="inputBuscarNumeros" placeholder="Ej: 01, 05, 07, 15, 20" style="min-width:260px;">
+    <button type="button" class="btn-buscar-historial" onclick="POS_BUSCAR=null;buscarEnHistorial()">🔵 Buscar en todo el historial</button>
     <button type="button" class="btn-limpiar-historial" onclick="limpiarBusquedaHistorial()">🗑️ Limpiar</button>
   </div>
   <div style="margin-bottom:14px; font-size:0.85rem;">📥 ¿Prefieres verlo en Excel? <a href="historial.csv" download>Descarga el historial completo aquí</a>.</div>
@@ -66,11 +90,13 @@
   </table>
 </div>
   </section>
-  <aside class="aside-right"></aside>
+  <aside class="aside-right">
+  </aside>
 </main>
 <div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
   ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
   <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+<span style="display:block; margin-top:8px; font-size:0.85rem; font-weight:normal;"><a href="acerca.html" style="color:#2563eb;">Acerca de</a> · <a href="privacidad.html" style="color:#2563eb;">Privacidad</a> · <a href="contacto.html" style="color:#2563eb;">Contacto</a></span>
 </div>
 <script>
 var historialCacheJSON = null;
@@ -86,6 +112,7 @@ async function cargarHistorialJSON() {
   return historialCacheJSON;
 }
 
+var POS_BUSCAR = null;
 async function buscarEnHistorial() {
   const valor = document.getElementById('inputBuscarNumeros').value;
   const numeros = valor.split(/[\s,]+/).map(function(n){ return parseInt(n,10); }).filter(function(n){ return !isNaN(n); });
@@ -103,18 +130,24 @@ async function buscarEnHistorial() {
   }
   resumen.innerHTML = 'Buscando...';
   const historial = await cargarHistorialJSON();
+  const pos = (POS_BUSCAR && POS_BUSCAR.nums.join(',') === numeros.join(',')) ? POS_BUSCAR.pos : null;
   const encontrados = historial.filter(function(s){
-    return numeros.every(function(n){ return s.numeros.indexOf(n) !== -1; });
+    return numeros.every(function(n, i){ return (pos && pos[i] > 0) ? s.numeros[pos[i] - 1] === n : s.numeros.indexOf(n) !== -1; });
   });
   const badges = numeros.map(function(n){ return '<span class="badge-numero-verde">' + n + '</span>'; }).join(' ');
   resumen.innerHTML = 'Se encontraron ' + encontrados.length + ' sorteos con: ' + badges + '';
+  if (pos) {
+    const en = document.documentElement.lang === 'en';
+    resumen.innerHTML += (en ? ' in positions ' : ' en las posiciones ') + pos.join('-') + ' · <a href="#" onclick="POS_BUSCAR=null;buscarEnHistorial();return false;">' + (en ? 'see in any position' : 'ver en cualquier posición') + '</a>';
+  }
   const LIMITE = 500;
   const paraMostrar = encontrados.slice().reverse().slice(0, LIMITE);
   let filas = '';
   paraMostrar.forEach(function(s){
     let celdas = '';
-    s.numeros.forEach(function(n){
-      celdas += '<td>' + (numeros.indexOf(n) !== -1 ? '<span class="badge-numero-verde">' + n + '</span>' : n) + '</td>';
+    s.numeros.forEach(function(n, k){
+      const marcar = pos ? numeros.some(function(m, i){ return m === n && (!(pos[i] > 0) || pos[i] - 1 === k); }) : numeros.indexOf(n) !== -1;
+      celdas += '<td>' + (marcar ? '<span class="badge-numero-verde">' + n + '</span>' : n) + '</td>';
     });
     filas += '<tr><td>' + s.concurso + '</td>' + celdas + '<td>' + s.fecha + '</td></tr>';
   });
@@ -168,6 +201,7 @@ function cerrarGraficaAparicionesBuscar() {
 }
 
 function limpiarBusquedaHistorial() {
+  POS_BUSCAR = null;
   document.getElementById('inputBuscarNumeros').value = '';
   document.getElementById('resumenBusquedaHistorial').innerHTML = '';
   document.getElementById('tablaBusquedaHistorialBody').innerHTML = '';
@@ -178,6 +212,9 @@ function limpiarBusquedaHistorial() {
     const pendientes = localStorage.getItem('buscarHistorialNumeros');
     if (pendientes) {
       localStorage.removeItem('buscarHistorialNumeros');
+      const posPend = localStorage.getItem('buscarHistorialPos');
+      localStorage.removeItem('buscarHistorialPos');
+      if (posPend) { POS_BUSCAR = { nums: pendientes.split(/[\s,]+/).map(Number), pos: posPend.split(',').map(Number) }; }
       document.getElementById('inputBuscarNumeros').value = pendientes;
       buscarEnHistorial();
     }

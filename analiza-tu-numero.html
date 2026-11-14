@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analiza tu número: atraso y veces que ha salido | Fantasy 5 Florida</title>
+<meta name="description" content="Elige de 1 a 5 números de Fantasy 5 Florida y mira cuántas veces han salido, cuánto llevan sin salir y con qué otros números salen. Información sin validez oficial.">
+<link rel="canonical" href="https://www.fantasy5florida.online/analiza-tu-numero.html">
+<link rel="stylesheet" href="estilos.css">
+<style>
+.tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
+.tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
+.tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
+.tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
+.buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
+.buscar-historial-controles button { padding:9px 16px; border:none; border-radius:6px; font-weight:600; font-size:0.9rem; cursor:pointer; }
+.btn-buscar-historial { background:#2563eb; color:#fff; }
+.btn-limpiar-historial { background:#94a3b8; color:#fff; }
+.badge-numero-verde { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 4px; background:#22c55e; color:#fff; font-weight:700; border-radius:6px; font-size:0.85rem; }
+.tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
+.tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
+.gpa-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #cbd5e1;color:#334155;cursor:pointer;font-size:0.9rem;font-weight:600;padding:8px 12px;border-radius:20px;}
+.gpa-chip:hover{border-color:#2563eb;color:#2563eb;}
+.gpa-chip.activo{background:#eff6ff;border-color:#2563eb;color:#1d4ed8;}
+.gpa-atraso{background:#f1f5f9;border-radius:10px;padding:1px 7px;font-size:0.78rem;color:#64748b;}
+.gpa-chip.activo .gpa-atraso{background:#dbeafe;color:#1d4ed8;}
+#gpaBtnUsar:disabled{opacity:0.5;cursor:not-allowed;}
+
+</style>
+</head>
+<body>
+<header class="header-bar">
+  <div class="header-brand">⚡ Resultados Fantasy 5 Florida</div>
+  <nav class="nav-menu" style="flex-wrap:wrap;gap:8px;justify-content:flex-end">
+    <a class="btn-glow" href="https://www.resultadoschispazohoy.com" target="_blank" rel="noopener">🎰 Chispazo México</a>
+  </nav>
+</header>
+<main class="main-container">
+  <aside class="aside-left">
+  </aside>
+  <section>
+<div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
+<div class="tabs-estadisticas">
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
+  <a class="tab-btn-estadisticas" href="trios.html">🧩 Tríos</a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números</a>
+  <a class="tab-btn-estadisticas activo" href="analiza-tu-numero.html">🔢 Analiza tu número</a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones</a>
+  <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento</a>
+</div>
+<style>
+.ayuda-pestana { margin:0 0 16px; }
+.ayuda-pestana > summary { display:inline-flex; align-items:center; gap:6px; cursor:pointer; list-style:none; padding:8px 14px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:20px; color:#1d4ed8; font-weight:600; font-size:0.9rem; user-select:none; }
+.ayuda-pestana > summary::-webkit-details-marker { display:none; }
+.ayuda-pestana > summary::after { content:'\25BE'; font-size:0.8rem; transition:transform 0.15s; }
+.ayuda-pestana[open] > summary::after { transform:rotate(180deg); }
+.ayuda-contenido { margin-top:10px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 18px; font-size:0.9rem; line-height:1.55; color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.ayuda-contenido ul { margin:0; padding-left:20px; }
+.ayuda-contenido li { margin:6px 0; }
+.ayuda-aviso { margin:10px 0 0; padding-top:10px; border-top:1px solid #e2e8f0; font-size:0.8rem; color:#64748b; }
+</style>
+<details class="ayuda-pestana" id="ayudaPestana" data-pestana="2">
+  <summary>💡 ¿Cómo usar esta pestaña?</summary>
+  <div class="ayuda-contenido">
+    <ul>
+      <li>Toca de 1 a 5 números del 1 al 36. Vuelve a tocar uno para quitarlo.</li>
+      <li>Con <b>un número</b> ves lo mismo que en su página: atraso, veces que ha salido, últimas apariciones, los números con los que sale y las apariciones por año.</li>
+      <li>Con <b>varios números</b> ves los sorteos en que salieron juntos, los números que más salen con ellos y las apariciones por año.</li>
+      <li>Con <b>Mostrar sorteos con</b> también ves los sorteos donde solo salieron algunos de tus números (por ejemplo, al menos 3 de 5).</li>
+      <li>Junto a cada porcentaje ves lo que se espera por azar.</li>
+    </ul>
+    <p class="ayuda-aviso">Son datos históricos. Cada sorteo es independiente: que algo lleve muchos concursos sin salir no significa que vaya a salir pronto.</p>
+  </div>
+</details>
+<script>(function(){var d=document.getElementById('ayudaPestana');if(!d)return;try{var k='ayudaVista_'+d.getAttribute('data-pestana');if(false&&!localStorage.getItem(k)){d.open=true;localStorage.setItem(k,'1');}}catch(e){}})();</script>
+<div class="buscar-historial-caja" id="analiza">
+<style>
+#analiza .an-h1{font-size:1.35rem;margin:0 0 8px;color:#1e293b;line-height:1.3;}
+#analiza .an-intro{color:#334155;font-size:0.95rem;line-height:1.55;margin:0 0 16px;}
+#analiza .an-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:8px;max-width:560px;margin:0 auto 14px;}
+#analiza .an-n{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#334155;font-weight:700;text-decoration:none;font-size:0.95rem;}
+#analiza .an-n:hover{border-color:#2563eb;color:#1d4ed8;}
+#analiza .an-n:focus-visible,#analiza .nn-btn:focus-visible{outline:3px solid #2563eb;outline-offset:2px;}
+#analiza .an-n.on{background:#2563eb;border-color:#2563eb;color:#fff;box-shadow:0 2px 6px rgba(37,99,235,0.35);}
+#analiza .an-barra{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:center;margin:0 0 6px;}
+#analiza .an-sel{font-weight:600;color:#1e293b;font-size:0.95rem;}
+#analiza .an-min{font-size:0.9rem;color:#334155;}
+#analiza .an-min select{padding:7px 10px;border:1px solid #cbd5e1;border-radius:6px;font-size:0.9rem;background:#fff;}
+#analiza .an-aviso{min-height:1.2em;text-align:center;color:#b45309;font-size:0.88rem;margin:0 0 4px;}
+#analiza .an-vacio{color:#475569;text-align:center;font-size:0.95rem;margin:18px 0;}
+#analiza .an-resultado{margin-top:8px;text-align:left;}
+#analiza .an-ver{text-align:center;margin:16px 0 0;}
+#analiza .an-importante{margin:22px 0 0;padding:10px 12px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;color:#92400e;font-size:0.88rem;line-height:1.5;text-align:left;}
+#analiza .nn-grande{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:8px 0 14px;}
+#analiza .nn-esfera{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.9rem;color:#fff;background:radial-gradient(circle at 30% 28%,#60a5fa,#2563eb 65%,#1e40af);box-shadow:0 3px 8px rgba(37,99,235,0.35);}
+#analiza .nn-esfera.chica{width:52px;height:52px;font-size:1.2rem;}
+#analiza .nn-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0 16px;text-align:center;}
+#analiza .nn-stat{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px 8px;}
+#analiza .nn-stat b{display:block;font-size:1.45rem;color:#1d4ed8;line-height:1.2;}
+#analiza .nn-stat span{font-size:0.8rem;color:#526071;}
+#analiza .an-resultado h2{font-size:1.1rem;margin:26px 0 8px;color:#1e3a5f;text-align:left;}
+#analiza .nn-texto{color:#334155;font-size:0.95rem;line-height:1.6;margin:0 0 10px;text-align:left;}
+#analiza .nn-tabla-wrap{overflow-x:auto;}
+#analiza .nn-tabla{width:100%;border-collapse:collapse;font-size:0.92rem;}
+#analiza .nn-tabla th{background:#2f6690;color:#fff;padding:9px 8px;text-align:center;font-weight:600;white-space:nowrap;}
+#analiza .nn-tabla td{padding:8px;text-align:center;border-bottom:1px solid #eef2f7;}
+#analiza .nn-tabla tbody tr:nth-child(even){background:#f8fafc;}
+#analiza .nn-tabla a{color:#1d4ed8;font-weight:700;text-decoration:none;}
+#analiza .nn-tabla td:first-child{white-space:nowrap;}
+#analiza .nn-tabla small{color:#526071;font-size:0.82em;}
+#analiza .nn-bola{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin:0 2px;border-radius:50%;font-weight:800;font-size:0.9rem;color:#fff !important;text-decoration:none !important;background:radial-gradient(circle at 30% 28%,#fbbf24,#d97706 70%);box-shadow:0 2px 5px rgba(217,119,6,0.35);}
+#analiza .nn-n{display:inline-block;min-width:24px;margin:0 1px;padding:2px 3px;border-radius:6px;font-weight:600;color:#475569;}
+#analiza .nn-n.on{background:#2563eb;color:#fff;font-weight:800;}
+#analiza .nn-btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-weight:600;font-size:0.9rem;text-decoration:none;cursor:pointer;}
+@media(min-width:640px){#analiza .nn-stats{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:480px){#analiza .nn-tabla{font-size:0.8rem;}#analiza .nn-tabla th,#analiza .nn-tabla td{padding:7px 3px;}#analiza .nn-tabla th{white-space:normal;line-height:1.2;}#analiza .nn-bola{width:26px;height:26px;margin:0 1px;font-size:0.75rem;}#analiza .nn-n{min-width:19px;font-size:0.78rem;padding:2px 1px;}}
+</style>
+  <h1 class="an-h1">Analiza tu número de Fantasy 5 Florida</h1>
+  <p class="an-intro">Toca de 1 a 5 números (del 01 al 36) para ver cuántas veces han salido, cuánto llevan sin salir y con qué otros números han salido, con los 12,524 sorteos del historial de Fantasy 5 Florida. Con un solo número ves lo mismo que en su página; con varios, los sorteos en que salieron juntos.</p>
+  <div class="an-grid" id="anGrid" role="group" aria-label="Números del 1 al 36">
+    <a class="an-n" href="numero-1.html" role="button" aria-pressed="false" data-n="1">01</a>
+    <a class="an-n" href="numero-2.html" role="button" aria-pressed="false" data-n="2">02</a>
+    <a class="an-n" href="numero-3.html" role="button" aria-pressed="false" data-n="3">03</a>
+    <a class="an-n" href="numero-4.html" role="button" aria-pressed="false" data-n="4">04</a>
+    <a class="an-n" href="numero-5.html" role="button" aria-pressed="false" data-n="5">05</a>
+    <a class="an-n" href="numero-6.html" role="button" aria-pressed="false" data-n="6">06</a>
+    <a class="an-n" href="numero-7.html" role="button" aria-pressed="false" data-n="7">07</a>
+    <a class="an-n" href="numero-8.html" role="button" aria-pressed="false" data-n="8">08</a>
+    <a class="an-n" href="numero-9.html" role="button" aria-pressed="false" data-n="9">09</a>
+    <a class="an-n" href="numero-10.html" role="button" aria-pressed="false" data-n="10">10</a>
+    <a class="an-n" href="numero-11.html" role="button" aria-pressed="false" data-n="11">11</a>
+    <a class="an-n" href="numero-12.html" role="button" aria-pressed="false" data-n="12">12</a>
+    <a class="an-n" href="numero-13.html" role="button" aria-pressed="false" data-n="13">13</a>
+    <a class="an-n" href="numero-14.html" role="button" aria-pressed="false" data-n="14">14</a>
+    <a class="an-n" href="numero-15.html" role="button" aria-pressed="false" data-n="15">15</a>
+    <a class="an-n" href="numero-16.html" role="button" aria-pressed="false" data-n="16">16</a>
+    <a class="an-n" href="numero-17.html" role="button" aria-pressed="false" data-n="17">17</a>
+    <a class="an-n" href="numero-18.html" role="button" aria-pressed="false" data-n="18">18</a>
+    <a class="an-n" href="numero-19.html" role="button" aria-pressed="false" data-n="19">19</a>
+    <a class="an-n" href="numero-20.html" role="button" aria-pressed="false" data-n="20">20</a>
+    <a class="an-n" href="numero-21.html" role="button" aria-pressed="false" data-n="21">21</a>
+    <a class="an-n" href="numero-22.html" role="button" aria-pressed="false" data-n="22">22</a>
+    <a class="an-n" href="numero-23.html" role="button" aria-pressed="false" data-n="23">23</a>
+    <a class="an-n" href="numero-24.html" role="button" aria-pressed="false" data-n="24">24</a>
+    <a class="an-n" href="numero-25.html" role="button" aria-pressed="false" data-n="25">25</a>
+    <a class="an-n" href="numero-26.html" role="button" aria-pressed="false" data-n="26">26</a>
+    <a class="an-n" href="numero-27.html" role="button" aria-pressed="false" data-n="27">27</a>
+    <a class="an-n" href="numero-28.html" role="button" aria-pressed="false" data-n="28">28</a>
+    <a class="an-n" href="numero-29.html" role="button" aria-pressed="false" data-n="29">29</a>
+    <a class="an-n" href="numero-30.html" role="button" aria-pressed="false" data-n="30">30</a>
+    <a class="an-n" href="numero-31.html" role="button" aria-pressed="false" data-n="31">31</a>
+    <a class="an-n" href="numero-32.html" role="button" aria-pressed="false" data-n="32">32</a>
+    <a class="an-n" href="numero-33.html" role="button" aria-pressed="false" data-n="33">33</a>
+    <a class="an-n" href="numero-34.html" role="button" aria-pressed="false" data-n="34">34</a>
+    <a class="an-n" href="numero-35.html" role="button" aria-pressed="false" data-n="35">35</a>
+    <a class="an-n" href="numero-36.html" role="button" aria-pressed="false" data-n="36">36</a>
+  </div>
+  <div class="an-barra">
+    <span id="anSel" class="an-sel"></span>
+    <label id="anMinWrap" class="an-min" style="display:none;">Mostrar sorteos con: <select id="anMin"></select></label>
+    <button type="button" id="anLimpiar" class="btn-limpiar-historial" style="display:none;">🗑️ Limpiar</button>
+  </div>
+  <div id="anAviso" class="an-aviso" role="status" aria-live="polite"></div>
+  <div id="anResultado" class="an-resultado" aria-live="polite"></div>
+  <noscript><p class="an-vacio">Esta herramienta necesita JavaScript. Mientras tanto, toca un número para abrir su página con todas sus estadísticas.</p></noscript>
+  <p class="an-importante">Importante: es información histórica, no una predicción. Cada sorteo es independiente: que un número (o una combinación) lleve muchos sorteos sin salir, o que haya salido más veces que otros, no significa que vaya a salir pronto. Junto a cada porcentaje se muestra lo que se espera por azar.</p>
+</div>
+  </section>
+  <aside class="aside-right">
+  </aside>
+</main>
+<div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
+  ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
+  <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+<span style="display:block; margin-top:8px; font-size:0.85rem; font-weight:normal;"><a href="acerca.html" style="color:#2563eb;">Acerca de</a> · <a href="privacidad.html" style="color:#2563eb;">Privacidad</a> · <a href="contacto.html" style="color:#2563eb;">Contacto</a></span>
+</div>
+<script>
+var CFG = {
+  total: 36, porSorteo: 5,
+  nombre: "Fantasy 5 Florida",
+  loc: "es-MX", en: false,
+  datos: "analiza-datos.json?v=12525",
+  concUrl: "concurso-{0}.html",
+  numUrl: "numero-{0}.html",
+  ultimas: 10, topPares: 5, tanda: 20,
+  t: {
+    vacio: "Toca un número para empezar. Con uno ves su historial completo; con varios, los sorteos en que salieron juntos.",
+    cargando: "Cargando el historial…",
+    errorCarga: "No se pudo cargar el historial. Intenta recargar la página.",
+    maximo: "Máximo {0} números: cada sorteo solo tiene {0}.",
+    ninguno: "Ningún número seleccionado",
+    seleccion: "Seleccionados ({1}/{2}): {0}",
+    minTodos: "Los {0} (todos)",
+    minAl: "Al menos {0}",
+    statAtraso: "sorteos sin salir (atraso)",
+    statVeces: "veces que ha salido",
+    statPct: "de los sorteos (por azar: {0})",
+    statMayor: "mayor atraso histórico (sorteos)",
+    estadoSalio: "salió en el último sorteo",
+    estadoLleva: "lleva {0} sin salir",
+    mayorUno: " Su mayor atraso histórico fue de {0} sorteos, entre los concursos {1} y {2}.",
+    textoUno: "El número {0} de {1} salió por última vez el {2} (concurso {3}) y {4}. En total ha salido {5} veces en {6} sorteos del historial, es decir, en el {7} de los sorteos; por azar se espera que cada número salga en el {8} ({9} de {10}).{11}",
+    h2Ultimas: "Últimas {0} veces que salió el {1}",
+    thConcurso: "Concurso",
+    thFecha: "Fecha",
+    thNumeros: "Números del sorteo",
+    thPrevio: "Sorteos sin salir antes",
+    h2Frec: "Números con los que más ha salido el {0}",
+    pFrec: "Pares que incluyen el {0} y que más veces han salido juntos.",
+    h2AtrPares: "Pares con el {0} que más sorteos llevan sin salir",
+    pAtrPares: "Pares que incluyen el {0} ordenados por atraso: cuántos sorteos llevan sin salir juntos.",
+    thPar: "Par",
+    thJuntos: "Veces juntos",
+    thAtraso: "Atraso (sorteos)",
+    thUltConc: "Último concurso",
+    h2Anio: "Apariciones del {0} por año",
+    thAnio: "Año",
+    thVecesSalio: "Veces que salió",
+    thSorteosAnio: "Sorteos del año",
+    thPctSorteos: "% de los sorteos",
+    verPagina: "Ver la página completa del número {0} →",
+    ningunaJuntos: "Los números {0} de {1} no han salido juntos en ningún sorteo del historial.",
+    ningunaAlMenos: "Ningún sorteo del historial tiene al menos {0} de los números {1} de {2}.",
+    statAtrasoJuntos: "sorteos sin salir juntos (atraso)",
+    statVecesJuntos: "veces que han salido juntos",
+    statMayorJuntos: "mayor atraso histórico juntos (sorteos)",
+    statAtrasoAl: "sorteos sin cumplirse (atraso)",
+    statVecesAl: "sorteos que lo cumplen",
+    statMayorAl: "mayor atraso histórico (sorteos)",
+    textoJuntos: "Los números {0} de {1} han salido juntos {2} veces en {3} sorteos del historial, es decir, en el {4} de los sorteos; por azar se espera el {5}.",
+    textoAlMenos: "Al menos {0} de los números {1} de {2} han salido {3} veces en {4} sorteos del historial, es decir, en el {5} de los sorteos; por azar se espera el {6}.",
+    ultimaVez: "La última vez fue el {0} (concurso {1}), {2}.",
+    ultimaUltimo: "en el último sorteo",
+    ultimaHace: "hace {0}",
+    h2Sorteos: "Sorteos en los que salieron juntos",
+    h2SorteosAl: "Sorteos con al menos {0} de tus números",
+    thAciertos: "Aciertos",
+    verMas: "Ver más (mostrando {0} de {1})",
+    h2Acomp: "Números que más los acompañan",
+    pAcomp: "Los números que más han salido en los sorteos de arriba.",
+    thNumero: "Número",
+    thVecesCon: "Veces con tu selección",
+    thVecesConAl: "Veces en esos sorteos",
+    thPctDeEsos: "% de esos sorteos",
+    thEsperado: "Esperado por azar",
+    h2AnioVarios: "Apariciones por año",
+  }
+};
+/* Analiza tu numero: todo se calcula en el navegador con analiza-datos.json (las mismas filas que usan las paginas numero-N). */
+(function () {
+  'use strict';
+  var N = CFG.total, K = CFG.porSorteo, T = CFG.t;
+  var rows = [], total = 0, ultimo = 0, pagDesde = 0, porAnioTot = {};
+  var listo = false, fallo = false;
+  var sel = [], minAc = 0;          // minAc: 0 = deben salir todos los elegidos; t = al menos t
+  var lista = [], mostrados = 0, marcados = [];
+  var elGrid = document.getElementById('anGrid');
+  var elSel = document.getElementById('anSel');
+  var elMinWrap = document.getElementById('anMinWrap');
+  var elMin = document.getElementById('anMin');
+  var elLimpiar = document.getElementById('anLimpiar');
+  var elAviso = document.getElementById('anAviso');
+  var elRes = document.getElementById('anResultado');
+  var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  // ---------------------------------------------------------------- utilidades
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function fmt(n) { return Number(n).toLocaleString(CFG.loc); }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function tt(plantilla) {
+    var a = arguments;
+    return plantilla.replace(/\{(\d+)\}/g, function (m, i) { return a[+i + 1]; });
+  }
+  function anioDe(f) {
+    var y = parseInt(String(f).substring(String(f).lastIndexOf('/') + 1), 10);
+    return isNaN(y) ? 0 : y;
+  }
+  function fechaPalabras(f) {
+    if (CFG.en) return f;
+    var p = String(f).split('/');
+    if (p.length !== 3) return f;
+    var d = new Date(+p[2], +p[1] - 1, +p[0]);
+    if (isNaN(d.getTime())) return f;
+    return DIAS[d.getDay()] + ' ' + (+p[0]) + ' de ' + MESES[+p[1] - 1] + ' de ' + p[2];
+  }
+  function pct1(x) { return x.toFixed(1) + '%'; }
+  function sorteosTxt(n) { return CFG.en ? (n === 1 ? '1 draw' : fmt(n) + ' draws') : (n === 1 ? '1 sorteo' : fmt(n) + ' sorteos'); }
+  function comb(n, r) {
+    if (r < 0 || r > n) return 0;
+    var x = 1;
+    for (var i = 1; i <= r; i++) x = x * (n - r + i) / i;
+    return Math.round(x);
+  }
+  // probabilidad (en %) de que un sorteo traiga al menos t de los k numeros elegidos
+  function esperadoPct(k, t) {
+    var s = 0;
+    for (var j = t; j <= Math.min(k, K); j++) s += comb(k, j) * comb(N - k, K - j);
+    return 100 * s / comb(N, K);
+  }
+  function urlConc(c) { return CFG.concUrl.replace('{0}', c); }
+  function urlNum(n) { return CFG.numUrl.replace('{0}', n); }
+  function celdaConc(c) {
+    return (pagDesde > 0 && c >= pagDesde) ? '<a href="' + urlConc(c) + '">' + c + '</a>' : String(c);
+  }
+  function bola(n) { return '<a class="nn-bola" href="' + urlNum(n) + '">' + pad(n) + '</a>'; }
+  function tabla(cabeceras, filasHtml) {
+    var h = '<div class="nn-tabla-wrap"><table class="nn-tabla"><thead><tr>';
+    for (var i = 0; i < cabeceras.length; i++) h += '<th>' + esc(cabeceras[i]) + '</th>';
+    return h + '</tr></thead><tbody>' + filasHtml + '</tbody></table></div>';
+  }
+  function numerosFila(row, marcar) {
+    var s = '';
+    for (var j = 1; j <= 5; j++) {
+      var v = row[j];
+      s += '<span class="nn-n' + (marcar.indexOf(v) !== -1 ? ' on' : '') + '">' + pad(v) + '</span>';
+    }
+    return s;
+  }
+  function listaNum(S) {
+    var a = [];
+    for (var i = 0; i < S.length; i++) a.push(pad(S[i]));
+    if (a.length === 1) return a[0];
+    return a.slice(0, -1).join(', ') + (CFG.en ? ' and ' : ' y ') + a[a.length - 1];
+  }
+  // ---------------------------------------------------------------- calculos (mismas reglas que GeneradorPaginasNumero)
+  function analizar(S, min) {
+    var r = { veces: 0, ultimoConc: 0, ultimaFecha: '', mayor: -1, mayorDesde: 0, mayorHasta: 0, idx: [], porAnio: {} };
+    var prev = 0;
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i], h = 0;
+      for (var j = 1; j <= 5; j++) if (S.indexOf(row[j]) !== -1) h++;
+      if (h < min) continue;
+      r.veces++;
+      var y = anioDe(row[6]);
+      if (y > 0) r.porAnio[y] = (r.porAnio[y] || 0) + 1;
+      var c = row[0];
+      if (c <= 0) continue;
+      if (prev > 0) {
+        var gap = c - prev - 1;
+        if (gap > r.mayor) { r.mayor = gap; r.mayorDesde = prev; r.mayorHasta = c; }
+      }
+      prev = c;
+      r.ultimoConc = c;
+      r.ultimaFecha = row[6];
+      r.idx.push(i);
+    }
+    r.atraso = r.ultimoConc > 0 ? ultimo - r.ultimoConc : total;
+    r.pct = total > 0 ? 100 * r.veces / total : 0;
+    return r;
+  }
+  function acompanantes(S, r) {
+    var cnt = {}, ult = {}, L = [], v;
+    for (var a = 0; a < r.idx.length; a++) {
+      var row = rows[r.idx[a]];
+      for (var j = 1; j <= 5; j++) {
+        v = row[j];
+        if (S.indexOf(v) !== -1) continue;
+        cnt[v] = (cnt[v] || 0) + 1;
+        ult[v] = r.idx[a];
+      }
+    }
+    for (v in cnt) {
+      var f = rows[ult[v]];
+      L.push({ num: +v, total: cnt[v], conc: f[0], fecha: f[6], dist: ultimo - f[0] });
+    }
+    return L;
+  }
+  function tablaAnios(r, titulo) {
+    var anios = Object.keys(r.porAnio).map(Number).sort(function (a, b) { return b - a; });
+    if (!anios.length) return '';
+    var f = '';
+    for (var i = 0; i < anios.length; i++) {
+      var y = anios[i], sa = porAnioTot[y] || 0;
+      f += '<tr><td>' + y + '</td><td>' + r.porAnio[y] + '</td><td>' + fmt(sa) + '</td><td>' + (sa > 0 ? pct1(100 * r.porAnio[y] / sa) : '—') + '</td></tr>';
+    }
+    return '<h2>' + esc(titulo) + '</h2>' + tabla([T.thAnio, T.thVecesSalio, T.thSorteosAnio, T.thPctSorteos], f);
+  }
+  function cuatroDatos(r, esperadoTxt, etiquetas) {
+    return '<div class="nn-stats">' +
+      '<div class="nn-stat"><b>' + r.atraso + '</b><span>' + esc(etiquetas[0]) + '</span></div>' +
+      '<div class="nn-stat"><b>' + fmt(r.veces) + '</b><span>' + esc(etiquetas[1]) + '</span></div>' +
+      '<div class="nn-stat"><b>' + pct1(r.pct) + '</b><span>' + esc(tt(etiquetas[2], esperadoTxt)) + '</span></div>' +
+      '<div class="nn-stat"><b>' + (r.mayor >= 0 ? fmt(r.mayor) : '—') + '</b><span>' + esc(etiquetas[3]) + '</span></div>' +
+      '</div>';
+  }
+  // ---------------------------------------------------------------- vista de UN numero (igual que numero-N.html)
+  function vistaUno(n) {
+    var S = [n], r = analizar(S, 1), num = pad(n);
+    var esp = pct1(100 * K / N);
+    var atrasoCorto = sorteosTxt(r.atraso);
+    var estado = r.atraso === 0 ? T.estadoSalio : tt(T.estadoLleva, atrasoCorto);
+    var mayor = r.mayor >= 0 ? tt(T.mayorUno, fmt(r.mayor), r.mayorDesde, r.mayorHasta) : '';
+    var h = '<div class="nn-grande"><div class="nn-esfera">' + num + '</div></div>';
+    h += cuatroDatos(r, esp, [T.statAtraso, T.statVeces, T.statPct, T.statMayor]);
+    h += '<p class="nn-texto">' + esc(tt(T.textoUno, n, CFG.nombre, fechaPalabras(r.ultimaFecha), r.ultimoConc, estado,
+      fmt(r.veces), fmt(total), pct1(r.pct), esp, K, N, mayor)) + '</p>';
+    // ultimas apariciones
+    var f = '', desde = Math.max(0, r.idx.length - CFG.ultimas);
+    for (var j = r.idx.length - 1; j >= desde; j--) {
+      var row = rows[r.idx[j]];
+      var previo = j > 0 ? String(row[0] - rows[r.idx[j - 1]][0] - 1) : '—';
+      f += '<tr><td>' + celdaConc(row[0]) + '</td><td>' + esc(row[6]) + '</td><td>' + numerosFila(row, S) + '</td><td>' + previo + '</td></tr>';
+    }
+    h += '<h2>' + esc(tt(T.h2Ultimas, CFG.ultimas, num)) + '</h2>' + tabla([T.thConcurso, T.thFecha, T.thNumeros, T.thPrevio], f);
+    // pares con este numero
+    var ac = acompanantes(S, r);
+    if (ac.length) {
+      var frec = ac.slice().sort(function (a, b) { return (b.total - a.total) || (a.dist - b.dist) || (a.num - b.num); });
+      var atr = ac.slice().sort(function (a, b) { return (b.dist - a.dist) || (b.total - a.total) || (a.num - b.num); });
+      h += tablaPares(num, n, tt(T.h2Frec, num), tt(T.pFrec, num), frec);
+      h += tablaPares(num, n, tt(T.h2AtrPares, num), tt(T.pAtrPares, num), atr);
+    }
+    h += tablaAnios(r, tt(T.h2Anio, num));
+    h += '<p class="an-ver"><a class="nn-btn" href="' + urlNum(n) + '">' + esc(tt(T.verPagina, num)) + '</a></p>';
+    elRes.innerHTML = h;
+  }
+  function tablaPares(num, n, titulo, texto, L) {
+    var f = '';
+    for (var i = 0; i < Math.min(CFG.topPares, L.length); i++) {
+      var p = L[i];
+      f += '<tr><td><span class="nn-bola">' + num + '</span>' + bola(p.num) + '</td><td>' + fmt(p.total) + '</td><td><b>' + p.dist +
+        '</b></td><td>' + celdaConc(p.conc) + '<br><small>' + esc(p.fecha) + '</small></td></tr>';
+    }
+    return '<h2>' + esc(titulo) + '</h2><p class="nn-texto">' + esc(texto) + '</p>' + tabla([T.thPar, T.thJuntos, T.thAtraso, T.thUltConc], f);
+  }
+  // ---------------------------------------------------------------- vista de VARIOS numeros
+  function vistaVarios() {
+    var S = sel.slice(), k = S.length;
+    var t = (minAc > 0 && minAc < k) ? minAc : k;
+    var r = analizar(S, t);
+    var esp = pct1(esperadoPct(k, t));
+    var lis = listaNum(S);
+    var h = '<div class="nn-grande">';
+    for (var i = 0; i < k; i++) h += '<div class="nn-esfera chica">' + pad(S[i]) + '</div>';
+    h += '</div>';
+    if (r.veces === 0) {
+      h += '<p class="nn-texto">' + esc(t === k ? tt(T.ningunaJuntos, lis, CFG.nombre) : tt(T.ningunaAlMenos, t, lis, CFG.nombre)) + '</p>';
+      elRes.innerHTML = h;
+      return;
+    }
+    var etiquetas = t === k
+      ? [T.statAtrasoJuntos, T.statVecesJuntos, T.statPct, T.statMayorJuntos]
+      : [T.statAtrasoAl, T.statVecesAl, T.statPct, T.statMayorAl];
+    h += cuatroDatos(r, esp, etiquetas);
+    var ult = r.atraso === 0 ? T.ultimaUltimo : tt(T.ultimaHace, sorteosTxt(r.atraso));
+    var mayor = r.mayor >= 0 ? tt(T.mayorUno, fmt(r.mayor), r.mayorDesde, r.mayorHasta) : '';
+    var base = t === k ? tt(T.textoJuntos, lis, CFG.nombre, fmt(r.veces), fmt(total), pct1(r.pct), esp)
+                       : tt(T.textoAlMenos, t, lis, CFG.nombre, fmt(r.veces), fmt(total), pct1(r.pct), esp);
+    h += '<p class="nn-texto">' + esc(base + ' ' + tt(T.ultimaVez, fechaPalabras(r.ultimaFecha), r.ultimoConc, ult) + mayor) + '</p>';
+    // sorteos donde salieron (mas recientes primero), por tandas
+    lista = r.idx.slice().reverse();
+    marcados = S;
+    mostrados = 0;
+    var cab = [T.thConcurso, T.thFecha, T.thNumeros];
+    if (t < k) cab.push(T.thAciertos);
+    h += '<h2>' + esc(t === k ? T.h2Sorteos : tt(T.h2SorteosAl, t)) + '</h2>';
+    h += '<div id="anTablaSorteos">' + tabla(cab, '') + '</div>';
+    h += '<p class="an-ver"><button type="button" class="nn-btn" id="anMas"></button></p>';
+    // numeros que mas acompanan
+    var ac = acompanantes(S, r);
+    var total5 = r.idx.length;
+    ac.sort(function (a, b) { return (b.total - a.total) || (a.dist - b.dist) || (a.num - b.num); });
+    var cabA = [T.thNumero, t === k ? T.thVecesCon : T.thVecesConAl, T.thPctDeEsos];
+    if (t === k) cabA.push(T.thEsperado);
+    cabA.push(T.thUltConc);
+    var fa = '';
+    for (var a = 0; a < Math.min(CFG.topPares, ac.length); a++) {
+      var p = ac[a];
+      fa += '<tr><td>' + bola(p.num) + '</td><td>' + fmt(p.total) + '</td><td>' + pct1(100 * p.total / total5) + '</td>' +
+        (t === k ? '<td>' + pct1(100 * (K - k) / (N - k)) + '</td>' : '') +
+        '<td>' + celdaConc(p.conc) + '<br><small>' + esc(p.fecha) + '</small></td></tr>';
+    }
+    if (fa) h += '<h2>' + esc(T.h2Acomp) + '</h2><p class="nn-texto">' + esc(T.pAcomp) + '</p>' + tabla(cabA, fa);
+    h += tablaAnios(r, T.h2AnioVarios);
+    elRes.innerHTML = h;
+    masSorteos();
+  }
+  function masSorteos() {
+    var cuerpo = document.querySelector('#anTablaSorteos tbody');
+    var btn = document.getElementById('anMas');
+    if (!cuerpo || !btn) return;
+    var k = sel.length, t = (minAc > 0 && minAc < k) ? minAc : k;
+    var fin = Math.min(lista.length, mostrados + CFG.tanda), f = '';
+    for (var i = mostrados; i < fin; i++) {
+      var row = rows[lista[i]], h = 0;
+      for (var j = 1; j <= 5; j++) if (marcados.indexOf(row[j]) !== -1) h++;
+      f += '<tr><td>' + celdaConc(row[0]) + '</td><td>' + esc(row[6]) + '</td><td>' + numerosFila(row, marcados) + '</td>' + (t < k ? '<td>' + h + '</td>' : '') + '</tr>';
+    }
+    cuerpo.insertAdjacentHTML('beforeend', f);
+    mostrados = fin;
+    if (mostrados >= lista.length) { btn.parentNode.style.display = 'none'; }
+    else { btn.parentNode.style.display = ''; btn.textContent = tt(T.verMas, mostrados, fmt(lista.length)); }
+  }
+  // ---------------------------------------------------------------- seleccion, pantalla y URL
+  function avisar(msg) {
+    elAviso.textContent = msg;
+    clearTimeout(avisar.t);
+    avisar.t = setTimeout(function () { elAviso.textContent = ''; }, 4000);
+  }
+  function alternar(n) {
+    var i = sel.indexOf(n);
+    if (i >= 0) sel.splice(i, 1);
+    else {
+      if (sel.length >= K) { avisar(tt(T.maximo, K)); return; }
+      sel.push(n);
+    }
+    sel.sort(function (a, b) { return a - b; });
+    minAc = 0;
+    pintar();
+  }
+  function pintar() {
+    var celdas = elGrid.querySelectorAll('a[data-n]');
+    for (var i = 0; i < celdas.length; i++) {
+      var on = sel.indexOf(+celdas[i].getAttribute('data-n')) !== -1;
+      celdas[i].className = 'an-n' + (on ? ' on' : '');
+      celdas[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+    var k = sel.length;
+    elSel.textContent = k === 0 ? T.ninguno : tt(T.seleccion, listaNum(sel), k, K);
+    elLimpiar.style.display = k === 0 ? 'none' : '';
+    if (k >= 2) {
+      var o = '';
+      for (var t = k; t >= 1; t--) o += '<option value="' + (t === k ? 0 : t) + '"' + ((t === k ? 0 : t) === minAc ? ' selected' : '') + '>' + esc(t === k ? tt(T.minTodos, k) : tt(T.minAl, t)) + '</option>';
+      elMin.innerHTML = o;
+      elMinWrap.style.display = '';
+    } else elMinWrap.style.display = 'none';
+    try {
+      history.replaceState(null, '', location.pathname + (k ? '?n=' + sel.join(',') + (minAc > 0 ? '&min=' + minAc : '') : ''));
+    } catch (e) { }
+    resultado();
+  }
+  function resultado() {
+    if (sel.length === 0) { elRes.innerHTML = '<p class="an-vacio">' + esc(T.vacio) + '</p>'; return; }
+    if (fallo) { elRes.innerHTML = '<p class="an-vacio">' + esc(T.errorCarga) + '</p>'; return; }
+    if (!listo) { elRes.innerHTML = '<p class="an-vacio">' + esc(T.cargando) + '</p>'; return; }
+    if (sel.length === 1) vistaUno(sel[0]); else vistaVarios();
+  }
+  function leerUrl() {
+    try {
+      var p = new URLSearchParams(location.search), v = (p.get('n') || '').split(/[\s,]+/), vistos = {};
+      for (var i = 0; i < v.length; i++) {
+        var n = parseInt(v[i], 10);
+        if (n >= 1 && n <= N && !vistos[n] && sel.length < K) { vistos[n] = 1; sel.push(n); }
+      }
+      sel.sort(function (a, b) { return a - b; });
+      var m = parseInt(p.get('min'), 10);
+      if (sel.length >= 2 && m >= 1 && m < sel.length) minAc = m;
+    } catch (e) { }
+  }
+  // ---------------------------------------------------------------- eventos
+  elGrid.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[data-n]') : null;
+    if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button) return;
+    e.preventDefault();
+    alternar(+a.getAttribute('data-n'));
+  });
+  elGrid.addEventListener('keydown', function (e) {
+    if (e.key !== ' ' && e.key !== 'Spacebar') return;
+    var a = e.target.closest ? e.target.closest('a[data-n]') : null;
+    if (!a) return;
+    e.preventDefault();
+    alternar(+a.getAttribute('data-n'));
+  });
+  elLimpiar.addEventListener('click', function () { sel = []; minAc = 0; pintar(); });
+  elMin.addEventListener('change', function () { minAc = parseInt(elMin.value, 10) || 0; pintar(); });
+  elRes.addEventListener('click', function (e) {
+    if (e.target && e.target.id === 'anMas') masSorteos();
+  });
+  // ---------------------------------------------------------------- datos
+  leerUrl();
+  pintar();
+  fetch(CFG.datos).then(function (r) { return r.json(); }).then(function (d) {
+    rows = d.filas; pagDesde = d.pag || 0; total = rows.length;
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i][0] >= ultimo) ultimo = rows[i][0];
+      var y = anioDe(rows[i][6]);
+      if (y > 0) porAnioTot[y] = (porAnioTot[y] || 0) + 1;
+    }
+    listo = true;
+    resultado();
+  }).catch(function () { fallo = true; resultado(); });
+})();
+</script>
+</body>
+</html>

@@ -3,17 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generador de combinaciones | Fantasy 5</title>
+<title>Generador de combinaciones | Fantasy 5 Florida</title>
+<meta name="description" content="Arma combinaciones de 5 números de Fantasy 5 Florida a partir de tu selección. Es un ejercicio estadístico, no una predicción.">
+<link rel="canonical" href="https://www.fantasy5florida.online/generador.html">
 <link rel="stylesheet" href="estilos.css">
 <style>
 .tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
 .tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
 .tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
 .tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
-.tab-help { position:relative; display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; margin-left:6px; border-radius:50%; background:rgba(100,116,139,0.18); color:inherit; font-size:0.7rem; font-weight:700; vertical-align:middle; }
-.tab-help-tip { visibility:hidden; opacity:0; position:absolute; bottom:calc(100% + 9px); left:50%; transform:translateX(-50%); background:#1e293b; color:#fff; font-size:0.75rem; font-weight:400; line-height:1.35; padding:8px 10px; border-radius:6px; width:190px; text-align:center; white-space:normal; transition:opacity 0.15s ease; pointer-events:none; z-index:30; }
-.tab-help-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#1e293b; }
-@media (hover: hover) { .tab-help:hover .tab-help-tip { visibility:visible; opacity:1; } }
 .buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
 .buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
@@ -34,8 +32,9 @@
 </head>
 <body>
 <header class="header-bar">
-  <div class="header-brand">⚡ Resultados Fantasy 5</div>
-  <nav class="nav-menu">
+  <div class="header-brand">⚡ Resultados Fantasy 5 Florida</div>
+  <nav class="nav-menu" style="flex-wrap:wrap;gap:8px;justify-content:flex-end">
+    <a class="btn-glow" href="https://www.resultadoschispazohoy.com" target="_blank" rel="noopener">🎰 Chispazo México</a>
   </nav>
 </header>
 <main class="main-container">
@@ -44,12 +43,38 @@
   <section>
 <div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
 <div class="tabs-estadisticas">
-  <a class="tab-btn-estadisticas" href="index.html">📊 Números<span class="tab-help">?<span class="tab-help-tip">Qué números y pares llevan más sorteos sin salir.</span></span></a>
-  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números<span class="tab-help">?<span class="tab-help-tip">Busca una combinación exacta en todo el historial de sorteos.</span></span></a>
-  <a class="tab-btn-estadisticas" href="graficas.html">📈 Gráficas<span class="tab-help">?<span class="tab-help-tip">Compara visualmente el atraso de cada número.</span></span></a>
-  <a class="tab-btn-estadisticas activo" href="generador.html">🎲 Genera tus combinaciones<span class="tab-help">?<span class="tab-help-tip">Arma combinaciones de 5 a partir de los números recomendados.</span></span></a>
-  <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento<span class="tab-help">?<span class="tab-help-tip">Guarda pares y tercias y mira cuántos sorteos llevan sin salir.</span></span></a>
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
+  <a class="tab-btn-estadisticas" href="trios.html">🧩 Tríos</a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números</a>
+  <a class="tab-btn-estadisticas" href="analiza-tu-numero.html">🔢 Analiza tu número</a>
+  <a class="tab-btn-estadisticas activo" href="generador.html">🎲 Genera tus combinaciones</a>
+  <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento</a>
 </div>
+<style>
+.ayuda-pestana { margin:0 0 16px; }
+.ayuda-pestana > summary { display:inline-flex; align-items:center; gap:6px; cursor:pointer; list-style:none; padding:8px 14px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:20px; color:#1d4ed8; font-weight:600; font-size:0.9rem; user-select:none; }
+.ayuda-pestana > summary::-webkit-details-marker { display:none; }
+.ayuda-pestana > summary::after { content:'\25BE'; font-size:0.8rem; transition:transform 0.15s; }
+.ayuda-pestana[open] > summary::after { transform:rotate(180deg); }
+.ayuda-contenido { margin-top:10px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 18px; font-size:0.9rem; line-height:1.55; color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.ayuda-contenido ul { margin:0; padding-left:20px; }
+.ayuda-contenido li { margin:6px 0; }
+.ayuda-aviso { margin:10px 0 0; padding-top:10px; border-top:1px solid #e2e8f0; font-size:0.8rem; color:#64748b; }
+</style>
+<details class="ayuda-pestana" id="ayudaPestana" data-pestana="3">
+  <summary>💡 ¿Cómo usar esta pestaña?</summary>
+  <div class="ayuda-contenido">
+    <ul>
+      <li>Los números en <b>dorado</b> son los recomendados por el sitio (según pares confirmados y atraso individual); los que eliges tú aparecen en <b>azul</b>.</li>
+      <li>Toca una esfera para agregarla o quitarla; puedes dejar entre 12 a 14 números. <b>Usar recomendados</b> vuelve a la propuesta inicial y <b>Limpiar selección</b> empieza de cero.</li>
+      <li>Con al menos 5 números verás las combinaciones sugeridas. Elige cuántas quieres (10, 20, 50 o 100): se arman sin repetir y reparten tus números de forma pareja.</li>
+      <li>La línea de cobertura dice cuántas tercias de tus números quedan cubiertas: si en un sorteo salen 3 de tus números, esos tres aparecen juntos en alguna de tus combinaciones.</li>
+      <li>Puedes copiarlas, descargarlas en CSV o compartirlas por WhatsApp (a WhatsApp se envían las primeras 20).</li>
+      <li>Son una forma de organizar tus números, no una predicción: todas las combinaciones tienen la misma probabilidad.</li>
+    </ul>
+  </div>
+</details>
+<script>(function(){var d=document.getElementById('ayudaPestana');if(!d)return;try{var k='ayudaVista_'+d.getAttribute('data-pestana');if(false&&!localStorage.getItem(k)){d.open=true;localStorage.setItem(k,'1');}}catch(e){}})();</script>
 <div class="buscar-historial-caja">
   <p style="margin-top:0; color:#64748b; font-size:0.9rem;">Parte de los números recomendados o elige los tuyos, y genera hasta 100 combinaciones de 5 a partir de tu selección. Es un ejercicio estadístico sobre atrasos históricos, <strong>no una predicción de resultados</strong>.</p>
 </div>
@@ -86,6 +111,16 @@
 .gc-combos { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
 .gc-combo-item { background:#0f141c; border:1px solid #232a38; border-radius:8px; padding:10px 14px; font-size:0.9rem; color:#e6e9ef; display:flex; align-items:center; gap:10px; }
 .gc-combo-item b { color:#f2b93d; min-width:22px; }
+.gc-combos { max-height:440px; overflow-y:auto; padding-right:4px; }
+.gc-combos { scrollbar-width:thin; scrollbar-color:#3a4458 #0f141c; }
+.gc-combos::-webkit-scrollbar { width:10px; }
+.gc-combos::-webkit-scrollbar-track { background:#0f141c; border-radius:8px; }
+.gc-combos::-webkit-scrollbar-thumb { background:#3a4458; border-radius:8px; border:2px solid #0f141c; }
+.gc-combos::-webkit-scrollbar-thumb:hover { background:#4b5870; }
+.gc-combos-controles { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; font-size:0.85rem; color:#8b93a7; }
+.gc-combos-controles select { font-family:inherit; font-size:0.9rem; font-weight:600; padding:8px 12px; border-radius:8px; border:1px solid #232a38; background:#1c2430; color:#e6e9ef; cursor:pointer; }
+.gc-cobertura { font-size:0.82rem; color:#8b93a7; margin:0 0 12px; }
+.gc-aviso { font-size:0.78rem; color:#8b93a7; line-height:1.5; margin:16px 0 0; padding:10px 12px; border:1px solid #232a38; border-radius:8px; background:#0f141c; }
 </style>
 <div class="gc-card">
   <p class="gc-subtitulo">Números recomendados según pares confirmados y atraso individual.</p>
@@ -109,19 +144,29 @@
   <div class="gc-status-error" id="gcComboMinMsg" style="display:none;"></div>
   <div class="gc-combos-section" id="gcCombosSection" style="display:none;">
     <h3 class="gc-combos-titulo">🎲 Combinaciones sugeridas</h3>
-    <p class="gc-combos-subtitulo">Combinaciones de 5 números armadas a partir de tu selección, buscando cubrir la mayor cantidad de pares posible. Tampoco es una predicción, es solo otra forma de organizar tus números.</p>
+    <p class="gc-combos-subtitulo" id="gcComboSub"></p>
+    <div class="gc-combos-controles">
+      <label for="gcCantidad" id="gcCantidadEtiqueta"></label>
+      <select id="gcCantidad"></select>
+    </div>
+    <p class="gc-cobertura" id="gcCobertura"></p>
     <div class="gc-combos" id="gcCombos"></div>
     <div class="gc-actions">
       <button type="button" class="gc-btn-whatsapp" id="gcBtnWhatsAppCombos">📱 Compartir combinaciones</button>
+      <button type="button" id="gcBtnCopiar"></button>
+      <button type="button" id="gcBtnCsv"></button>
     </div>
+    <p class="gc-aviso" id="gcAviso"></p>
   </div>
 </div>
   </section>
-  <aside class="aside-right"></aside>
+  <aside class="aside-right">
+  </aside>
 </main>
 <div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
   ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
   <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+<span style="display:block; margin-top:8px; font-size:0.85rem; font-weight:normal;"><a href="acerca.html" style="color:#2563eb;">Acerca de</a> · <a href="privacidad.html" style="color:#2563eb;">Privacidad</a> · <a href="contacto.html" style="color:#2563eb;">Contacto</a></span>
 </div>
 <script>
 (function () {
@@ -129,8 +174,8 @@
   var MIN_GEN = 12;
   var MAX_GEN = 14;
   var JSON_URL_GEN = 'recomendados.json';
-  var ETIQUETA_WHATSAPP = 'Mi selección de números en Fantasy 5';
-  var ETIQUETA_WHATSAPP_COMBOS = 'Mis combinaciones sugeridas en Fantasy 5';
+  var ETIQUETA_WHATSAPP = 'Mi selección de números en Fantasy 5 Florida';
+  var ETIQUETA_WHATSAPP_COMBOS = 'Mis combinaciones sugeridas en Fantasy 5 Florida';
   var URL_SITIO_GEN = 'https://www.fantasy5florida.online';
   var RECOMENDADOS_GEN = new Set();
   var seleccionadosGen = new Set();
@@ -213,60 +258,121 @@
     window.open('https://wa.me/?text=' + encodeURIComponent(mensaje), '_blank');
   });
 
-  // Puerto en JS del mismo heurístico de GeneradorReduccion.java (máxima
-  // cobertura de pares), para recalcular las combinaciones en el navegador
-  // cada vez que el usuario cambia su selección (recomendados y/o manuales).
-  function generarCombinacionesJS(numeros, totalCombinaciones) {
-    if (numeros.length < 5) return [];
-    var candidatas = [];
-    (function combinar(inicio, actual) {
-      if (actual.length === 5) { candidatas.push(actual.slice()); return; }
-      for (var i = inicio; i < numeros.length; i++) {
-        actual.push(numeros[i]);
-        combinar(i + 1, actual);
-        actual.pop();
-      }
+  // ===== Generación de hasta MAX_COMBOS combinaciones =====
+  // Para cambiar las opciones del selector o el máximo, edita estas dos líneas.
+  var OPCIONES_COMBOS = [10, 20, 50, 100];
+  var MAX_COMBOS = 100;
+  var WA_MAX_COMBOS = 20; // WhatsApp: el enlace tiene límite de largo, se envían solo las primeras
+  var RESULTADO_GEN = { combos: [], cobertura: [], totalTercias: 0 };
+  var EN_GEN = (document.documentElement.lang === 'en');
+  var TXT_GEN = EN_GEN ? {
+    subtitulo: 'Choose how many combinations you want (up to ' + MAX_COMBOS + '). They are built from your selected numbers, without repeats, and spread evenly across them.',
+    cantidad: 'Number of combinations:',
+    coberturaUna: function (x, y, n) { return 'This combination covers ' + x + ' of the ' + y + ' possible triples of your ' + n + ' numbers.'; },
+    coberturaVarias: function (c, x, y, n) { return 'These ' + c + ' combinations cover ' + x + ' of the ' + y + ' possible triples of your ' + n + ' numbers.'; },
+    pocas: function (k) { return k === 1 ? 'Your selection only allows 1 combination.' : 'Your selection only allows ' + k + ' different combinations.'; },
+    aviso: 'These combinations are just a way to organize your numbers, not a prediction of results. Every combination has the same probability as any other and none guarantees a prize. Covering triples only means that, if 3 of your numbers are drawn, those three appear together in at least one of your combinations; it does not make them more likely to be drawn. Play responsibly.',
+    copiar: '📋 Copy', copiado: '✅ Copied', csv: '⬇️ Download CSV',
+    waExtra: function (mostradas, total) { return '(first ' + mostradas + ' of ' + total + ')'; }
+  } : {
+    subtitulo: 'Elige cuántas combinaciones quieres (hasta ' + MAX_COMBOS + '). Se arman con tus números seleccionados, sin repetir, y reparten los números de forma pareja.',
+    cantidad: 'Cantidad de combinaciones:',
+    coberturaUna: function (x, y, n) { return 'Con esta combinación se cubren ' + x + ' de las ' + y + ' tercias posibles de tus ' + n + ' números.'; },
+    coberturaVarias: function (c, x, y, n) { return 'Con estas ' + c + ' combinaciones se cubren ' + x + ' de las ' + y + ' tercias posibles de tus ' + n + ' números.'; },
+    pocas: function (k) { return k === 1 ? 'Con tu selección solo existe 1 combinación.' : 'Con tu selección solo existen ' + k + ' combinaciones distintas.'; },
+    aviso: 'Estas combinaciones son una forma de organizar tus números, no una predicción de resultados. Cada combinación tiene la misma probabilidad que cualquier otra y ninguna garantiza premio. Cubrir tercias solo significa que, si en un sorteo salen 3 de tus números, esos tres aparecen juntos en alguna de tus combinaciones; no aumenta la probabilidad de que salgan. Juega con responsabilidad.',
+    copiar: '📋 Copiar', copiado: '✅ Copiado', csv: '⬇️ Descargar CSV',
+    waExtra: function (mostradas, total) { return '(primeras ' + mostradas + ' de ' + total + ')'; }
+  };
+
+  var selCantidad = document.getElementById('gcCantidad');
+  var coberturaEl = document.getElementById('gcCobertura');
+  document.getElementById('gcComboSub').textContent = TXT_GEN.subtitulo;
+  document.getElementById('gcCantidadEtiqueta').textContent = TXT_GEN.cantidad;
+  document.getElementById('gcAviso').textContent = TXT_GEN.aviso;
+  document.getElementById('gcBtnCopiar').textContent = TXT_GEN.copiar;
+  document.getElementById('gcBtnCsv').textContent = TXT_GEN.csv;
+  OPCIONES_COMBOS.forEach(function (op) {
+    var o = document.createElement('option');
+    o.value = String(op);
+    o.textContent = String(op);
+    selCantidad.appendChild(o);
+  });
+  selCantidad.value = String(OPCIONES_COMBOS.indexOf(TOTAL_COMBINACIONES_GEN) >= 0 ? TOTAL_COMBINACIONES_GEN : OPCIONES_COMBOS[0]);
+  selCantidad.addEventListener('change', function () { renderCombinaciones(); });
+
+  // Criterio interno de reparto: primero cubrir la mayor cantidad de TERCIAS nuevas
+  // (si salen 3 de los números del usuario, quedan juntos en alguna combinación);
+  // al empatar, se prefiere la combinación que use menos los números más repetidos
+  // hasta el momento, y luego el orden natural. Es determinista: las primeras N son
+  // siempre las mismas, así que pasar de 10 a 100 solo agrega combinaciones al final.
+  function generarCombinacionesJS(numeros, maxCombos) {
+    var tam = 5;
+    var nums = numeros.slice().sort(function (a, b) { return a - b; });
+    var n = nums.length;
+    if (n < tam) return { combos: [], cobertura: [], totalTercias: 0 };
+
+    var todas = [];
+    (function rec(ini, act) {
+      if (act.length === tam) { todas.push(act.slice()); return; }
+      for (var i = ini; i < n; i++) { act.push(i); rec(i + 1, act); act.pop(); }
     })(0, []);
 
-    function claveParDe(a, b) { return Math.min(a, b) + '-' + Math.max(a, b); }
-
-    var paresCubiertos = {};
-    var seleccionadas = [];
-
-    for (var paso = 0; paso < totalCombinaciones && candidatas.length; paso++) {
-      var mejor = null, mejorIdx = -1, mejorCobertura = -1;
-      for (var c = 0; c < candidatas.length; c++) {
-        var combo = candidatas[c];
-        var nuevos = 0;
-        for (var i = 0; i < combo.length; i++) {
-          for (var j = i + 1; j < combo.length; j++) {
-            if (!paresCubiertos[claveParDe(combo[i], combo[j])]) nuevos++;
-          }
-        }
-        if (nuevos > mejorCobertura) { mejorCobertura = nuevos; mejor = combo; mejorIdx = c; }
-      }
-      if (!mejor || mejorCobertura === 0) break;
-      for (var i = 0; i < mejor.length; i++) {
-        for (var j = i + 1; j < mejor.length; j++) {
-          paresCubiertos[claveParDe(mejor[i], mejor[j])] = true;
+    var tercCombo = todas.map(function (c) {
+      var r = [];
+      for (var i = 0; i < c.length; i++) {
+        for (var j = i + 1; j < c.length; j++) {
+          for (var k = j + 1; k < c.length; k++) { r.push((c[i] * n + c[j]) * n + c[k]); }
         }
       }
-      seleccionadas.push(mejor.slice().sort(function(a, b){ return a - b; }));
-      candidatas.splice(mejorIdx, 1);
+      return r;
+    });
+
+    var totalTercias = n * (n - 1) * (n - 2) / 6;
+    var cubiertas = {}, nCub = 0, uso = [], usada = [];
+    for (var z = 0; z < n; z++) uso.push(0);
+    for (var y = 0; y < todas.length; y++) usada.push(false);
+
+    var combos = [], cobertura = [];
+    var limite = Math.min(maxCombos, todas.length);
+    while (combos.length < limite) {
+      var mejor = -1, mejorNuevas = -1, mejorUso = 0;
+      for (var idx = 0; idx < todas.length; idx++) {
+        if (usada[idx]) continue;
+        var t = tercCombo[idx], nuevas = 0;
+        for (var q = 0; q < t.length; q++) { if (!cubiertas[t[q]]) nuevas++; }
+        var c = todas[idx], u = 0;
+        for (var w = 0; w < c.length; w++) u += uso[c[w]];
+        if (nuevas > mejorNuevas || (nuevas === mejorNuevas && u < mejorUso)) {
+          mejor = idx; mejorNuevas = nuevas; mejorUso = u;
+        }
+      }
+      usada[mejor] = true;
+      var tt = tercCombo[mejor];
+      for (var e = 0; e < tt.length; e++) { if (!cubiertas[tt[e]]) { cubiertas[tt[e]] = true; nCub++; } }
+      todas[mejor].forEach(function (i) { uso[i]++; });
+      combos.push(todas[mejor].map(function (i) { return nums[i]; }));
+      cobertura.push(nCub);
     }
-    return seleccionadas;
+    return { combos: combos, cobertura: cobertura, totalTercias: totalTercias };
   }
 
   function actualizarCombinaciones() {
     var numerosArray = Array.from(seleccionadosGen);
-    COMBINACIONES_GEN = numerosArray.length >= 5
-      ? generarCombinacionesJS(numerosArray, TOTAL_COMBINACIONES_GEN)
-      : [];
+    RESULTADO_GEN = numerosArray.length >= 5
+      ? generarCombinacionesJS(numerosArray, MAX_COMBOS)
+      : { combos: [], cobertura: [], totalTercias: 0 };
     renderCombinaciones();
   }
 
+  function fmtCombo(combo, sep) {
+    return combo.map(function (n) { return n < 10 ? ('0' + n) : String(n); }).join(sep);
+  }
+
   function renderCombinaciones() {
-    if (!COMBINACIONES_GEN.length) {
+    var todas = RESULTADO_GEN.combos;
+    if (!todas.length) {
+      COMBINACIONES_GEN = [];
       comboSection.style.display = 'none';
       if (seleccionadosGen.size > 0 && seleccionadosGen.size < MIN_PARA_COMBOS_GEN) {
         comboMinMsg.textContent = TXT_MIN_COMBOS_GEN;
@@ -278,27 +384,77 @@
     }
     comboMinMsg.style.display = 'none';
     comboSection.style.display = 'block';
+
+    var pedidas = Number(selCantidad.value) || OPCIONES_COMBOS[0];
+    var mostrar = todas.slice(0, pedidas);
+    COMBINACIONES_GEN = mostrar;
+
     comboList.innerHTML = '';
-    COMBINACIONES_GEN.forEach(function(combo, i){
+    mostrar.forEach(function (combo, i) {
       var item = document.createElement('div');
       item.className = 'gc-combo-item';
-      var numerosTxt = combo.map(function(n){ return n < 10 ? ('0'+n) : String(n); }).join(' - ');
       var etiqueta = document.createElement('b');
       etiqueta.textContent = (i + 1) + '.';
       item.appendChild(etiqueta);
-      item.appendChild(document.createTextNode(numerosTxt));
+      item.appendChild(document.createTextNode(fmtCombo(combo, ' - ')));
       comboList.appendChild(item);
     });
+
+    var cub = RESULTADO_GEN.cobertura[mostrar.length - 1];
+    var txt = mostrar.length === 1
+      ? TXT_GEN.coberturaUna(cub, RESULTADO_GEN.totalTercias, seleccionadosGen.size)
+      : TXT_GEN.coberturaVarias(mostrar.length, cub, RESULTADO_GEN.totalTercias, seleccionadosGen.size);
+    if (mostrar.length < pedidas) txt += ' ' + TXT_GEN.pocas(mostrar.length);
+    coberturaEl.textContent = txt;
   }
 
   document.getElementById('gcBtnWhatsAppCombos').addEventListener('click', function(){
     if (!COMBINACIONES_GEN.length) return;
-    var texto = COMBINACIONES_GEN.map(function(combo, i){
-      var numerosTxt = combo.map(function(n){ return n < 10 ? ('0'+n) : String(n); }).join('-');
-      return (i + 1) + '. ' + numerosTxt;
-    }).join('\n');
+    var enviar = COMBINACIONES_GEN.slice(0, WA_MAX_COMBOS);
+    var texto = enviar.map(function(combo, i){ return (i + 1) + '. ' + fmtCombo(combo, '-'); }).join('\n');
+    if (COMBINACIONES_GEN.length > enviar.length) texto += '\n' + TXT_GEN.waExtra(enviar.length, COMBINACIONES_GEN.length);
     var mensaje = ETIQUETA_WHATSAPP_COMBOS + ':\n' + texto + (URL_SITIO_GEN ? ('\n' + URL_SITIO_GEN) : '');
     window.open('https://wa.me/?text=' + encodeURIComponent(mensaje), '_blank');
+  });
+
+  document.getElementById('gcBtnCopiar').addEventListener('click', function(){
+    if (!COMBINACIONES_GEN.length) return;
+    var btn = this;
+    var texto = COMBINACIONES_GEN.map(function(combo, i){ return (i + 1) + '. ' + fmtCombo(combo, '-'); }).join('\n');
+    function aviso() {
+      btn.textContent = TXT_GEN.copiado;
+      setTimeout(function(){ btn.textContent = TXT_GEN.copiar; }, 1500);
+    }
+    function respaldo() {
+      var ta = document.createElement('textarea');
+      ta.value = texto;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); aviso(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(aviso, respaldo);
+    } else {
+      respaldo();
+    }
+  });
+
+  document.getElementById('gcBtnCsv').addEventListener('click', function(){
+    if (!COMBINACIONES_GEN.length) return;
+    var filas = COMBINACIONES_GEN.map(function(combo, i){ return (i + 1) + ',' + combo.join(','); });
+    var csv = '﻿' + 'N,N1,N2,N3,N4,N5\n' + filas.join('\n') + '\n';
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'combinaciones.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
   });
 
   fetch(JSON_URL_GEN, { cache: 'no-store' }).then(function(resp){

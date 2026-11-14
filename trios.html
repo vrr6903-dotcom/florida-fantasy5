@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tríos más atrasados | Fantasy 5 Florida</title>
+<meta name="description" content="Trios (tercias) de Fantasy 5 Florida que más sorteos llevan sin salir, con filtros por número y posición. Información sin validez oficial.">
+<link rel="canonical" href="https://www.fantasy5florida.online/trios.html">
+<link rel="stylesheet" href="estilos.css">
+<style>
+.tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
+.tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
+.tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
+.tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
+.buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
+.buscar-historial-controles button { padding:9px 16px; border:none; border-radius:6px; font-weight:600; font-size:0.9rem; cursor:pointer; }
+.btn-buscar-historial { background:#2563eb; color:#fff; }
+.btn-limpiar-historial { background:#94a3b8; color:#fff; }
+.badge-numero-verde { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 4px; background:#22c55e; color:#fff; font-weight:700; border-radius:6px; font-size:0.85rem; }
+.tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
+.tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
+.gpa-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #cbd5e1;color:#334155;cursor:pointer;font-size:0.9rem;font-weight:600;padding:8px 12px;border-radius:20px;}
+.gpa-chip:hover{border-color:#2563eb;color:#2563eb;}
+.gpa-chip.activo{background:#eff6ff;border-color:#2563eb;color:#1d4ed8;}
+.gpa-atraso{background:#f1f5f9;border-radius:10px;padding:1px 7px;font-size:0.78rem;color:#64748b;}
+.gpa-chip.activo .gpa-atraso{background:#dbeafe;color:#1d4ed8;}
+#gpaBtnUsar:disabled{opacity:0.5;cursor:not-allowed;}
+
+</style>
+</head>
+<body>
+<header class="header-bar">
+  <div class="header-brand">⚡ Resultados Fantasy 5 Florida</div>
+  <nav class="nav-menu" style="flex-wrap:wrap;gap:8px;justify-content:flex-end">
+    <a class="btn-glow" href="https://www.resultadoschispazohoy.com" target="_blank" rel="noopener">🎰 Chispazo México</a>
+  </nav>
+</header>
+<main class="main-container">
+  <aside class="aside-left">
+  </aside>
+  <section>
+<div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
+<div class="tabs-estadisticas">
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
+  <a class="tab-btn-estadisticas activo" href="trios.html">🧩 Tríos</a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números</a>
+  <a class="tab-btn-estadisticas" href="analiza-tu-numero.html">🔢 Analiza tu número</a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones</a>
+  <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento</a>
+</div>
+<style>
+.ayuda-pestana { margin:0 0 16px; }
+.ayuda-pestana > summary { display:inline-flex; align-items:center; gap:6px; cursor:pointer; list-style:none; padding:8px 14px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:20px; color:#1d4ed8; font-weight:600; font-size:0.9rem; user-select:none; }
+.ayuda-pestana > summary::-webkit-details-marker { display:none; }
+.ayuda-pestana > summary::after { content:'\25BE'; font-size:0.8rem; transition:transform 0.15s; }
+.ayuda-pestana[open] > summary::after { transform:rotate(180deg); }
+.ayuda-contenido { margin-top:10px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 18px; font-size:0.9rem; line-height:1.55; color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.ayuda-contenido ul { margin:0; padding-left:20px; }
+.ayuda-contenido li { margin:6px 0; }
+.ayuda-aviso { margin:10px 0 0; padding-top:10px; border-top:1px solid #e2e8f0; font-size:0.8rem; color:#64748b; }
+</style>
+<details class="ayuda-pestana" id="ayudaPestana" data-pestana="5">
+  <summary>💡 ¿Cómo usar esta pestaña?</summary>
+  <div class="ayuda-contenido">
+    <ul>
+      <li>Una <b>tercia</b> son 3 números que salieron juntos en un mismo sorteo. El <b>atraso</b> es cuántos concursos lleva esa tercia sin volver a salir junta; <b>Total</b>, cuántas veces ha salido.</li>
+      <li>Los encabezados <b>N1, N2, N3 y P1, P2, P3</b> son menús: tócalos para filtrar por número o por posición. Si las tres P valen 0, la tercia se cuenta en cualquier posición.</li>
+      <li>Escribe un valor en <b>Mín. Totales</b> o <b>Mín. Atraso</b> y toca <b>Buscar</b>. Se muestran como máximo 500 filas.</li>
+      <li><b>⭐ Guardar</b> agrega la tercia a tu pestaña Seguimiento y <b>🔍 Buscar</b> te muestra cuándo ha salido antes.</li>
+    </ul>
+    <p class="ayuda-aviso">Son datos históricos. Cada sorteo es independiente: que algo lleve muchos concursos sin salir no significa que vaya a salir pronto.</p>
+  </div>
+</details>
+<script>(function(){var d=document.getElementById('ayudaPestana');if(!d)return;try{var k='ayudaVista_'+d.getAttribute('data-pestana');if(false&&!localStorage.getItem(k)){d.open=true;localStorage.setItem(k,'1');}}catch(e){}})();</script>
+    <div class="stats-card">
+      <div class="stats-title" id="tituloTercias"><span>🧩 Combinaciones de tres números: Frecuencia > 15</span></div>
+      <div class="filter-bar">
+        <span class="filtro-par"><label for="minTotalesTercias">Mín. Totales:</label><input type="number" id="minTotalesTercias" value="15"></span>
+        <span class="filtro-par"><label for="minDistanciaTercias">Mín. Atraso:</label><input type="number" id="minDistanciaTercias" value="0"></span>
+        <button class="btn-aplicar" onclick="renderTercias()">Buscar</button>
+      </div>
+      <div class="pares-estado" id="estadoTercias"></div>
+      <div class="table-scroll-container">
+        <table class="table-stats" id="tablaTercias">
+          <thead><tr><th class="th-filtro"><div class="sel-enc"><select id="selTerN1" data-etq="N1" title="N1"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerN2" data-etq="N2" title="N2"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerN3" data-etq="N3" title="N3"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerP1" data-etq="P1" title="P1"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerP2" data-etq="P2" title="P2"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerP3" data-etq="P3" title="P3"></select></div></th><th>Total</th><th>Fecha</th><th>Num. Secuencial</th><th>Atraso</th><th>Acciones</th></tr></thead>
+          <tbody id="tbodyTercias"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <aside class="aside-right">
+  </aside>
+</main>
+<div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
+  ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
+  <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+<span style="display:block; margin-top:8px; font-size:0.85rem; font-weight:normal;"><a href="acerca.html" style="color:#2563eb;">Acerca de</a> · <a href="privacidad.html" style="color:#2563eb;">Privacidad</a> · <a href="contacto.html" style="color:#2563eb;">Contacto</a></span>
+</div>
+<style>
+.btn-grafica{display:inline-flex;align-items:center;gap:4px;background:#eff6ff;border:1px solid #bfdbfe;color:#2563eb;cursor:pointer;font-size:13px;font-weight:600;padding:5px 10px;border-radius:20px;white-space:nowrap;animation:pulso-grafica 2.2s ease-in-out infinite;}
+.btn-grafica:hover{background:#2563eb;color:#fff;border-color:#2563eb;animation:none;}
+@keyframes pulso-grafica{0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,0.25);}50%{box-shadow:0 0 0 5px rgba(37,99,235,0);}}
+.btn-seguir{animation:none !important;background:#fffbeb;border-color:#fcd34d;color:#b45309;margin-right:4px;}
+.btn-seguir:hover{background:#f59e0b;color:#fff;border-color:#f59e0b;}
+.pares-ver{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:8px 0 4px;font-size:0.9rem;color:#334155;}
+.pares-ver label{display:flex;align-items:center;gap:6px;}
+.th-filtro{padding:4px 3px !important;min-width:48px;}
+.sel-enc{position:relative;display:block;}
+.sel-enc select{-webkit-appearance:none;appearance:none;width:100%;min-width:0;padding:6px 17px 6px 5px;font-family:inherit;font-size:inherit;font-weight:700;border:1px solid transparent;border-radius:6px;background:transparent;color:#fff;text-align:center;text-align-last:center;cursor:pointer;}
+.sel-enc select.activo{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.7);}
+.sel-enc select:disabled{opacity:0.55;cursor:not-allowed;}
+.sel-enc select option{color:#1e293b;background:#fff;font-weight:400;}
+.sel-enc::after{content:'▾';position:absolute;right:5px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:10px;color:#fff;}
+@media (max-width:600px){.sel-enc select{font-size:0.78rem;padding:5px 11px 5px 1px;}.sel-enc::after{right:2px;font-size:8px;}.th-filtro{padding:4px 1px !important;min-width:34px;}#tablaPares th:nth-child(6),#tablaPares td:nth-child(6),#tablaTercias th:nth-child(8),#tablaTercias td:nth-child(8){display:none;}}
+.pares-estado{font-size:0.8rem;color:#64748b;margin:6px 0;min-height:1.1em;}
+</style>
+<script>
+function buscarSeleccionHistorial(numerosCsv, posCsv){
+  try {
+    localStorage.setItem('buscarHistorialNumeros', numerosCsv.split(',').join(' '));
+    if (posCsv && /[1-9]/.test(posCsv)) { localStorage.setItem('buscarHistorialPos', posCsv); } else { localStorage.removeItem('buscarHistorialPos'); }
+  } catch (e) { /* si falla localStorage, igual se redirige */ }
+  window.location.href = 'buscar.html';
+}
+var SEGUIMIENTO_MAX = 15;
+var TSEG = (document.documentElement.lang === 'en')
+  ? { guardar:'⭐ Save', tip:'Save to My tracking', guardado:'✓ Saved', yaEsta:'Already in your tracking', lleno:'You can track up to ' + SEGUIMIENTO_MAX + '. Delete one in the Tracking tab first.', error:'Could not save. Please try again.' }
+  : { guardar:'⭐ Guardar', tip:'Guardar en Mi seguimiento', guardado:'✓ Guardado', yaEsta:'Ya está en tu seguimiento', lleno:'Puedes seguir hasta ' + SEGUIMIENTO_MAX + '. Borra una en la pestaña Seguimiento primero.', error:'No se pudo guardar. Intenta de nuevo.' };
+async function seguirCombinacion(tipo, csv, btn){
+  var original = btn.textContent;
+  function aviso(txt){ btn.textContent = txt; setTimeout(function(){ btn.textContent = original; }, 1800); }
+  var nums = csv.split(',').map(Number);
+  var lista = [];
+  try { lista = JSON.parse(localStorage.getItem('seguimientoCombinaciones') || '[]'); if (!Array.isArray(lista)) lista = []; } catch (e) { lista = []; }
+  var clave = nums.join('-');
+  if (lista.some(function(x){ return x && x.nums && x.nums.join('-') === clave; })) { aviso(TSEG.yaEsta); return; }
+  if (lista.length >= SEGUIMIENTO_MAX) { alert(TSEG.lleno); return; }
+  var desde = 0;
+  try { var r = await fetch('version.json', { cache: 'no-store' }); var j = await r.json(); desde = parseInt(j.concurso) || 0; } catch (e) {}
+  if (!desde) { alert(TSEG.error); return; }
+  lista.push({ tipo: tipo, nums: nums, desde: desde });
+  try { localStorage.setItem('seguimientoCombinaciones', JSON.stringify(lista)); } catch (e) { alert(TSEG.error); return; }
+  aviso(TSEG.guardado);
+}
+function aplicarFiltrosPares(){if(window.renderPares){window.renderPares();}}
+function aplicarFiltrosTercias(){const minTot=parseInt(document.getElementById('minTotalesTercias').value)||0;const minDist=parseInt(document.getElementById('minDistanciaTercias').value)||0;document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{const tot=parseInt(row.getAttribute('data-total'))||0;const dist=parseInt(row.getAttribute('data-distancia'))||0;row.style.display=(tot>=minTot&&dist>=minDist)?'':'none';});}
+function marcarVerde(celda,activo){if(!celda)return;const el=celda.querySelector('b')||celda;el.classList.toggle('resaltado-verde',!!activo);}
+function buscarTercTabla(){const a=document.getElementById('buscarTer1').value.trim();const b=document.getElementById('buscarTer2').value.trim();const c=document.getElementById('buscarTer3').value.trim();if(!a||!b||!c)return;const nums=[a,b,c].map(x=>x.padStart(2,'0')).sort().join(',');document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{const c0=row.cells[0],c1=row.cells[1],c2=row.cells[2];const vals=[c0.textContent.trim(),c1.textContent.trim(),c2.textContent.trim()].sort().join(',');const coincide=(vals===nums);row.style.display=coincide?'':'none';marcarVerde(c0,coincide);marcarVerde(c1,coincide);marcarVerde(c2,coincide);});}
+function filtrarPorTercia(t1,t2,t3){document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{const c=row.querySelectorAll('td');if(c.length>=3){const coincide=(c[0].textContent.trim()===t1&&c[1].textContent.trim()===t2&&c[2].textContent.trim()===t3);row.style.display=coincide?'':'none';}})}
+function resaltarCelda(celda,f1,f2){if(!celda)return;const txt=celda.textContent.trim();const coincide=(f1&&txt===f1)||(f2&&txt===f2);marcarVerde(celda,coincide);}
+function filtrarPorNumero(num){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con el número ' + num + ': Frecuencia > 35</span>';(document.getElementById('tituloTercias')||{}).innerHTML='<span>🧩 Combinaciones con el número ' + num + ': Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tbody tr').forEach(row=>{if(row.cells.length<2)return;const p1=row.cells[0].textContent.trim(),p2=row.cells[1].textContent.trim();const coincide=(p1===num||p2===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);}});document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const n1=row.cells[0].textContent.trim(),n2=row.cells[1].textContent.trim(),n3=row.cells[2].textContent.trim();const coincide=(n1===num||n2===num||n3===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);resaltarCelda(row.cells[2],num,null);}});}
+function filtrarPorPar(n1Par,n2Par){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con los números ' + n1Par + ' y ' + n2Par + ': Frecuencia > 35</span>';(document.getElementById('tituloTercias')||{}).innerHTML='<span>🧩 Combinaciones que contienen a ' + n1Par + ' y ' + n2Par + ': Frecuencia > 15</span>';(function(){const a=document.getElementById('selParesN1'),b=document.getElementById('selParesN2');const x=Math.min(parseInt(n1Par),parseInt(n2Par)),y=Math.max(parseInt(n1Par),parseInt(n2Par));if(a&&b){a.value=String(x);b.value=String(y);}if(window.renderPares)window.renderPares();})();document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const t1=row.cells[0].textContent.trim(),t2=row.cells[1].textContent.trim(),t3=row.cells[2].textContent.trim();const coincide=(t1===n1Par||t2===n1Par||t3===n1Par)&&(t1===n2Par||t2===n2Par||t3===n2Par);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],n1Par,n2Par);resaltarCelda(row.cells[1],n1Par,n2Par);resaltarCelda(row.cells[2],n1Par,n2Par);}});}
+function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones de dos números: Frecuencia > 35</span>';(document.getElementById('tituloTercias')||{}).innerHTML='<span>🧩 Combinaciones de tres números: Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tr,#tablaTercias tr,#tablaUnos tr').forEach(r=>{r.style.display='';});document.querySelectorAll('.resaltado-verde').forEach(el=>el.classList.remove('resaltado-verde'));if(window.resetFiltrosPares){window.resetFiltrosPares();}var su=document.getElementById('selUnosN1');if(su){su.value='';su.classList.remove('activo');}}
+</script>
+<script>
+(function(){
+  const TEXTO_CARGANDO = 'Actualizando…';
+  const TEXTO_ERROR = 'No se pudo cargar la información. Intenta recargar la página.';
+  const LIMITE_FILAS = 500;
+  const EN = (document.documentElement.lang === 'en');
+  const TT = EN
+    ? { mostrando:'Showing {a} of {b}', recorte:'(first {n} shown; raise Min. Totals, pick a number in the menus or set 0 in the positions to see the overall total)', sinRes:'No results. Try lowering Min. Totals or Min. Gap.' }
+    : { mostrando:'Mostrando {a} de {b}', recorte:'(se muestran las primeras {n}; sube Mín. Totales, elige un número en los menús o pon 0 en las posiciones para ver el total general)', sinRes:'Sin resultados. Prueba bajando Mín. Totales o Mín. Atraso.' };
+  const IDS = ['selTerN1','selTerN2','selTerN3','selTerP1','selTerP2','selTerP3'];
+  let datos = [];
+  function el(id){ return document.getElementById(id); }
+
+  function abrirDB(){
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open('estadisticasCache', 1);
+      req.onupgradeneeded = () => { req.result.createObjectStore('kv', { keyPath: 'k' }); };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+  async function leerDB(clave){
+    try {
+      const db = await abrirDB();
+      return await new Promise((resolve, reject) => {
+        const req = db.transaction('kv', 'readonly').objectStore('kv').get(clave);
+        req.onsuccess = () => resolve(req.result ? req.result.v : null);
+        req.onerror = () => reject(req.error);
+      });
+    } catch (e) { return null; }
+  }
+  async function guardarDB(clave, valor){
+    try {
+      const db = await abrirDB();
+      await new Promise((resolve, reject) => {
+        const tx = db.transaction('kv', 'readwrite');
+        tx.objectStore('kv').put({ k: clave, v: valor });
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    } catch (e) { /* si falla la caché no es grave */ }
+  }
+
+  function llenarSelect(id, valores, ceros){
+    const sel = el(id);
+    if (!sel) return;
+    let h = '<option value="">' + (sel.dataset.etq || '') + '</option>';
+    valores.forEach(v => { h += '<option value="' + v + '">' + (ceros ? String(v).padStart(2,'0') : v) + '</option>'; });
+    sel.innerHTML = h;
+  }
+  function iniciarMenus(){
+    const a = new Set(), b = new Set(), c = new Set();
+    datos.forEach(t => { a.add(t.n1); b.add(t.n2); c.add(t.n3); });
+    const ord = conj => Array.from(conj).sort((x, y) => x - y);
+    llenarSelect('selTerN1', ord(a), true);
+    llenarSelect('selTerN2', ord(b), true);
+    llenarSelect('selTerN3', ord(c), true);
+    llenarSelect('selTerP1', [0,1,2,3], false);   // 0 = en cualquier posición
+    llenarSelect('selTerP2', [0,2,3,4], false);
+    llenarSelect('selTerP3', [0,3,4,5], false);
+    ['selTerP1','selTerP2','selTerP3'].forEach(id => { const s = el(id); if (s) s.title = document.documentElement.lang === 'en' ? '0 = any position' : '0 = en cualquier posición'; });
+  }
+
+  function pintar(filas){
+    const tbody = el('tbodyTercias');
+    if (!tbody) return;
+    let html = '';
+    filas.forEach(t => {
+      const n1 = String(t.n1).padStart(2,'0'), n2 = String(t.n2).padStart(2,'0'), n3 = String(t.n3).padStart(2,'0');
+      html += '<tr data-total="'+t.total+'" data-distancia="'+t.distancia+'">'
+        + '<td><b>'+n1+'</b></td><td><b>'+n2+'</b></td><td><b>'+n3+'</b></td>'
+        + '<td>'+t.posicion1+'</td><td>'+t.posicion2+'</td><td>'+t.posicion3+'</td><td>'+t.total+'</td><td>'+t.fecha+'</td><td>'+t.concurso+'</td>'
+        + '<td class="distancia-bold">'+t.distancia+'</td>'
+        + '<td style="white-space:nowrap"><button class="btn-grafica btn-seguir" title="'+TSEG.tip+'" onclick="seguirCombinacion(\'tercia\',\''+n1+','+n2+','+n3+'\', this)">'+TSEG.guardar+'</button> <button class="btn-grafica" title="Buscar la tercia \' + n1 + \', \' + n2 + \' y \' + n3 + \' en todo el historial" onclick="buscarSeleccionHistorial(\''+n1+','+n2+','+n3+'\',\''+t.posicion1+','+t.posicion2+','+t.posicion3+'\')">🔍 Buscar</button></td>'
+        + '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  function valor(id){ const s = el(id); return s ? s.value : ''; }
+
+  window.renderTercias = function(){
+    const minTot = parseInt(el('minTotalesTercias').value) || 0;
+    const minDist = parseInt(el('minDistanciaTercias').value) || 0;
+    const f = [valor('selTerN1'), valor('selTerN2'), valor('selTerN3')];
+    const g = [valor('selTerP1'), valor('selTerP2'), valor('selTerP3')];
+    IDS.forEach(id => { const s = el(id); if (s) s.classList.toggle('activo', s.value !== ''); });
+    const filtradas = datos.filter(t =>
+      t.total >= minTot && t.distancia >= minDist
+      && (!f[0] || t.n1 === Number(f[0])) && (!f[1] || t.n2 === Number(f[1])) && (!f[2] || t.n3 === Number(f[2]))
+      && (!g[0] || t.posicion1 === Number(g[0])) && (!g[1] || t.posicion2 === Number(g[1])) && (!g[2] || t.posicion3 === Number(g[2])));
+    filtradas.sort((a, b) => b.distancia - a.distancia);
+    const mostrar = filtradas.slice(0, LIMITE_FILAS);
+    pintar(mostrar);
+    const estado = el('estadoTercias');
+    if (!estado) return;
+    if (!filtradas.length) { estado.textContent = TT.sinRes; return; }
+    let txt = TT.mostrando.replace('{a}', mostrar.length).replace('{b}', filtradas.length);
+    if (filtradas.length > mostrar.length) txt += ' ' + TT.recorte.replace('{n}', LIMITE_FILAS);
+    estado.textContent = txt;
+  };
+
+  async function cargar(){
+    const estado = el('estadoTercias');
+    if (estado) estado.textContent = TEXTO_CARGANDO;
+    let versionActual = null;
+    try {
+      versionActual = (await (await fetch('version.json', { cache: 'no-store' })).json()).concurso;
+    } catch (e) { console.error('No se pudo cargar version.json', e); }
+    const verGuardada = await leerDB('terciasVer');
+    const cache = await leerDB('terciasData');
+    if (cache && versionActual !== null && verGuardada === versionActual) {
+      datos = cache;
+    } else {
+      try {
+        datos = await fetch('tercias.json').then(r => r.json());
+        if (versionActual !== null) { guardarDB('terciasData', datos); guardarDB('terciasVer', versionActual); }
+      } catch (e) {
+        console.error('No se pudieron cargar las tercias', e);
+        if (estado) estado.textContent = TEXTO_ERROR;
+        return;
+      }
+    }
+    iniciarMenus();
+    window.renderTercias();
+  }
+
+  IDS.forEach(id => { const s = el(id); if (s) s.addEventListener('change', window.renderTercias); });
+  ['minTotalesTercias', 'minDistanciaTercias'].forEach(id => {
+    const i = el(id);
+    if (i) i.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') window.renderTercias(); });
+  });
+  cargar();
+})();
+</script>
+</body>
+</html>
