@@ -114,11 +114,21 @@
 #analiza .nn-n{display:inline-block;min-width:24px;margin:0 1px;padding:2px 3px;border-radius:6px;font-weight:600;color:#475569;}
 #analiza .nn-n.on{background:#2563eb;color:#fff;font-weight:800;}
 #analiza .nn-btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-weight:600;font-size:0.9rem;text-decoration:none;cursor:pointer;}
+#analiza .an-ad{margin:18px 0;text-align:center;overflow:hidden;}
+#analiza .an-pos{border-top:2px solid #e2e8f0;margin-top:30px;padding-top:2px;}
+#analiza .an-pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px;margin:10px 0 12px;}
+#analiza .an-pcard{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:8px 6px;text-align:center;}
+#analiza .an-pcard b{display:block;font-size:0.8rem;color:#526071;margin-bottom:4px;font-weight:600;}
+#analiza .an-pcard span{display:block;font-size:0.92rem;color:#1e293b;line-height:1.5;}
+#analiza .an-pcard small{color:#526071;}
+#analiza .an-pdet{margin:6px 0;border:1px solid #e2e8f0;border-radius:10px;padding:0 8px;}
+#analiza .an-pdet summary{cursor:pointer;padding:10px 4px;font-weight:600;color:#1d4ed8;font-size:0.92rem;}
+#analiza .an-pdet td.sel{font-weight:800;}
 @media(min-width:640px){#analiza .nn-stats{grid-template-columns:repeat(4,1fr);}}
 @media(max-width:480px){#analiza .nn-tabla{font-size:0.8rem;}#analiza .nn-tabla th,#analiza .nn-tabla td{padding:7px 3px;}#analiza .nn-tabla th{white-space:normal;line-height:1.2;}#analiza .nn-bola{width:26px;height:26px;margin:0 1px;font-size:0.75rem;}#analiza .nn-n{min-width:19px;font-size:0.78rem;padding:2px 1px;}}
 </style>
   <h1 class="an-h1">Analiza tu número de Fantasy 5 Florida</h1>
-  <p class="an-intro">Toca de 1 a 5 números (del 01 al 36) para ver cuántas veces han salido, cuánto llevan sin salir y con qué otros números han salido, con los 12,525 sorteos del historial de Fantasy 5 Florida. Con un solo número ves lo mismo que en su página; con varios, los sorteos en que salieron juntos.</p>
+  <p class="an-intro">Toca de 1 a 5 números (del 01 al 36) para ver cuántas veces han salido, cuánto llevan sin salir y con qué otros números han salido, con los 12,526 sorteos del historial de Fantasy 5 Florida. Con un solo número ves lo mismo que en su página; con varios, los sorteos en que salieron juntos.</p>
   <div class="an-grid" id="anGrid" role="group" aria-label="Números del 1 al 36">
     <a class="an-n" href="numero-1.html" role="button" aria-pressed="false" data-n="1">01</a>
     <a class="an-n" href="numero-2.html" role="button" aria-pressed="false" data-n="2">02</a>
@@ -181,10 +191,11 @@ var CFG = {
   total: 36, porSorteo: 5,
   nombre: "Fantasy 5 Florida",
   loc: "es-MX", en: false,
-  datos: "analiza-datos.json?v=12526",
+  datos: "analiza-datos.json?v=12527",
   concUrl: "concurso-{0}.html",
   numUrl: "numero-{0}.html",
   ultimas: 10, topPares: 5, tanda: 20,
+  ad: null,
   t: {
     vacio: "Toca un número para empezar. Con uno ves su historial completo; con varios, los sorteos en que salieron juntos.",
     cargando: "Cargando el historial…",
@@ -245,6 +256,12 @@ var CFG = {
     thVecesConAl: "Veces en esos sorteos",
     thPctDeEsos: "% de esos sorteos",
     thEsperado: "Esperado por azar",
+    publicidad: "Publicidad",
+    h2Pos: "En qué posición salen los números",
+    pPos: "En los sorteos de arriba, en qué posición salió cada número (posición 1 = el número menor del sorteo, {0} = el mayor). Es información histórica: no predice el siguiente sorteo.",
+    posTitulo: "Posición {0}",
+    posMatriz: "Ver la matriz completa (todos los números por posición)",
+    posBase: "Calculado con {0} sorteos.",
     h2AnioVarios: "Apariciones por año",
   }
 };
@@ -377,6 +394,46 @@ var CFG = {
     }
     return '<h2>' + esc(titulo) + '</h2>' + tabla([T.thAnio, T.thVecesSalio, T.thSorteosAnio, T.thPctSorteos], f);
   }
+  // anuncio entre secciones (solo si ads.paginas.analiza=true): iframe con el mismo anuncio del pie; reserva su alto para no mover la pagina
+  function anuncio() {
+    if (!CFG.ad) return '';
+    var u = window.matchMedia('(min-width: 800px)').matches ? CFG.ad.d : CFG.ad.m;
+    if (!u) return '';
+    var doc = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="margin:0"><script>' + u.o + '<\/script><script src="' + u.s + '"><\/script></body></html>';
+    return '<div class="an-ad" style="min-height:' + (u.h + 8) + 'px"><iframe title="' + esc(T.publicidad) + '" width="' + u.w + '" height="' + u.h + '" scrolling="no" frameborder="0" style="border:0;max-width:100%" srcdoc="' + esc(doc) + '"></iframe></div>';
+  }
+  // posicion (1 = menor ... K = mayor) en que sale cada numero dentro de los sorteos filtrados (r.idx); se oculta con menos de 10 sorteos
+  function posiciones(r, S) {
+    var n = r.idx.length;
+    if (n < 10) return '';
+    var cnt = [], a, p, i;
+    for (a = 0; a <= N; a++) { var z = []; for (p = 0; p < K; p++) z.push(0); cnt.push(z); }
+    for (i = 0; i < n; i++) { var row = rows[r.idx[i]]; for (p = 0; p < K; p++) { var v = row[p + 1]; if (v >= 1 && v <= N) cnt[v][p]++; } }
+    var mx = 0;
+    for (a = 1; a <= N; a++) for (p = 0; p < K; p++) if (cnt[a][p] > mx) mx = cnt[a][p];
+    var cards = '';
+    for (p = 0; p < K; p++) {
+      var ord = []; for (a = 1; a <= N; a++) if (cnt[a][p] > 0) ord.push(a);
+      ord.sort(function (x, y) { return (cnt[y][p] - cnt[x][p]) || (x - y); });
+      var li = ''; for (i = 0; i < Math.min(3, ord.length); i++) li += '<span><b style="display:inline;color:#1e293b;font-size:0.95rem;">' + pad(ord[i]) + '</b> <small>' + pct1(100 * cnt[ord[i]][p] / n) + '</small></span>';
+      cards += '<div class="an-pcard"><b>' + esc(tt(T.posTitulo, p + 1)) + '</b>' + li + '</div>';
+    }
+    var cab = [T.thNumero]; for (p = 0; p < K; p++) cab.push(tt(T.posTitulo, p + 1));
+    var f = '';
+    for (a = 1; a <= N; a++) {
+      var es = S.indexOf(a) !== -1;
+      f += '<tr><td>' + bola(a) + '</td>';
+      for (p = 0; p < K; p++) {
+        var c = cnt[a][p];
+        f += c > 0 ? '<td class="' + (es ? 'sel' : '') + '" style="background:rgba(37,99,235,' + (0.08 + 0.5 * c / mx).toFixed(2) + ')">' + pct1(100 * c / n) + '</td>' : '<td class="' + (es ? 'sel' : '') + '">–</td>';
+      }
+      f += '</tr>';
+    }
+    var abierto = window.matchMedia('(min-width: 800px)').matches ? ' open' : '';
+    return '<div class="an-pos"><h2>' + esc(T.h2Pos) + '</h2><p class="nn-texto">' + esc(tt(T.pPos, K)) + ' ' + esc(tt(T.posBase, fmt(n))) + '</p>' +
+      '<div class="an-pcards">' + cards + '</div>' +
+      '<details class="an-pdet"' + abierto + '><summary>' + esc(T.posMatriz) + '</summary>' + tabla(cab, f) + '</details></div>';
+  }
   function cuatroDatos(r, esperadoTxt, etiquetas) {
     return '<div class="nn-stats">' +
       '<div class="nn-stat"><b>' + r.atraso + '</b><span>' + esc(etiquetas[0]) + '</span></div>' +
@@ -404,6 +461,7 @@ var CFG = {
       f += '<tr><td>' + celdaConc(row[0]) + '</td><td>' + esc(row[6]) + '</td><td>' + numerosFila(row, S) + '</td><td>' + previo + '</td></tr>';
     }
     h += '<h2>' + esc(tt(T.h2Ultimas, CFG.ultimas, num)) + '</h2>' + tabla([T.thConcurso, T.thFecha, T.thNumeros, T.thPrevio], f);
+    h += anuncio();
     // pares con este numero
     var ac = acompanantes(S, r);
     if (ac.length) {
@@ -412,6 +470,7 @@ var CFG = {
       h += tablaPares(num, n, tt(T.h2Frec, num), tt(T.pFrec, num), frec);
       h += tablaPares(num, n, tt(T.h2AtrPares, num), tt(T.pAtrPares, num), atr);
     }
+    h += anuncio();
     h += tablaAnios(r, tt(T.h2Anio, num));
     h += '<p class="an-ver"><a class="nn-btn" href="' + urlNum(n) + '">' + esc(tt(T.verPagina, num)) + '</a></p>';
     elRes.innerHTML = h;
@@ -458,6 +517,7 @@ var CFG = {
     h += '<h2>' + esc(t === k ? T.h2Sorteos : tt(T.h2SorteosAl, t)) + '</h2>';
     h += '<div id="anTablaSorteos">' + tabla(cab, '') + '</div>';
     h += '<p class="an-ver"><button type="button" class="nn-btn" id="anMas"></button></p>';
+    h += anuncio();
     // numeros que mas acompanan
     var ac = acompanantes(S, r);
     var total5 = r.idx.length;
@@ -473,6 +533,8 @@ var CFG = {
         '<td>' + celdaConc(p.conc) + '<br><small>' + esc(p.fecha) + '</small></td></tr>';
     }
     if (fa) h += '<h2>' + esc(T.h2Acomp) + '</h2><p class="nn-texto">' + esc(T.pAcomp) + '</p>' + tabla(cabA, fa);
+    var pp = posiciones(r, S);
+    h += anuncio() + pp + (pp ? anuncio() : '');
     h += tablaAnios(r, T.h2AnioVarios);
     elRes.innerHTML = h;
     masSorteos();
