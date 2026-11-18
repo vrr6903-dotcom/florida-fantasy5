@@ -12530,5 +12530,6 @@
   {"concurso":12530,"fecha":"15/11/2026","sorteo":"Evening","numeros":[4,12,14,21,23]},
   {"concurso":12531,"fecha":"16/11/2026","sorteo":"Midday","numeros":[6,8,17,32,35]},
   {"concurso":12532,"fecha":"16/11/2026","sorteo":"Evening","numeros":[1,7,9,27,33]},
-  {"concurso":12533,"fecha":"17/11/2026","sorteo":"Midday","numeros":[18,27,29,31,32]}
+  {"concurso":12533,"fecha":"17/11/2026","sorteo":"Midday","numeros":[18,27,29,31,32]},
+  {"concurso":12534,"fecha":"17/11/2026","sorteo":"Evening","numeros":[7,12,15,29,35]}
 ]
