@@ -28,6 +28,11 @@ a.cc-esfera{text-decoration:none;}
 .cc-esfera{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:#fff;background:radial-gradient(circle at 30% 28%,#60a5fa,#2563eb 65%,#1e40af);box-shadow:0 3px 8px rgba(37,99,235,0.35);}
 .cc-texto{color:#334155;font-size:0.95rem;line-height:1.55;margin:0 0 6px;}
 .cc-nav{display:flex;justify-content:space-between;gap:8px;margin:18px 0 0;}
+.cc-gancho{margin:8px 0 4px;font-size:0.95rem;display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;}
+.cc-gancho a{color:#1d4ed8;font-weight:600;text-decoration:none;}
+.cc-cta{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:14px 16px;margin:16px auto;max-width:860px;text-align:center;}
+.cc-cta a.cc-btn{display:inline-block;margin:6px 0;}
+.cc-cta small{display:block;color:#475569;margin-top:4px;}
 .cc-btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-weight:600;font-size:0.9rem;text-decoration:none;}
 .cc-btn.main{background:#2563eb;border-color:#2563eb;color:#fff;}
 .cc-btn.premio{background:#f59e0b;border-color:#d97706;color:#1f2937;font-size:1.05rem;padding:12px 20px;box-shadow:0 2px 6px rgba(217,119,6,0.35);}
@@ -62,7 +67,7 @@ a.cc-esfera{text-decoration:none;}
 </script>
 </head>
 <body>
-<div class="cc-top"><span style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;"><a href="index.html">🎰 Fantasy 5 Florida</a></span><a href="concursos.html">Todos los concursos</a></div>
+<div class="cc-top"><span style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;"><a href="index.html">🎰 Fantasy 5 Florida</a><a href="fantasy-5-florida-evening.html">Evening</a><a href="fantasy-5-florida-midday.html">Midday</a></span><a href="concursos.html">Todos los concursos</a></div>
 <div class="cc-wrap">
 <div class="cc-card">
   <h1>Resultado Fantasy 5 Florida 12271: sorteo Evening del jueves 9 de julio de 2026</h1>
@@ -81,12 +86,86 @@ a.cc-esfera{text-decoration:none;}
     <a class="cc-btn" href="dia-2026-07-09.html">📅 Resultados del día</a>
     <a class="cc-btn" href="historico-fantasy-5-florida.html">📚 Histórico de Fantasy 5 Florida</a>
   </div>
-  <p class="cc-texto">El concurso 12271 de Fantasy 5 Florida, sorteo Evening, se realizó el jueves 9 de julio de 2026 y salieron los números 07, 08, 10, 17, 21.</p>
-  <p class="cc-texto">Antes de este concurso, el 07 llevaba 1 sorteo sin salir; el 08 había salido en el sorteo anterior; el 10 llevaba 13 sorteos sin salir; el 17 llevaba 8 sorteos sin salir; el 21 había salido en el sorteo anterior.</p>
+  <p class="cc-gancho"><a href="analiza-tu-numero.html">Revisa tu combinación →</a><a href="numeros-atrasados.html">Ver los números más atrasados →</a></p>
   <div class="cc-nav">
     <a class="cc-btn" href="concurso-12270.html">← Concurso 12270</a>
     <a class="cc-btn" href="concurso-12272.html">Concurso 12272 →</a>
   </div>
+  <p class="cc-texto">El concurso 12271 de Fantasy 5 Florida, sorteo Evening, se realizó el jueves 9 de julio de 2026 y salieron los números 07, 08, 10, 17, 21.</p>
+  <p class="cc-texto">Antes de este concurso, el 07 llevaba 1 sorteo sin salir; el 08 había salido en el sorteo anterior; el 10 llevaba 13 sorteos sin salir; el 17 llevaba 8 sorteos sin salir; el 21 había salido en el sorteo anterior.</p>
+</div>
+<style>
+.et-wrap{margin:18px 0 0;}
+.et-card{background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:16px 12px;margin:0 0 14px;}
+.et-card h2{font-size:1.05rem;margin:0 0 4px;}
+.et-ayuda{color:#64748b;font-size:0.82rem;margin:0 0 10px;line-height:1.45;}
+.et-filtros{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 10px;font-size:0.88rem;color:#334155;}
+.et-filtros input{width:64px;padding:5px 6px;border:1px solid #cbd5e1;border-radius:6px;font-size:0.9rem;}
+.et-filtros button{padding:6px 14px;border-radius:999px;border:1px solid #2563eb;background:#2563eb;color:#fff;font-weight:600;font-size:0.85rem;cursor:pointer;}
+.et-scroll{overflow-x:auto;}
+.et-t{width:100%;border-collapse:collapse;font-size:0.88rem;text-align:center;}
+.et-t th{background:#2f6690;color:#fff;padding:7px 5px;font-weight:700;white-space:nowrap;}
+.et-t td{padding:6px 5px;border-bottom:1px solid #f1f5f9;}
+.et-t a{color:#1d4ed8;font-weight:800;text-decoration:none;}
+.et-t .at{font-weight:800;color:#b45309;}
+.et-estado{font-size:0.8rem;color:#64748b;margin:6px 0 0;min-height:1.1em;}
+.et-mas{display:block;margin:10px auto 0;padding:8px 18px;border-radius:999px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-weight:600;font-size:0.88rem;cursor:pointer;}
+@media(max-width:520px){.et-t .fe{display:none;}.et-t{font-size:0.82rem;}}
+</style>
+<div class="et-wrap" id="etBloque">
+<div class="et-card">
+  <h2>📊 Frecuencia y atrasos: números individuales</h2>
+  <p class="et-ayuda">Total = veces que ha salido. Atraso = sorteos que lleva sin salir. Información histórica de Fantasy 5 Florida, no una predicción.</p>
+  <div class="et-scroll"><table class="et-t"><thead><tr><th>N</th><th>Total</th><th class="fe">Última fecha</th><th>Concurso</th><th>Atraso</th></tr></thead><tbody id="etUnos"></tbody></table></div>
+</div>
+<div class="et-card">
+  <h2>🔗 Combinaciones de dos números</h2>
+  <p class="et-ayuda">Total = veces que han salido juntos. Atraso = sorteos sin salir juntos. Ordenado de mayor a menor atraso.</p>
+  <div class="et-filtros"><label>Mín. Totales: <input type="number" id="etMinTot" value="35"></label><label>Mín. Atraso: <input type="number" id="etMinAt" value="0"></label><button type="button" id="etBuscar">Filtrar</button></div>
+  <div class="et-scroll"><table class="et-t"><thead><tr><th>N1</th><th>N2</th><th>Concurso</th><th class="fe">Fecha</th><th>Total</th><th>Atraso</th></tr></thead><tbody id="etPares"></tbody></table></div>
+  <p class="et-estado" id="etEstado"></p>
+  <button type="button" class="et-mas" id="etMas" style="display:none">Mostrar más</button>
+</div>
+</div>
+<script>
+(function(){
+  var bloque=document.getElementById('etBloque'); if(!bloque) return;
+  var PASO=50, mostrar=PASO, pares=[], listo=false, pidio=false;
+  function $(id){return document.getElementById(id);}
+  function p2(n){return String(n).padStart(2,'0');}
+  function numLink(n){var t=p2(n);return '<a href="numero-'+parseInt(n,10)+'.html">'+t+'</a>';}
+  function pintarUnos(d){
+    d=d.slice().sort(function(a,b){return b.distancia-a.distancia;});
+    $('etUnos').innerHTML=d.map(function(u){return '<tr><td>'+numLink(u.numero)+'</td><td>'+u.totales+'</td><td class="fe">'+u.fecha+'</td><td>'+u.concurso+'</td><td class="at">'+u.distancia+'</td></tr>';}).join('');
+  }
+  function pintarPares(){
+    var mt=parseInt($('etMinTot').value)||0, ma=parseInt($('etMinAt').value)||0;
+    var f=pares.filter(function(p){return p.total>=mt&&p.distancia>=ma;}).sort(function(a,b){return b.distancia-a.distancia;});
+    var m=f.slice(0,mostrar);
+    $('etPares').innerHTML=m.map(function(p){return '<tr><td>'+numLink(p.par01)+'</td><td>'+numLink(p.par02)+'</td><td>'+p.concurso+'</td><td class="fe">'+p.fecha+'</td><td>'+p.total+'</td><td class="at">'+p.distancia+'</td></tr>';}).join('');
+    $('etEstado').textContent=f.length?'Mostrando {a} de {b}'.replace('{a}',m.length).replace('{b}',f.length):'Sin resultados. Prueba bajando Mín. Totales o Mín. Atraso.';
+    $('etMas').style.display=f.length>m.length?'':'none';
+  }
+  function cargar(){
+    if(pidio) return; pidio=true;
+    $('etEstado').textContent='Cargando…';
+    Promise.all([fetch('unos.json').then(function(r){return r.json();}),fetch('pares.json').then(function(r){return r.json();})])
+    .then(function(r){pintarUnos(r[0]);pares=r[1];listo=true;pintarPares();})
+    .catch(function(){$('etEstado').textContent='No se pudo cargar la información. Intenta recargar la página.';});
+  }
+  $('etBuscar').addEventListener('click',function(){mostrar=PASO;if(listo)pintarPares();});
+  ['etMinTot','etMinAt'].forEach(function(id){$(id).addEventListener('keydown',function(e){if(e.key==='Enter'){mostrar=PASO;if(listo)pintarPares();}});});
+  $('etMas').addEventListener('click',function(){mostrar+=100;pintarPares();});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();cargar();}},{rootMargin:'400px'});
+    io.observe(bloque);
+  } else { cargar(); }
+})();
+</script>
+<div class="cc-cta">
+  <strong>¿Quieres revisar tu combinación?</strong><br>
+  <a class="cc-btn main" href="analiza-tu-numero.html">Analiza tu número →</a>
+  <small>Información histórica, no una predicción: ningún método asegura ganar.</small>
 </div>
 <style>
 .hoy-box{background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:16px 14px;margin-top:16px;text-align:center;}
