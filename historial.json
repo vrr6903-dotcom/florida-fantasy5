@@ -12540,5 +12540,9 @@
   {"concurso":12540,"fecha":"20/11/2026","sorteo":"Evening","numeros":[4,6,15,23,32]},
   {"concurso":12541,"fecha":"21/11/2026","sorteo":"Midday","numeros":[10,12,17,20,36]},
   {"concurso":12542,"fecha":"21/11/2026","sorteo":"Evening","numeros":[2,3,9,15,29]},
-  {"concurso":12543,"fecha":"22/11/2026","sorteo":"Midday","numeros":[1,4,15,27,30]}
+  {"concurso":12543,"fecha":"22/11/2026","sorteo":"Midday","numeros":[1,4,15,27,30]},
+  {"concurso":12544,"fecha":"22/11/2026","sorteo":"Evening","numeros":[7,8,16,20,29]},
+  {"concurso":12545,"fecha":"23/11/2026","sorteo":"Midday","numeros":[4,9,21,27,35]},
+  {"concurso":12546,"fecha":"23/11/2026","sorteo":"Evening","numeros":[6,12,20,24,28]},
+  {"concurso":12547,"fecha":"24/11/2026","sorteo":"Midday","numeros":[4,15,20,34,36]}
 ]
