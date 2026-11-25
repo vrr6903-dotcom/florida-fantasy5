@@ -87,15 +87,11 @@
 <script>(function(){var d=document.getElementById('ayudaPestana');if(!d)return;try{var k='ayudaVista_'+d.getAttribute('data-pestana');if(false&&!localStorage.getItem(k)){d.open=true;localStorage.setItem(k,'1');}}catch(e){}})();</script>
     <div class="stats-card">
       <div class="stats-title" id="tituloTercias"><span>🧩 Combinaciones de tres números: Frecuencia > 15</span></div>
-      <div class="filter-bar">
-        <span class="filtro-par"><label for="minTotalesTercias">Mín. Totales:</label><input type="number" id="minTotalesTercias" value="15"></span>
-        <span class="filtro-par"><label for="minDistanciaTercias">Mín. Atraso:</label><input type="number" id="minDistanciaTercias" value="0"></span>
-        <button class="btn-aplicar" onclick="renderTercias()">Buscar</button>
-      </div>
+      <div class="tabla-acciones"><button type="button" class="btn-reset-filtro js-reset-filtros" onclick="if(window.resetFiltrosTercias)resetFiltrosTercias()">Restablecer filtros</button></div>
       <div class="pares-estado" id="estadoTercias"></div>
       <div class="table-scroll-container">
         <table class="table-stats" id="tablaTercias">
-          <thead><tr><th class="th-filtro"><div class="sel-enc"><select id="selTerN1" data-etq="N1" title="N1"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerN2" data-etq="N2" title="N2"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerN3" data-etq="N3" title="N3"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerP1" data-etq="P1" title="P1"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerP2" data-etq="P2" title="P2"></select></div></th><th class="th-filtro"><div class="sel-enc"><select id="selTerP3" data-etq="P3" title="P3"></select></div></th><th>Total</th><th>Fecha</th><th>Num. Secuencial</th><th>Atraso</th><th>Acciones</th></tr></thead>
+          <thead><tr><th class="th-min"><div class="min-enc"><span>N1</span><select class="sel-min" id="selTerN1" data-etq="N1" title="N1" aria-label="N1"></select></div></th><th class="th-min"><div class="min-enc"><span>N2</span><select class="sel-min" id="selTerN2" data-etq="N2" title="N2" aria-label="N2"></select></div></th><th class="th-min"><div class="min-enc"><span>N3</span><select class="sel-min" id="selTerN3" data-etq="N3" title="N3" aria-label="N3"></select></div></th><th class="th-min"><div class="min-enc"><span>P1</span><select class="sel-min" id="selTerP1" data-etq="P1" title="P1" aria-label="P1"></select></div></th><th class="th-min"><div class="min-enc"><span>P2</span><select class="sel-min" id="selTerP2" data-etq="P2" title="P2" aria-label="P2"></select></div></th><th class="th-min"><div class="min-enc"><span>P3</span><select class="sel-min" id="selTerP3" data-etq="P3" title="P3" aria-label="P3"></select></div></th><th class="th-min"><div class="min-enc"><span>Total</span><input type="number" min="0" id="minTotalesTercias" value="15" title="Mín. Totales" aria-label="Mín. Totales"></div></th><th class="th-min"><div class="min-enc"><span>Atraso</span><input type="number" min="0" id="minDistanciaTercias" value="0" title="Mín. Atraso" aria-label="Mín. Atraso"></div></th><th>Fecha</th><th>Num. Secuencial</th><th>Acciones</th></tr></thead>
           <tbody id="tbodyTercias"></tbody>
         </table>
       </div>
@@ -124,8 +120,23 @@
 .sel-enc select:disabled{opacity:0.55;cursor:not-allowed;}
 .sel-enc select option{color:#1e293b;background:#fff;font-weight:400;}
 .sel-enc::after{content:'▾';position:absolute;right:5px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:10px;color:#fff;}
-@media (max-width:600px){.sel-enc select{font-size:0.78rem;padding:5px 11px 5px 1px;}.sel-enc::after{right:2px;font-size:8px;}.th-filtro{padding:4px 1px !important;min-width:34px;}#tablaPares th:nth-child(6),#tablaPares td:nth-child(6),#tablaTercias th:nth-child(8),#tablaTercias td:nth-child(8){display:none;}}
+@media (max-width:600px){.sel-enc select{font-size:0.78rem;padding:5px 11px 5px 1px;}.sel-enc::after{right:2px;font-size:8px;}.th-filtro{padding:4px 1px !important;min-width:34px;}#tablaPares th:nth-child(7),#tablaPares td:nth-child(7),#tablaTercias th:nth-child(9),#tablaTercias td:nth-child(9){display:none;}.min-enc input,.min-enc select{width:46px;font-size:0.72rem;}#tablaPares th:nth-child(1),#tablaPares td:nth-child(1),#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(1),#tablaTercias td:nth-child(1),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){width:54px;min-width:54px;max-width:54px;}#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){left:54px;}}
 .pares-estado{font-size:0.8rem;color:#64748b;margin:6px 0;min-height:1.1em;}
+#estadoPares:empty,#estadoTercias:empty{display:none;}
+.th-min{padding:4px 4px !important;}
+.min-enc{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.min-enc input,.min-enc select{box-sizing:border-box;width:62px;height:26px;padding:2px 4px;font-family:inherit;font-size:0.8rem;font-weight:600;text-align:center;text-align-last:center;color:#1e293b;background:#fff;border:1px solid #cbd5e1;border-radius:4px;}
+.min-enc select{padding:2px 0;cursor:pointer;}
+.min-enc select.activo{background:#fef3c7;border-color:#f59e0b;}
+.min-enc select:disabled{opacity:0.55;cursor:not-allowed;}
+.min-enc select option{color:#1e293b;background:#fff;font-weight:400;}
+.tabla-acciones{display:flex;justify-content:flex-end;margin:2px 0 6px;}
+#tablaPares th:nth-child(1),#tablaPares td:nth-child(1),#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(1),#tablaTercias td:nth-child(1),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){position:sticky;box-sizing:border-box;width:72px;min-width:72px;max-width:72px;}
+#tablaPares th:nth-child(1),#tablaPares td:nth-child(1),#tablaTercias th:nth-child(1),#tablaTercias td:nth-child(1){left:0;}
+#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){left:72px;box-shadow:3px 0 4px -2px rgba(15,23,42,0.28);}
+#tablaPares td:nth-child(-n+2),#tablaTercias td:nth-child(-n+2){z-index:2;background:#fff;}
+#tablaPares tbody tr:nth-child(even) td:nth-child(-n+2),#tablaTercias tbody tr:nth-child(even) td:nth-child(-n+2){background:#f8fafc;}
+#tablaPares thead th:nth-child(-n+2),#tablaTercias thead th:nth-child(-n+2){z-index:12;}
 </style>
 <script>
 function buscarSeleccionHistorial(numerosCsv, posCsv){
@@ -172,8 +183,8 @@ function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHT
   const LIMITE_FILAS = 500;
   const EN = (document.documentElement.lang === 'en');
   const TT = EN
-    ? { mostrando:'Showing {a} of {b}', recorte:'(first {n} shown; raise Min. Totals, pick a number in the menus or set 0 in the positions to see the overall total)', sinRes:'No results. Try lowering Min. Totals or Min. Gap.' }
-    : { mostrando:'Mostrando {a} de {b}', recorte:'(se muestran las primeras {n}; sube Mín. Totales, elige un número en los menús o pon 0 en las posiciones para ver el total general)', sinRes:'Sin resultados. Prueba bajando Mín. Totales o Mín. Atraso.' };
+    ? { mostrando:'Showing {a} of {b}', recorte:'(first {n} shown; raise Min. Totals, pick a number in the menus or set 0 in the positions to see the overall total)', sinRes:'No results for the selected filters.' }
+    : { mostrando:'Mostrando {a} de {b}', recorte:'(se muestran las primeras {n}; sube Mín. Totales, elige un número en los menús o pon 0 en las posiciones para ver el total general)', sinRes:'Sin resultados con los filtros elegidos.' };
   const IDS = ['selTerN1','selTerN2','selTerN3','selTerP1','selTerP2','selTerP3'];
   let datos = [];
   function el(id){ return document.getElementById(id); }
@@ -211,7 +222,7 @@ function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHT
   function llenarSelect(id, valores, ceros){
     const sel = el(id);
     if (!sel) return;
-    let h = '<option value="">' + (sel.dataset.etq || '') + '</option>';
+    let h = '<option value="">' + (EN ? 'All' : 'Todos') + '</option>';
     valores.forEach(v => { h += '<option value="' + v + '">' + (ceros ? String(v).padStart(2,'0') : v) + '</option>'; });
     sel.innerHTML = h;
   }
@@ -236,8 +247,8 @@ function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHT
       const n1 = String(t.n1).padStart(2,'0'), n2 = String(t.n2).padStart(2,'0'), n3 = String(t.n3).padStart(2,'0');
       html += '<tr data-total="'+t.total+'" data-distancia="'+t.distancia+'">'
         + '<td><b>'+n1+'</b></td><td><b>'+n2+'</b></td><td><b>'+n3+'</b></td>'
-        + '<td>'+t.posicion1+'</td><td>'+t.posicion2+'</td><td>'+t.posicion3+'</td><td>'+t.total+'</td><td>'+t.fecha+'</td><td>'+t.concurso+'</td>'
-        + '<td class="distancia-bold">'+t.distancia+'</td>'
+        + '<td>'+t.posicion1+'</td><td>'+t.posicion2+'</td><td>'+t.posicion3+'</td><td>'+t.total+'</td>'
+        + '<td class="distancia-bold">'+t.distancia+'</td><td>'+t.fecha+'</td><td>'+t.concurso+'</td>'
         + '<td style="white-space:nowrap"><button class="btn-grafica btn-seguir" title="'+TSEG.tip+'" onclick="seguirCombinacion(\'tercia\',\''+n1+','+n2+','+n3+'\', this)">'+TSEG.guardar+'</button> <button class="btn-grafica" title="Buscar la tercia \' + n1 + \', \' + n2 + \' y \' + n3 + \' en todo el historial" onclick="buscarSeleccionHistorial(\''+n1+','+n2+','+n3+'\',\''+t.posicion1+','+t.posicion2+','+t.posicion3+'\')">🔍 Buscar</button></td>'
         + '</tr>';
     });
@@ -262,9 +273,7 @@ function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHT
     const estado = el('estadoTercias');
     if (!estado) return;
     if (!filtradas.length) { estado.textContent = TT.sinRes; return; }
-    let txt = TT.mostrando.replace('{a}', mostrar.length).replace('{b}', filtradas.length);
-    if (filtradas.length > mostrar.length) txt += ' ' + TT.recorte.replace('{n}', LIMITE_FILAS);
-    estado.textContent = txt;
+    estado.textContent = '';   // sin la línea "Mostrando a de b": ya no hay barra de mínimos que sugerir
   };
 
   async function cargar(){
@@ -292,10 +301,17 @@ function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHT
     window.renderTercias();
   }
 
+  // "Restablecer filtros": menús vacíos y mínimos de Total y Atraso a su valor inicial (el de strings/properties).
+  window.resetFiltrosTercias = function(){
+    IDS.forEach(id => { const s = el(id); if (s) s.value = ''; });
+    ['minTotalesTercias', 'minDistanciaTercias'].forEach(id => { const i = el(id); if (i) i.value = i.defaultValue; });
+    window.renderTercias();
+  };
+  if (EN) document.querySelectorAll('.js-reset-filtros').forEach(b => { b.textContent = 'Reset filters'; });
   IDS.forEach(id => { const s = el(id); if (s) s.addEventListener('change', window.renderTercias); });
   ['minTotalesTercias', 'minDistanciaTercias'].forEach(id => {
     const i = el(id);
-    if (i) i.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') window.renderTercias(); });
+    if (i) { i.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') window.renderTercias(); }); i.addEventListener('change', window.renderTercias); }
   });
   cargar();
 })();
