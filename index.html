@@ -187,7 +187,9 @@ function toggleUltimosResultados() {
 <script>(function(){var d=document.getElementById('ayudaPestana');if(!d)return;try{var k='ayudaVista_'+d.getAttribute('data-pestana');if(false&&!localStorage.getItem(k)){d.open=true;localStorage.setItem(k,'1');}}catch(e){}})();</script>
 <div id="tab-numeros">
     <div class="stats-card">
-      <div class="stats-title"><span>📊 Frecuencia y Atrasos: Números Individuales</span> <button class="btn-reset-filtro" onclick="limpiarFiltrosCruzados()">Ver Todos</button></div>
+      <div class="stats-title"><span>📊 Frecuencia y Atrasos: Números Individuales</span></div>
+      <div class="ayuda-tabla js-ayuda-unos">Toca un número para ver sus combinaciones abajo ↓</div>
+      <div class="tabla-acciones"><button type="button" class="btn-reset-filtro js-reset-filtros" onclick="limpiarFiltrosCruzados()">Restablecer filtros</button></div>
       <div class="table-scroll-container">
         <table class="table-stats" id="tablaUnos">
           <thead><tr><th class="th-filtro"><div class="sel-enc"><select id="selUnosN1" data-etq="N1" title="N1"></select></div></th><th>Total</th><th>Última fecha</th><th>Num. Secuencial</th><th>Atraso</th><th>Acciones</th></tr></thead>
@@ -195,7 +197,7 @@ function toggleUltimosResultados() {
         </table></div></div>
     <div class="stats-card">
       <div class="stats-title" id="tituloPares"><span>🔗 Combinaciones de dos números: Frecuencia > 35</span></div>
-      <div class="tabla-acciones"><button type="button" class="btn-reset-filtro js-reset-filtros" onclick="limpiarFiltrosCruzados()">Restablecer filtros</button></div>
+      <div class="tabla-acciones"><button type="button" class="chip-filtro-num" id="chipNumeroPares" onclick="quitarFiltroNumero()" hidden></button><button type="button" class="btn-reset-filtro js-reset-filtros" onclick="limpiarFiltrosCruzados()">Restablecer filtros</button></div>
       <div class="pares-estado" id="estadoPares"></div>
       <div class="table-scroll-container">
         <table class="table-stats" id="tablaPares">
@@ -306,7 +308,11 @@ a.bp-num{text-decoration:none;}
 .min-enc select.activo{background:#fef3c7;border-color:#f59e0b;}
 .min-enc select:disabled{opacity:0.55;cursor:not-allowed;}
 .min-enc select option{color:#1e293b;background:#fff;font-weight:400;}
-.tabla-acciones{display:flex;justify-content:flex-end;margin:2px 0 6px;}
+.tabla-acciones{display:flex;align-items:center;gap:8px;margin:2px 0 6px;}
+.tabla-acciones .btn-reset-filtro{margin-left:auto;}
+.chip-filtro-num{background:#e0f2fe;color:#075985;border:1px solid #7dd3fc;border-radius:999px;padding:3px 10px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:inherit;}
+.chip-filtro-num[hidden]{display:none;}
+.ayuda-tabla{font-size:0.78rem;color:#64748b;margin:0 0 4px;}
 #tablaPares th:nth-child(1),#tablaPares td:nth-child(1),#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(1),#tablaTercias td:nth-child(1),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){position:sticky;box-sizing:border-box;width:72px;min-width:72px;max-width:72px;}
 #tablaPares th:nth-child(1),#tablaPares td:nth-child(1),#tablaTercias th:nth-child(1),#tablaTercias td:nth-child(1){left:0;}
 #tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){left:72px;box-shadow:3px 0 4px -2px rgba(15,23,42,0.28);}
@@ -348,8 +354,9 @@ function marcarVerde(celda,activo){if(!celda)return;const el=celda.querySelector
 function buscarTercTabla(){const a=document.getElementById('buscarTer1').value.trim();const b=document.getElementById('buscarTer2').value.trim();const c=document.getElementById('buscarTer3').value.trim();if(!a||!b||!c)return;const nums=[a,b,c].map(x=>x.padStart(2,'0')).sort().join(',');document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{const c0=row.cells[0],c1=row.cells[1],c2=row.cells[2];const vals=[c0.textContent.trim(),c1.textContent.trim(),c2.textContent.trim()].sort().join(',');const coincide=(vals===nums);row.style.display=coincide?'':'none';marcarVerde(c0,coincide);marcarVerde(c1,coincide);marcarVerde(c2,coincide);});}
 function filtrarPorTercia(t1,t2,t3){document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{const c=row.querySelectorAll('td');if(c.length>=3){const coincide=(c[0].textContent.trim()===t1&&c[1].textContent.trim()===t2&&c[2].textContent.trim()===t3);row.style.display=coincide?'':'none';}})}
 function resaltarCelda(celda,f1,f2){if(!celda)return;const txt=celda.textContent.trim();const coincide=(f1&&txt===f1)||(f2&&txt===f2);marcarVerde(celda,coincide);}
-function filtrarPorNumero(num){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con el número ' + num + ': Frecuencia > 35</span>';(document.getElementById('tituloTercias')||{}).innerHTML='<span>🧩 Combinaciones con el número ' + num + ': Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tbody tr').forEach(row=>{if(row.cells.length<2)return;const p1=row.cells[0].textContent.trim(),p2=row.cells[1].textContent.trim();const coincide=(p1===num||p2===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);}});document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const n1=row.cells[0].textContent.trim(),n2=row.cells[1].textContent.trim(),n3=row.cells[2].textContent.trim();const coincide=(n1===num||n2===num||n3===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);resaltarCelda(row.cells[2],num,null);}});}
-function filtrarPorPar(n1Par,n2Par){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con los números ' + n1Par + ' y ' + n2Par + ': Frecuencia > 35</span>';(document.getElementById('tituloTercias')||{}).innerHTML='<span>🧩 Combinaciones que contienen a ' + n1Par + ' y ' + n2Par + ': Frecuencia > 15</span>';(function(){const a=document.getElementById('selParesN1'),b=document.getElementById('selParesN2');const x=Math.min(parseInt(n1Par),parseInt(n2Par)),y=Math.max(parseInt(n1Par),parseInt(n2Par));if(a&&b){a.value=String(x);b.value=String(y);}if(window.renderPares)window.renderPares();})();document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const t1=row.cells[0].textContent.trim(),t2=row.cells[1].textContent.trim(),t3=row.cells[2].textContent.trim();const coincide=(t1===n1Par||t2===n1Par||t3===n1Par)&&(t1===n2Par||t2===n2Par||t3===n2Par);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],n1Par,n2Par);resaltarCelda(row.cells[1],n1Par,n2Par);resaltarCelda(row.cells[2],n1Par,n2Par);}});}
+function filtrarPorNumero(num){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con el número ' + num + ': Frecuencia > 35</span>';(document.getElementById('tituloTercias')||{}).innerHTML='<span>🧩 Combinaciones con el número ' + num + ': Frecuencia > 15</span>';window.filtroNumeroPares=num;if(window.renderPares){['selParesN1','selParesN2','selParesP1','selParesP2'].forEach(id=>{const m=document.getElementById(id);if(m)m.value='';});window.renderPares();}var tp=document.getElementById('tituloPares');if(tp&&tp.scrollIntoView){tp.scrollIntoView({behavior:'smooth',block:'start'});}document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const n1=row.cells[0].textContent.trim(),n2=row.cells[1].textContent.trim(),n3=row.cells[2].textContent.trim();const coincide=(n1===num||n2===num||n3===num);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],num,null);resaltarCelda(row.cells[1],num,null);resaltarCelda(row.cells[2],num,null);}});}
+function filtrarPorPar(n1Par,n2Par){window.filtroNumeroPares='';document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones con los números ' + n1Par + ' y ' + n2Par + ': Frecuencia > 35</span>';(document.getElementById('tituloTercias')||{}).innerHTML='<span>🧩 Combinaciones que contienen a ' + n1Par + ' y ' + n2Par + ': Frecuencia > 15</span>';(function(){const a=document.getElementById('selParesN1'),b=document.getElementById('selParesN2');const x=Math.min(parseInt(n1Par),parseInt(n2Par)),y=Math.max(parseInt(n1Par),parseInt(n2Par));if(a&&b){a.value=String(x);b.value=String(y);}if(window.renderPares)window.renderPares();})();document.querySelectorAll('#tablaTercias tbody tr').forEach(row=>{if(row.cells.length<3)return;const t1=row.cells[0].textContent.trim(),t2=row.cells[1].textContent.trim(),t3=row.cells[2].textContent.trim();const coincide=(t1===n1Par||t2===n1Par||t3===n1Par)&&(t1===n2Par||t2===n2Par||t3===n2Par);row.style.display=coincide?'':'none';if(coincide){resaltarCelda(row.cells[0],n1Par,n2Par);resaltarCelda(row.cells[1],n1Par,n2Par);resaltarCelda(row.cells[2],n1Par,n2Par);}});}
+function quitarFiltroNumero(){window.filtroNumeroPares='';document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones de dos números: Frecuencia > 35</span>';document.querySelectorAll('.resaltado-verde').forEach(el=>el.classList.remove('resaltado-verde'));if(window.renderPares){window.renderPares();}}
 function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHTML='<span>🔗 Combinaciones de dos números: Frecuencia > 35</span>';(document.getElementById('tituloTercias')||{}).innerHTML='<span>🧩 Combinaciones de tres números: Frecuencia > 15</span>';document.querySelectorAll('#tablaPares tr,#tablaTercias tr,#tablaUnos tr').forEach(r=>{r.style.display='';});document.querySelectorAll('.resaltado-verde').forEach(el=>el.classList.remove('resaltado-verde'));if(window.resetFiltrosPares){window.resetFiltrosPares();}var su=document.getElementById('selUnosN1');if(su){su.value='';su.classList.remove('activo');}}
 </script>
 <script>
@@ -535,14 +542,19 @@ function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHT
     if (verTotales) base = base.concat(paresGeneral);
     if (verDetalle) base = base.concat(paresDetalle);
 
+    const fnum = window.filtroNumeroPares || '';   // número tocado en Individuales (puede ir en N1 o en N2)
     const filtradas = base.filter(p =>
       p.total >= minTot && p.distancia >= minDist
+      && (!fnum || p.par01 === Number(fnum) || p.par02 === Number(fnum))
       && (!f1 || p.par01 === Number(f1)) && (!f2 || p.par02 === Number(f2))
       && (!g1 || p.posicion1 === Number(g1)) && (!g2 || p.posicion2 === Number(g2)));
     filtradas.sort((a, b) => b.distancia - a.distancia);
 
     const mostrar = filtradas.slice(0, LIMITE_FILAS_PARES);
     pintarPares(mostrar, atrasoMapGlobal);
+    const chip = elp('chipNumeroPares');
+    if (chip) { chip.hidden = !fnum; if (fnum) chip.textContent = (EN_PARES ? 'Filtering by number ' : 'Filtrando por el número ') + fnum + ' ✕'; }
+    if (fnum) document.querySelectorAll('#tbodyPares tr').forEach(r => { for (let k = 0; k < 2; k++) { if (r.cells[k] && r.cells[k].textContent.trim() === fnum) marcarVerde(r.cells[k], true); } });
 
     const estado = elp('estadoPares');
     if (!estado) return;
@@ -558,6 +570,7 @@ function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHT
 
   // "Ver Todos" (ver limpiarFiltrosCruzados): mínimos y menús vuelven a su valor inicial.
   window.resetFiltrosPares = function(){
+    window.filtroNumeroPares = '';
     const mt = elp('minTotalesPares'), md = elp('minDistanciaPares');
     if (mt) mt.value = mt.defaultValue;
     if (md) md.value = md.defaultValue;
@@ -599,6 +612,7 @@ function limpiarFiltrosCruzados(){document.getElementById('tituloPares').innerHT
   }
 
   if (EN_PARES) document.querySelectorAll('.js-reset-filtros').forEach(b => { b.textContent = 'Reset filters'; });
+  if (EN_PARES) document.querySelectorAll('.js-ayuda-unos').forEach(b => { b.textContent = 'Tap a number to see its combinations below ↓'; });
   etiquetasFiltrosPares();
   conectarEventosFiltrosPares();
   // El detalle por posición se baja en segundo plano (queda en caché) y se suma a la tabla al llegar.
