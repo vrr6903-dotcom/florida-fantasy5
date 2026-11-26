@@ -12364,6 +12364,7 @@
   {"concurso":12363,"fecha":"24/08/2026","sorteo":"Evening","numeros":[9,11,20,32,35]},
   {"concurso":12364,"fecha":"24/08/2026","sorteo":"Midday","numeros":[3,5,7,13,17]},
   {"concurso":12365,"fecha":"25/08/2026","sorteo":"Evening","numeros":[10,13,14,20,26]},
+  {"concurso":12366,"fecha":"25/08/2026","sorteo":"Midday","numeros":[2,9,11,20,27]},
   {"concurso":12367,"fecha":"26/08/2026","sorteo":"Midday","numeros":[2,3,10,13,20]},
   {"concurso":12368,"fecha":"26/08/2026","sorteo":"Evening","numeros":[5,7,8,19,21]},
   {"concurso":12369,"fecha":"27/08/2026","sorteo":"Midday","numeros":[2,17,21,24,32]},
@@ -12547,5 +12548,6 @@
   {"concurso":12547,"fecha":"24/11/2026","sorteo":"Midday","numeros":[4,15,20,34,36]},
   {"concurso":12548,"fecha":"24/11/2026","sorteo":"Evening","numeros":[13,15,22,31,32]},
   {"concurso":12549,"fecha":"25/11/2026","sorteo":"Midday","numeros":[8,10,31,33,34]},
-  {"concurso":12550,"fecha":"25/11/2026","sorteo":"Evening","numeros":[1,13,15,23,32]}
+  {"concurso":12550,"fecha":"25/11/2026","sorteo":"Evening","numeros":[1,13,15,23,32]},
+  {"concurso":12551,"fecha":"26/11/2026","sorteo":"Midday","numeros":[18,19,28,29,32]}
 ]
