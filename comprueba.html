@@ -103,6 +103,7 @@
 .cmp-tabla th{background:#2f6690;color:#fff;padding:8px;font-size:0.85rem;text-align:center;}
 .cmp-tabla td{padding:8px;text-align:center;border-bottom:1px solid #f1f5f9;font-size:0.9rem;}
 .cmp-h{font-size:0.95rem;font-weight:700;color:#1e293b;margin:16px 0 4px;}
+.cmp-prob{font-size:0.85rem;color:#475569;text-align:center;margin:0 0 12px;}
 .cmp-aviso{margin-top:14px;padding-top:10px;border-top:1px solid #e2e8f0;font-size:0.8rem;color:#64748b;}
 </style>
 <div class="cmp-caja">
@@ -151,6 +152,8 @@ async function cargarHistorialJSON() {
 }
 
 var CMP_TOTAL = 36, CMP_POR_SORTEO = 5;
+var CMP_PREMIOS = false, CMP_NIV = 4;
+var CMP_ODDS = '376,992';
 var T = {
   elegidos: 'Tu combinación: ',
   ningun: 'Toca al menos un número.',
@@ -176,6 +179,12 @@ var T = {
   concurso: 'Concurso',
   fecha: 'Fecha',
   verTodos: 'Ver todo el historial de esta combinación',
+  prob: 'La probabilidad de acertar los %k números en un sorteo es de 1 entre %o.',
+  premioTitulo: 'Premio total que habrías ganado',
+  premioDetalle: 'en los %d sorteos con montos publicados (de %t comprobados)',
+  premioCol: 'Premio acumulado',
+  premioNota: 'Cálculo hipotético con una sola combinación y los premios individuales de cada sorteo; no incluye el costo del boleto. Los montos solo existen a partir del concurso %c.',
+  sinMontos: 'Ninguno de los sorteos de este rango tiene montos de premios publicados.',
   aviso: 'Son datos históricos y sin validez oficial. Cada sorteo es independiente: esto no predice ni garantiza resultados futuros.'
 };
 var cmpSel = [];
@@ -203,6 +212,15 @@ function cmpAzar(){
   cmpSel = todos.slice(0, CMP_POR_SORTEO).sort(function(a, b){ return a - b; });
   cmpPintar();
 }
+function cmpMoney(cent){ return '$' + (cent / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+var cmpPremiosCache = null;
+async function cmpCargarPremios(){
+  if (cmpPremiosCache) return cmpPremiosCache;
+  var mapa = {}, primero = null;
+  try { var r = await fetch('premios.json'); var a = await r.json(); a.forEach(function(x){ mapa[x.c] = x.p; if (primero === null || x.c < primero) primero = x.c; }); } catch (e) {}
+  cmpPremiosCache = { mapa: mapa, primero: primero };
+  return cmpPremiosCache;
+}
 function cmpPct(x, t){ return t > 0 ? (Math.round(x * 1000 / t) / 10).toFixed(1) + '%' : '0%'; }
 async function cmpComprobar(){
   var out = document.getElementById('cmpResultado');
@@ -214,13 +232,13 @@ async function cmpComprobar(){
   var datos = (r === 'todo') ? hist : hist.slice(-parseInt(r, 10));
   var k = cmpSel.length, tot = datos.length;
   var dist = []; for (var h = 0; h <= k; h++) dist.push(0);
-  var completos = [];
+  var completos = [], hitsPor = [];
   var veces = {}, ultimo = {};
   cmpSel.forEach(function(n){ veces[n] = 0; ultimo[n] = -1; });
   for (var i = 0; i < tot; i++) {
     var nums = datos[i].numeros, hits = 0;
     for (var a = 0; a < k; a++) { if (nums.indexOf(cmpSel[a]) !== -1) { hits++; veces[cmpSel[a]]++; ultimo[cmpSel[a]] = i; } }
-    dist[hits]++;
+    dist[hits]++; hitsPor.push(hits);
     if (hits === k) completos.push(datos[i]);
   }
   var badges = cmpSel.map(function(n){ return '<span class="badge-numero-verde">' + cmpPad(n) + '</span>'; }).join(' ');
@@ -232,10 +250,29 @@ async function cmpComprobar(){
        '<div class="cmp-tile"><span class="v">' + tot + '</span><span class="l">' + T.sorteos + '</span></div>' +
        '<div class="cmp-tile"><span class="v">' + datos[0].fecha + '</span><span class="l">' + T.desde + '</span></div>' +
        '<div class="cmp-tile"><span class="v">' + datos[tot - 1].fecha + '</span><span class="l">' + T.hasta + '</span></div></div>';
+  var pr = null, porNivel = null, totalCent = 0, conDatos = 0;
+  if (CMP_PREMIOS && k === CMP_POR_SORTEO) {
+    pr = await cmpCargarPremios();
+    porNivel = []; for (var v = 0; v < CMP_NIV; v++) porNivel.push({ s: 0, m: 0 });
+    for (var i2 = 0; i2 < tot; i2++) {
+      var pp = pr.mapa[datos[i2].concurso]; if (!pp) continue;
+      conDatos++;
+      var ix = CMP_POR_SORTEO - hitsPor[i2];
+      if (ix >= 0 && ix < CMP_NIV) { var cent = Math.round(pp[ix] * 100); porNivel[ix].s++; porNivel[ix].m += cent; totalCent += cent; }
+    }
+  }
+  if (k === CMP_POR_SORTEO) h += '<p class="cmp-prob">' + T.prob.replace('%k', k).replace('%o', CMP_ODDS) + '</p>';
+  if (pr) {
+    if (conDatos === 0) { h += '<p class="cmp-prob">' + T.sinMontos + '</p>'; pr = null; }
+    else h += '<div class="cmp-resumen">' + T.premioTitulo + '<br><b>' + cmpMoney(totalCent) + '</b><br><small>' + T.premioDetalle.replace('%d', conDatos).replace('%t', tot) + '</small></div>';
+  }
   if (k >= 2) {
     var minH = 2, filas = '';
-    for (var q = k; q >= minH; q--) filas += '<tr><td>' + q + ' ' + (q === 1 ? T.acierto : T.aciertosPl) + '</td><td>' + dist[q] + '</td><td>' + cmpPct(dist[q], tot) + '</td></tr>';
-    h += '<p class="cmp-h">' + T.distTitulo + '</p><table class="cmp-tabla"><thead><tr><th>' + T.aciertos + '</th><th>' + T.nSorteos + '</th><th>' + T.pct + '</th></tr></thead><tbody>' + filas + '</tbody></table>';
+    for (var q = k; q >= minH; q--) {
+      var celdaPremio = pr && (CMP_POR_SORTEO - q) < CMP_NIV ? '<td>' + cmpMoney(porNivel[CMP_POR_SORTEO - q].m) + '</td>' : '';
+      filas += '<tr><td>' + q + ' ' + (q === 1 ? T.acierto : T.aciertosPl) + '</td><td>' + dist[q] + '</td><td>' + cmpPct(dist[q], tot) + '</td>' + celdaPremio + '</tr>';
+    }
+    h += '<p class="cmp-h">' + T.distTitulo + '</p><table class="cmp-tabla"><thead><tr><th>' + T.aciertos + '</th><th>' + T.nSorteos + '</th><th>' + T.pct + '</th>' + (pr ? '<th>' + T.premioCol + '</th>' : '') + '</tr></thead><tbody>' + filas + '</tbody></table>';
   }
   var fn = '';
   cmpSel.forEach(function(n){
@@ -253,6 +290,7 @@ async function cmpComprobar(){
     h += '<p class="cmp-h">' + T.completosTitulo + '</p><table class="cmp-tabla"><thead><tr><th>' + T.concurso + '</th>' + cab + '<th>' + T.fecha + '</th></tr></thead><tbody>' + fc + '</tbody></table>';
   }
   h += '<button type="button" class="cmp-btn pri" onclick="cmpVerTodos()">' + T.verTodos + '</button>';
+  if (pr) h += '<p class="cmp-aviso" style="border-top:0;margin-top:6px;padding-top:0;">' + T.premioNota.replace('%c', pr.primero) + '</p>';
   h += '<p class="cmp-aviso">' + T.aviso + '</p>';
   out.innerHTML = h;
 }
