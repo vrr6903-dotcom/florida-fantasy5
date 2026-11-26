@@ -133,7 +133,7 @@
 .sel-enc select:disabled{opacity:0.55;cursor:not-allowed;}
 .sel-enc select option{color:#1e293b;background:#fff;font-weight:400;}
 .sel-enc::after{content:'▾';position:absolute;right:5px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:10px;color:#fff;}
-@media (max-width:600px){.sel-enc select{font-size:0.78rem;padding:5px 11px 5px 1px;}.sel-enc::after{right:2px;font-size:8px;}.th-filtro{padding:4px 1px !important;min-width:34px;}#tablaPares th:nth-child(7),#tablaPares td:nth-child(7),#tablaTercias th:nth-child(9),#tablaTercias td:nth-child(9){display:none;}.min-enc input,.min-enc select{width:46px;font-size:0.72rem;}#tablaPares th:nth-child(1),#tablaPares td:nth-child(1),#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(1),#tablaTercias td:nth-child(1),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){width:54px;min-width:54px;max-width:54px;}#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){left:54px;}}
+@media (max-width:600px){.sel-enc select{font-size:0.78rem;padding:5px 11px 5px 1px;}.sel-enc::after{right:2px;font-size:8px;}.th-filtro{padding:4px 1px !important;min-width:34px;}#tablaPares th:nth-child(7),#tablaPares td:nth-child(7),#tablaTercias th:nth-child(9),#tablaTercias td:nth-child(9){display:none;}.min-enc input,.min-enc select{width:46px;font-size:0.72rem;}}
 .pares-estado{font-size:0.8rem;color:#64748b;margin:6px 0;min-height:1.1em;}
 #estadoPares:empty,#estadoTercias:empty{display:none;}
 .th-min{padding:4px 4px !important;}
@@ -148,12 +148,15 @@
 .chip-filtro-num{background:#e0f2fe;color:#075985;border:1px solid #7dd3fc;border-radius:999px;padding:3px 10px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:inherit;}
 .chip-filtro-num[hidden]{display:none;}
 .ayuda-tabla{font-size:0.78rem;color:#64748b;margin:0 0 4px;}
-#tablaPares th:nth-child(1),#tablaPares td:nth-child(1),#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(1),#tablaTercias td:nth-child(1),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){position:sticky;box-sizing:border-box;width:72px;min-width:72px;max-width:72px;}
+#tablaPares th:nth-child(-n+2),#tablaPares td:nth-child(-n+2),#tablaTercias th:nth-child(-n+3),#tablaTercias td:nth-child(-n+3){position:sticky;box-sizing:border-box;width:72px;min-width:72px;max-width:72px;}
 #tablaPares th:nth-child(1),#tablaPares td:nth-child(1),#tablaTercias th:nth-child(1),#tablaTercias td:nth-child(1){left:0;}
-#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){left:72px;box-shadow:3px 0 4px -2px rgba(15,23,42,0.28);}
-#tablaPares td:nth-child(-n+2),#tablaTercias td:nth-child(-n+2){z-index:2;background:#fff;}
-#tablaPares tbody tr:nth-child(even) td:nth-child(-n+2),#tablaTercias tbody tr:nth-child(even) td:nth-child(-n+2){background:#f8fafc;}
-#tablaPares thead th:nth-child(-n+2),#tablaTercias thead th:nth-child(-n+2){z-index:12;}
+#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){left:72px;}
+#tablaTercias th:nth-child(3),#tablaTercias td:nth-child(3){left:144px;}
+#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(3),#tablaTercias td:nth-child(3){box-shadow:3px 0 4px -2px rgba(15,23,42,0.28);border-right:2px solid #9fc3e0;}
+#tablaPares td:nth-child(-n+2),#tablaTercias td:nth-child(-n+3){z-index:2;background:#eaf3fb;}
+#tablaPares tbody tr:nth-child(even) td:nth-child(-n+2),#tablaTercias tbody tr:nth-child(even) td:nth-child(-n+3){background:#dcebf7;}
+#tablaPares thead th:nth-child(-n+2),#tablaTercias thead th:nth-child(-n+3){z-index:12;background:#246a9a;}
+@media (max-width:600px){.min-enc input,.min-enc select{width:46px;font-size:0.72rem;}#tablaPares th:nth-child(-n+2),#tablaPares td:nth-child(-n+2),#tablaTercias th:nth-child(-n+3),#tablaTercias td:nth-child(-n+3){width:54px;min-width:54px;max-width:54px;}#tablaPares th:nth-child(2),#tablaPares td:nth-child(2),#tablaTercias th:nth-child(2),#tablaTercias td:nth-child(2){left:54px;}#tablaTercias th:nth-child(3),#tablaTercias td:nth-child(3){left:108px;}}
 </style>
 <script>
 function buscarSeleccionHistorial(numerosCsv, posCsv){
