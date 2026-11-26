@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comprueba tu combinación en los últimos sorteos | Fantasy 5 Florida</title>
+<meta name="description" content="Elige tus números de Fantasy 5 Florida y comprueba cuántas veces habría salido tu combinación y cuántos aciertos habría tenido en los últimos sorteos. Datos históricos sin validez oficial.">
+<link rel="canonical" href="https://fantasy5florida.online/comprueba.html">
+<link rel="stylesheet" href="estilos.css">
+<style>
+.tabs-estadisticas { display:flex; gap:4px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:6px; margin:10px 0 18px; flex-wrap:wrap; }
+.tab-btn-estadisticas { background:none; border:none; padding:10px 18px; font-size:1rem; font-weight:600; color:#64748b; cursor:pointer; border-radius:8px; text-decoration:none; display:inline-block; transition:background 0.15s, color 0.15s; }
+.tab-btn-estadisticas:hover { background:#eff6ff; color:#2563eb; }
+.tab-btn-estadisticas.activo { color:#fff; background:#2563eb; box-shadow:0 2px 6px rgba(37,99,235,0.35); }
+.buscar-historial-caja { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.buscar-historial-controles { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.buscar-historial-controles input { padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.95rem; min-width:180px; }
+.buscar-historial-controles button { padding:9px 16px; border:none; border-radius:6px; font-weight:600; font-size:0.9rem; cursor:pointer; }
+.btn-buscar-historial { background:#2563eb; color:#fff; }
+.btn-limpiar-historial { background:#94a3b8; color:#fff; }
+.badge-numero-verde { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 4px; background:#22c55e; color:#fff; font-weight:700; border-radius:6px; font-size:0.85rem; }
+.tabla-historial { width:100%; border-collapse:collapse; margin-top:12px; }
+.tabla-historial th { background:#2f6690; color:#fff; padding:10px; text-align:center; font-size:0.9rem; }
+.gpa-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #cbd5e1;color:#334155;cursor:pointer;font-size:0.9rem;font-weight:600;padding:8px 12px;border-radius:20px;}
+.gpa-chip:hover{border-color:#2563eb;color:#2563eb;}
+.gpa-chip.activo{background:#eff6ff;border-color:#2563eb;color:#1d4ed8;}
+.gpa-atraso{background:#f1f5f9;border-radius:10px;padding:1px 7px;font-size:0.78rem;color:#64748b;}
+.gpa-chip.activo .gpa-atraso{background:#dbeafe;color:#1d4ed8;}
+#gpaBtnUsar:disabled{opacity:0.5;cursor:not-allowed;}
+
+</style>
+<script>
+  (function(){var interno=false;try{var m=location.search.match(/[?&]interno=([01])(&|$)/);if(m){if(m[1]==='1'){localStorage.setItem('interno','1');}else{localStorage.removeItem('interno');}}interno=localStorage.getItem('interno')==='1';}catch(e){}if(interno){window['ga-disable-G-RG7DSNP3E9']=true;}})();
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RG7DSNP3E9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RG7DSNP3E9');
+</script>
+</head>
+<body>
+<header class="header-bar">
+  <div class="header-brand">⚡ Resultados Fantasy 5 Florida</div>
+  <nav class="nav-menu" style="flex-wrap:wrap;gap:8px;justify-content:flex-end">
+    <a class="btn-glow" href="https://www.resultadoschispazohoy.com" target="_blank" rel="noopener">🎰 Chispazo México</a>
+  </nav>
+</header>
+<main class="main-container">
+  <aside class="aside-left">
+    <div class="widget-publicidad">
+      <script>
+      (function () {
+        var yo = document.currentScript;
+        if (window.matchMedia('(min-width: 1200px)').matches) {
+          document.write('<scr' + 'ipt async="async" data-cfasync="false" src="https://bicea.org/21/dbd3c149fe167ff3f1ba835e0d31fccd"></scr' + 'ipt>');
+          document.write('<div id="container-dbd3c149fe167ff3f1ba835e0d31fccd"></div>');
+        } else if (yo && yo.parentNode) {
+          yo.parentNode.style.display = 'none';
+        }
+      })();
+      </script>
+    </div>
+  </aside>
+  <section>
+<div class="separador-estadisticas"><span>📊 ESTADÍSTICAS DETALLADAS</span></div>
+<div class="tabs-estadisticas">
+  <a class="tab-btn-estadisticas" href="index.html">📊 Números</a>
+  <a class="tab-btn-estadisticas" href="trios.html">🧩 Tríos</a>
+  <a class="tab-btn-estadisticas" href="buscar.html">🔍 Busca tus números</a>
+  <a class="tab-btn-estadisticas" href="analiza-tu-numero.html">🔢 Analiza tu número</a>
+  <a class="tab-btn-estadisticas" href="generador.html">🎲 Genera tus combinaciones</a>
+  <a class="tab-btn-estadisticas" href="seguimiento.html">⭐ Seguimiento</a>
+  <a class="tab-btn-estadisticas activo" href="comprueba.html">🎯 Comprueba tu combinación</a>
+</div>
+<style>
+.cmp-caja{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.cmp-titulo{font-size:1.05rem;font-weight:700;color:#1e293b;margin:0 0 4px;}
+.cmp-sub{font-size:0.85rem;color:#64748b;margin:0 0 12px;}
+.cmp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:8px;max-width:640px;margin:0 0 14px;}
+.cmp-bola{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:1/1;max-width:52px;border-radius:50%;border:1px solid #e2e8f0;background:#f8fafc;color:#1e293b;font-weight:700;font-size:0.95rem;cursor:pointer;padding:0;}
+.cmp-bola:hover{border-color:#2563eb;color:#2563eb;}
+.cmp-bola.sel{background:#0369a1;border-color:#0369a1;color:#fff;}
+.cmp-bola:disabled{opacity:0.35;cursor:not-allowed;}
+.cmp-fila{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px;}
+.cmp-fila label{font-weight:600;color:#334155;font-size:0.9rem;}
+.cmp-fila select{padding:8px 10px;border:1px solid #cbd5e1;border-radius:6px;font-size:0.95rem;background:#fff;}
+.cmp-btn{padding:9px 16px;border:none;border-radius:6px;font-weight:600;font-size:0.9rem;cursor:pointer;}
+.cmp-btn.pri{background:#2563eb;color:#fff;}
+.cmp-btn.sec{background:#94a3b8;color:#fff;}
+.cmp-btn.azar{background:#f59e0b;color:#fff;}
+.cmp-elegidos{min-height:30px;margin:0 0 12px;font-size:0.95rem;color:#334155;}
+.cmp-res{margin-top:6px;}
+.cmp-resumen{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:12px;padding:16px;text-align:center;margin:0 0 14px;color:#065f46;font-size:1rem;}
+.cmp-resumen b{font-size:1.25rem;}
+.cmp-tiles{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px;}
+.cmp-tile{flex:1 1 140px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:10px;text-align:center;}
+.cmp-tile .v{display:block;font-size:1.3rem;font-weight:800;color:#0f172a;}
+.cmp-tile .l{font-size:0.78rem;color:#64748b;}
+.cmp-tabla{width:100%;border-collapse:collapse;margin:6px 0 14px;}
+.cmp-tabla th{background:#2f6690;color:#fff;padding:8px;font-size:0.85rem;text-align:center;}
+.cmp-tabla td{padding:8px;text-align:center;border-bottom:1px solid #f1f5f9;font-size:0.9rem;}
+.cmp-h{font-size:0.95rem;font-weight:700;color:#1e293b;margin:16px 0 4px;}
+.cmp-aviso{margin-top:14px;padding-top:10px;border-top:1px solid #e2e8f0;font-size:0.8rem;color:#64748b;}
+</style>
+<div class="cmp-caja">
+  <p class="cmp-titulo">Elige tus números</p>
+  <p class="cmp-sub">Toca de 1 a 5 números del 1 al 36 y comprueba cómo habría ido tu combinación en sorteos anteriores.</p>
+  <div class="cmp-grid" id="cmpGrid"></div>
+  <div class="cmp-elegidos" id="cmpElegidos"></div>
+  <div class="cmp-fila">
+    <label for="cmpRango">Comprobar contra</label>
+    <select id="cmpRango">
+      <option value="100">Últimos 100 sorteos</option>
+      <option value="300">Últimos 300 sorteos</option>
+      <option value="500" selected>Últimos 500 sorteos</option>
+      <option value="1000">Últimos 1000 sorteos</option>
+      <option value="todo">Todo el historial</option>
+    </select>
+  </div>
+  <div class="cmp-fila">
+    <button type="button" class="cmp-btn pri" id="cmpBtnComprobar">Comprobar mis números</button>
+    <button type="button" class="cmp-btn azar" id="cmpBtnAzar">Al azar</button>
+    <button type="button" class="cmp-btn sec" id="cmpBtnBorrar">Borrar</button>
+  </div>
+  <div class="cmp-res" id="cmpResultado"></div>
+</div>
+  </section>
+  <aside class="aside-right">
+  </aside>
+</main>
+<div style='text-align:center; font-size:1.1rem; font-weight:bold; color:#1e293b; padding:1rem; margin-top:2rem; border-top:1px solid #e2e8f0;'>
+  ⚖️ Estadísticas como apoyo, tú decides tus números.<br>
+  <span style='font-size:0.9rem; font-weight:normal; color:#475569;'>Información sin validez oficial. Consulta siempre los resultados en la página oficial de la Lotería de Florida.</span>
+<span style="display:block; margin-top:8px; font-size:0.85rem; font-weight:normal;"><a href="acerca.html" style="color:#2563eb;">Acerca de</a> · <a href="privacidad.html" style="color:#2563eb;">Privacidad</a> · <a href="contacto.html" style="color:#2563eb;">Contacto</a></span>
+</div>
+<script>
+var historialCacheJSON = null;
+async function cargarHistorialJSON() {
+  if (historialCacheJSON) return historialCacheJSON;
+  try {
+    const resp = await fetch('historial.json');
+    historialCacheJSON = await resp.json();
+  } catch (e) {
+    historialCacheJSON = [];
+    console.error('No se pudo cargar historial.json', e);
+  }
+  return historialCacheJSON;
+}
+
+var CMP_TOTAL = 36, CMP_POR_SORTEO = 5;
+var T = {
+  elegidos: 'Tu combinación: ',
+  ningun: 'Toca al menos un número.',
+  cargando: 'Comprobando…',
+  sinDatos: 'No se pudo cargar el historial.',
+  unoSalio: 'El número %n salió en %x de los últimos %t sorteos.',
+  juntosSalio: 'Los %k números salieron juntos en %x de los últimos %t sorteos.',
+  sorteos: 'Sorteos comprobados',
+  desde: 'Desde',
+  hasta: 'Hasta',
+  aciertos: 'Aciertos',
+  nSorteos: 'Sorteos',
+  pct: '% de los sorteos',
+  acierto: 'acierto',
+  aciertosPl: 'aciertos',
+  distTitulo: 'Aciertos de tu combinación',
+  numTitulo: 'Cada número por separado',
+  numero: 'Número',
+  veces: 'Veces que salió',
+  atraso: 'Sorteos sin salir',
+  noSalio: 'no salió',
+  completosTitulo: 'Sorteos en que salieron todos tus números',
+  concurso: 'Concurso',
+  fecha: 'Fecha',
+  verTodos: 'Ver todo el historial de esta combinación',
+  aviso: 'Son datos históricos y sin validez oficial. Cada sorteo es independiente: esto no predice ni garantiza resultados futuros.'
+};
+var cmpSel = [];
+function cmpPad(n){ return (n < 10 ? '0' : '') + n; }
+function cmpPintar(){
+  var lleno = cmpSel.length >= CMP_POR_SORTEO;
+  var bolas = document.querySelectorAll('#cmpGrid .cmp-bola');
+  for (var i = 0; i < bolas.length; i++) {
+    var n = i + 1, esSel = cmpSel.indexOf(n) !== -1;
+    bolas[i].className = 'cmp-bola' + (esSel ? ' sel' : '');
+    bolas[i].disabled = lleno && !esSel;
+  }
+  document.getElementById('cmpElegidos').innerHTML = cmpSel.length === 0 ? '' : T.elegidos + cmpSel.map(function(n){ return '<span class="badge-numero-verde">' + cmpPad(n) + '</span>'; }).join(' ');
+}
+function cmpToggle(n){
+  var i = cmpSel.indexOf(n);
+  if (i !== -1) cmpSel.splice(i, 1); else if (cmpSel.length < CMP_POR_SORTEO) cmpSel.push(n);
+  cmpSel.sort(function(a, b){ return a - b; });
+  cmpPintar();
+}
+function cmpBorrar(){ cmpSel = []; cmpPintar(); document.getElementById('cmpResultado').innerHTML = ''; }
+function cmpAzar(){
+  var todos = []; for (var i = 1; i <= CMP_TOTAL; i++) todos.push(i);
+  for (var j = todos.length - 1; j > 0; j--) { var k = Math.floor(Math.random() * (j + 1)); var t = todos[j]; todos[j] = todos[k]; todos[k] = t; }
+  cmpSel = todos.slice(0, CMP_POR_SORTEO).sort(function(a, b){ return a - b; });
+  cmpPintar();
+}
+function cmpPct(x, t){ return t > 0 ? (Math.round(x * 1000 / t) / 10).toFixed(1) + '%' : '0%'; }
+async function cmpComprobar(){
+  var out = document.getElementById('cmpResultado');
+  if (cmpSel.length === 0) { out.innerHTML = '<p>' + T.ningun + '</p>'; return; }
+  out.innerHTML = '<p>' + T.cargando + '</p>';
+  var hist = await cargarHistorialJSON();
+  if (!hist || hist.length === 0) { out.innerHTML = '<p>' + T.sinDatos + '</p>'; return; }
+  var r = document.getElementById('cmpRango').value;
+  var datos = (r === 'todo') ? hist : hist.slice(-parseInt(r, 10));
+  var k = cmpSel.length, tot = datos.length;
+  var dist = []; for (var h = 0; h <= k; h++) dist.push(0);
+  var completos = [];
+  var veces = {}, ultimo = {};
+  cmpSel.forEach(function(n){ veces[n] = 0; ultimo[n] = -1; });
+  for (var i = 0; i < tot; i++) {
+    var nums = datos[i].numeros, hits = 0;
+    for (var a = 0; a < k; a++) { if (nums.indexOf(cmpSel[a]) !== -1) { hits++; veces[cmpSel[a]]++; ultimo[cmpSel[a]] = i; } }
+    dist[hits]++;
+    if (hits === k) completos.push(datos[i]);
+  }
+  var badges = cmpSel.map(function(n){ return '<span class="badge-numero-verde">' + cmpPad(n) + '</span>'; }).join(' ');
+  var titular = (k === 1)
+    ? T.unoSalio.replace('%n', badges).replace('%x', '<b>' + dist[1] + '</b>').replace('%t', tot)
+    : T.juntosSalio.replace('%k', k).replace('%x', '<b>' + dist[k] + '</b>').replace('%t', tot);
+  var h = '<div class="cmp-resumen">' + titular + '</div>';
+  h += '<div class="cmp-tiles">' +
+       '<div class="cmp-tile"><span class="v">' + tot + '</span><span class="l">' + T.sorteos + '</span></div>' +
+       '<div class="cmp-tile"><span class="v">' + datos[0].fecha + '</span><span class="l">' + T.desde + '</span></div>' +
+       '<div class="cmp-tile"><span class="v">' + datos[tot - 1].fecha + '</span><span class="l">' + T.hasta + '</span></div></div>';
+  if (k >= 2) {
+    var minH = 2, filas = '';
+    for (var q = k; q >= minH; q--) filas += '<tr><td>' + q + ' ' + (q === 1 ? T.acierto : T.aciertosPl) + '</td><td>' + dist[q] + '</td><td>' + cmpPct(dist[q], tot) + '</td></tr>';
+    h += '<p class="cmp-h">' + T.distTitulo + '</p><table class="cmp-tabla"><thead><tr><th>' + T.aciertos + '</th><th>' + T.nSorteos + '</th><th>' + T.pct + '</th></tr></thead><tbody>' + filas + '</tbody></table>';
+  }
+  var fn = '';
+  cmpSel.forEach(function(n){
+    var atraso = ultimo[n] === -1 ? T.noSalio : (tot - 1 - ultimo[n]);
+    fn += '<tr><td><span class="badge-numero-verde">' + cmpPad(n) + '</span></td><td>' + veces[n] + ' (' + cmpPct(veces[n], tot) + ')</td><td>' + atraso + '</td></tr>';
+  });
+  h += '<p class="cmp-h">' + T.numTitulo + '</p><table class="cmp-tabla"><thead><tr><th>' + T.numero + '</th><th>' + T.veces + '</th><th>' + T.atraso + '</th></tr></thead><tbody>' + fn + '</tbody></table>';
+  if (k >= 2 && completos.length > 0) {
+    var rec = completos.slice().reverse().slice(0, 10), fc = '';
+    rec.forEach(function(s){
+      var celdas = s.numeros.map(function(n){ return '<td>' + (cmpSel.indexOf(n) !== -1 ? '<span class="badge-numero-verde">' + cmpPad(n) + '</span>' : cmpPad(n)) + '</td>'; }).join('');
+      fc += '<tr><td>' + s.concurso + '</td>' + celdas + '<td>' + s.fecha + '</td></tr>';
+    });
+    var cab = ''; for (var c = 1; c <= CMP_POR_SORTEO; c++) cab += '<th>R' + c + '</th>';
+    h += '<p class="cmp-h">' + T.completosTitulo + '</p><table class="cmp-tabla"><thead><tr><th>' + T.concurso + '</th>' + cab + '<th>' + T.fecha + '</th></tr></thead><tbody>' + fc + '</tbody></table>';
+  }
+  h += '<button type="button" class="cmp-btn pri" onclick="cmpVerTodos()">' + T.verTodos + '</button>';
+  h += '<p class="cmp-aviso">' + T.aviso + '</p>';
+  out.innerHTML = h;
+}
+function cmpVerTodos(){
+  try { localStorage.setItem('buscarHistorialNumeros', cmpSel.join(' ')); } catch (e) {}
+  window.location.href = 'buscar.html';
+}
+(function(){
+  var grid = document.getElementById('cmpGrid');
+  for (var n = 1; n <= CMP_TOTAL; n++) {
+    (function(n){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'cmp-bola'; b.textContent = cmpPad(n);
+      b.addEventListener('click', function(){ cmpToggle(n); }); grid.appendChild(b);
+    })(n);
+  }
+  document.getElementById('cmpBtnComprobar').addEventListener('click', cmpComprobar);
+  document.getElementById('cmpBtnAzar').addEventListener('click', cmpAzar);
+  document.getElementById('cmpBtnBorrar').addEventListener('click', cmpBorrar);
+  cmpPintar();
+})();
+</script>
+</body>
+</html>
